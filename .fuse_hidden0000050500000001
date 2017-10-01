@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" type="Node2D" parent="."]
+
+transform/pos = Vector2( 316.756, 213.626 )
+script/script = ExtResource( 1 )
+__meta__ = { "_edit_group_":true }
+
+[node name="body" type="Sprite" parent="player"]
+
+texture = ExtResource( 2 )
+
+[node name="kin_body" type="KinematicBody2D" parent="player"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+transform/pos = Vector2( -112.453, 245.934 )
+transform/scale = Vector2( 2.09324, 1 )
+polygon = Vector2Array( 0, 0, 600, 0, 300, 10 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+

@@ -1,0 +1,4 @@
+
+
+func _ready():
+	pass
