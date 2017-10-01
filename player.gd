@@ -20,7 +20,7 @@ var was_jump_held = false
 var total_jump_length = 0.0
 var min_jump_length = 15.0
 var lock_jump_x = 0.0
-var floor_h_velocity = 0.0
+#var floor_h_velocity = 0.0
 var is_facing_right = true
 var cam_scale = 1.0
 var cam_pause = 0.0
@@ -45,31 +45,16 @@ func _integrate_forces(s):
 	var eff_jump_timer_default = jump_timer_default * gravity_ratio
 		
 	#lv.x -= floor_h_velocity
-	floor_h_velocity = 0.0
+	#floor_h_velocity = 0.0
 	#print("integrate forces - initial y = " + str(initial_y))
 	
-	var rays = [] #get_node("cast_left"), get_node("cast_center"), get_node("cast_right")]
-	
-	var ray_i = 0
-	for ray in rays:
-		if ray.is_colliding():
-			var o = ray.get_collider()
-			var norm = ray.get_collision_normal()
-			#print ("collided with " + str(o))
-			
-			var dot = ray.get_cast_to().dot(norm)
-			
-			if dot < 0.3:
-				#found_floor = true
-				floor_object = o
-		#else:
-			#print("ray " + str(ray_i) + " isn't colliding")
-		ray_i += 1
-
 	for x in range(s.get_contact_count()):
 		var ci = s.get_contact_local_normal(x)
 		#print("found contact")
-		if (ci.dot(Vector2(0, -1)) > 0.8):
+		if (ci.dot(Vector2(0, -1)) > 0.6):
+			if found_floor:
+				pass
+				#print("2nd contact", ci)
 			found_floor = true
 			floor_index = x
 #			
@@ -82,7 +67,7 @@ func _integrate_forces(s):
 	var jump = Input.is_action_pressed("jump")
 	var shoot = Input.is_action_pressed("shoot")
 	
-
+	# Handle left/right movement and frame management
 	if walk_left or walk_right:
 		if walk_left:
 			lv.x += step * (-1.0 * self.base_move_speed)
@@ -130,37 +115,21 @@ func _integrate_forces(s):
 		else:
 			frame_name = 'jump'
 		
-#	if self.is_jumping or self.is_falling:
-#		if self.lock_jump_x < -1.0 * self.base_move_speed:
-#			self.lock_jump_x = -1.0 * self.base_move_speed
-#		if self.lock_jump_x > 1.0 * self.base_move_speed:
-#			self.lock_jump_x = self.base_move_speed
-		#lv.x += (self.lock_jump_x)
-#	else:
-#		pass
-		
-	if not self.is_jumping and not self.is_falling:
+	# Check for start jump
+	if not is_jumping and not is_falling:
 		if not was_jump_held and (walk_up or jump):
-			self.init_jump(eff_jump_timer_default)
+			init_jump(eff_jump_timer_default)
 			get_node("foot_dust").set_emitting(true)
 			
 		elif not found_floor:
-			self.jump_timer = 0.0
-			self.init_fall()
-			#lv.y += (-1.0 * self.jump_impulse)
+			jump_timer = 0.0
+			init_fall()
 			
-#			if walk_left:
-#				self.lock_jump_x = -1.0 * self.base_move_speed
-#			elif walk_right:
-#				self.lock_jump_x = self.base_move_speed
-	elif self.is_jumping:
-		self.jump_timer -= 0.1
-		self.total_jump_length += 0.1
-		
-		#if initial_y > 0:
-		#	init_fall()
-		
-		
+	# Handle already jumping
+	elif is_jumping:
+		jump_timer -= 0.1
+		total_jump_length += 0.1
+				
 		if jump_timer > eff_jump_timer_default * 0.3:
 			lv.y -= step * (1.0 * eff_jump_rate)
 		elif jump_timer > eff_jump_timer_default * 0.5:
@@ -174,9 +143,10 @@ func _integrate_forces(s):
 		
 		if jump_timer < eff_jump_timer_default * 0.7 and not (walk_up or jump):
 			init_fall()
-#			
-	elif self.is_falling:
-		self.jump_timer += 0.1
+#	
+	# Handle falling state
+	elif is_falling:
+		jump_timer += 0.1
 		
 		
 		if jump_timer > eff_jump_timer_default * 0.25 and jump_timer < 3.0 and not was_jump_held and (walk_up or jump):
@@ -192,9 +162,10 @@ func _integrate_forces(s):
 			get_node("foot_dust").set_emitting(true)
 			lv.y = initial_y
 	
-	self.was_jump_held = (walk_up or jump)
+	# Save previously holding jump state
+	was_jump_held = (walk_up or jump)
 	
-#	
+	# Handle camera scaling based on movement/jumping state if it were enabled 
 #	var cam_scale_step = 0.001
 #	if cam_pause > 0.0:
 #		cam_pause -= 0.1
@@ -225,23 +196,26 @@ func _integrate_forces(s):
 #				cam_pause = 5.5
 		
 	get_node("player_cam").set_zoom(Vector2(cam_scale, cam_scale))
-	
+
+	# Update player frame
+	update_frame()
+		
+	#floor_h_velocity = s.get_contact_collider_velocity_at_pos(floor_index).x
+	#lv.x += floor_h_velocity
+		#lv.y += initial_y
+		
+
+#	lv += s.get_total_gravity()*step
+	s.set_linear_velocity(lv)
+
+func update_frame():
+	# Handle showing player frame
 	var body = get_node("body")
 	for frame in body.get_children():
 		if frame.get_name() == "body_" + frame_name:
 			frame.show()
 		else:
 			frame.hide()
-	
-	
-		
-		#floor_h_velocity = s.get_contact_collider_velocity_at_pos(floor_index).x
-		#lv.x += floor_h_velocity
-		#lv.y += initial_y
-		
-
-#	lv += s.get_total_gravity()*step
-	s.set_linear_velocity(lv)
 
 func _ready():
 	# Called every time the node is added to the scene.
