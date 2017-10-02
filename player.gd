@@ -3,7 +3,7 @@ extends RigidBody2D
 const jump_timer_default = 2.5
 const walk_frame_rate = 7.0
 
-var gravity_ratio = 1.5
+var gravity_ratio = 1.0
 
 # class member variables go here, for example:
 # var a = 2
@@ -22,10 +22,13 @@ var min_jump_length = 15.0
 var lock_jump_x = 0.0
 #var floor_h_velocity = 0.0
 var is_facing_right = true
-var cam_scale = 1.0
+var cam_scale = 0.85
 var cam_pause = 0.0
+
 var frame_name = 'base'
 var frame_timer = 0.0
+var arms_frame_name = 'base'
+var arms_frame_timer = 0.0
 
 var is_alive = true
 
@@ -76,6 +79,9 @@ func _integrate_forces(s):
 				var scale = get_node("body").get_scale()
 				scale.x = -1.0 * abs(scale.x)
 				get_node("body").set_scale(scale)
+				scale = get_node("arms").get_scale()
+				scale.x = -1.0 * abs(scale.x)
+				get_node("arms").set_scale(scale)
 				if not (is_falling or is_jumping):
 					get_node("foot_dust").set_emitting(true)
 		if walk_right:
@@ -85,12 +91,16 @@ func _integrate_forces(s):
 				var scale = get_node("body").get_scale()
 				scale.x = 1.0 * abs(scale.x)
 				get_node("body").set_scale(scale)
+				scale = get_node("arms").get_scale()
+				scale.x = 1.0 * abs(scale.x)
+				get_node("arms").set_scale(scale)
 				if not (is_falling or is_jumping):
 					get_node("foot_dust").set_emitting(true)
 		
 				
 		if not is_jumping and not is_falling:
 			frame_timer += step * walk_frame_rate
+			arms_frame_timer += step * walk_frame_rate * 0.67
 			if frame_timer > 1.0:
 				frame_timer -= 1.0
 				if frame_name == 'base':
@@ -98,22 +108,34 @@ func _integrate_forces(s):
 					frame_name = 'walk'
 				else:
 					frame_name = 'base'
+			if arms_frame_timer > 1.0:
+				arms_frame_timer -= 1.0
+				if arms_frame_name == 'base':
+					arms_frame_name = 'walk'
+				else:
+					arms_frame_name = 'base'
 		elif is_jumping:
 			frame_name = 'jump'
-		elif is_falling and jump_timer < eff_jump_timer_default * 0.5:
+			arms_frame_name = 'attack'
+		elif is_falling: # and jump_timer < eff_jump_timer_default * 0.5:
 			frame_name = 'fall'
+			arms_frame_name = 'attack'
 		else:
 			frame_name = 'base'
+			arms_frame_name = 'base'
 			
 	else:
 		lv.x = 0.0
-		if not is_jumping and (not is_falling or jump_timer > eff_jump_timer_default * 0.5):
+		if not is_jumping and (not is_falling): # or jump_timer > eff_jump_timer_default * 0.5):
 			if not (frame_name == "walk" or frame_name == "base"):
 				frame_name = 'base'
-		elif is_falling and jump_timer <= eff_jump_timer_default * 0.5:
+				arms_frame_name = 'base'
+		elif is_falling:  #and jump_timer <= eff_jump_timer_default * 0.5:
 			frame_name = 'fall'
+			arms_frame_name = 'walk'
 		else:
 			frame_name = 'jump'
+			arms_frame_name = 'attack'
 		
 	# Check for start jump
 	if not is_jumping and not is_falling:
@@ -213,6 +235,13 @@ func update_frame():
 	var body = get_node("body")
 	for frame in body.get_children():
 		if frame.get_name() == "body_" + frame_name:
+			frame.show()
+		else:
+			frame.hide()
+			
+	var arms = get_node("arms")
+	for frame in arms.get_children():
+		if frame.get_name() == "arms_" + arms_frame_name:
 			frame.show()
 		else:
 			frame.hide()

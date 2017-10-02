@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://based-stickman-1-base-1.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://based-stickman-1-base-3.png" type="Texture" id=4]
 [ext_resource path="res://based-stickman-1-base-4.png" type="Texture" id=5]
 [ext_resource path="res://dust-cloud-1.png" type="Texture" id=6]
+[ext_resource path="res://based-stickman-1-action-1.png" type="Texture" id=7]
+[ext_resource path="res://based-stickman-1-action-3.png" type="Texture" id=8]
+[ext_resource path="res://based-stickman-1-action-2.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -131,5 +134,28 @@ randomness/linear_velocity = 0.2
 randomness/spin_velocity = 1.0
 randomness/initial_angle = 1.0
 color/color_ramp = SubResource( 2 )
+
+[node name="arms" type="Node2D" parent="."]
+
+[node name="arms_base" type="Sprite" parent="arms"]
+
+transform/pos = Vector2( -2.11783, -20.7783 )
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 7 )
+offset = Vector2( 37.8516, -1.02539 )
+
+[node name="arms_walk" type="Sprite" parent="arms"]
+
+visibility/visible = false
+transform/pos = Vector2( 4.84149, -19.6509 )
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 8 )
+
+[node name="arms_attack" type="Sprite" parent="arms"]
+
+visibility/visible = false
+transform/pos = Vector2( 16.2332, -20.3628 )
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 9 )
 
 
