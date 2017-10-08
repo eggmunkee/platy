@@ -2,6 +2,7 @@ extends RigidBody2D
 
 const jump_timer_default = 2.5
 const walk_frame_rate = 7.0
+const throw_anim_length = 0.4
 
 var gravity_ratio = 1.0
 
@@ -12,11 +13,13 @@ var is_jumping = false
 var is_falling = false
 var jump_timer = 0.0
 var jump_rate = 35000.0
+var jump_count = 0
+var max_jump_count = 2
 #var jump_impulse = 50.0
 var max_fall = 8.0
 var base_move_speed = 12000.0
 var timer_increment = 0.8
-var was_jump_held = false
+
 var total_jump_length = 0.0
 var min_jump_length = 15.0
 var lock_jump_x = 0.0
@@ -32,6 +35,13 @@ var arms_frame_timer = 0.0
 
 var is_alive = true
 
+var grav_timer = 0.0
+
+# key flags
+var was_jump_held = false
+var was_shoot_held = false
+var was_up_grav_down = false
+
 func _integrate_forces(s):
 	var lv = s.get_linear_velocity()
 	var initial_y = lv.y
@@ -44,8 +54,6 @@ func _integrate_forces(s):
 	var floor_object = null
 	var floor_index = -1
 	
-	var eff_jump_rate = jump_rate / gravity_ratio
-	var eff_jump_timer_default = jump_timer_default * gravity_ratio
 		
 	#lv.x -= floor_h_velocity
 	#floor_h_velocity = 0.0
@@ -68,7 +76,73 @@ func _integrate_forces(s):
 	var walk_up = Input.is_action_pressed("ui_up")
 	var walk_down = Input.is_action_pressed("ui_down")
 	var jump = Input.is_action_pressed("jump")
-	var shoot = Input.is_action_pressed("shoot")
+	var shoot = Input.is_action_pressed("attack")
+	var increase_grav = Input.is_action_pressed("up_grav")
+
+	
+	if increase_grav and not was_up_grav_down:
+		gravity_ratio *= 1.50
+		grav_timer += 10.0
+		
+	var space_time = get_node("space_time")
+	if grav_timer > 0.0:
+		grav_timer -= 0.1
+		
+		if grav_timer <= 0.0:
+			grav_timer = 0.0
+			gravity_ratio = 1.0
+			
+		space_time.show()
+		space_time.set_value(min(10.0, grav_timer) / 10.0 * 100.0)
+		
+	else:
+		space_time.hide()
+	
+	
+	var eff_jump_rate = jump_rate
+	var eff_fall_rate = jump_rate / gravity_ratio
+	var eff_jump_timer_default = jump_timer_default * gravity_ratio
+	
+	
+	# Handle attacks
+	# Did just attack?
+	if arms_frame_timer > 0.0:
+		if arms_frame_timer > throw_anim_length / 2.0:
+			arms_frame_name = 'attack'
+		else:
+			arms_frame_name = 'base'
+	
+		arms_frame_timer -= step
+		
+		
+	else:
+		# Start attack?
+		if shoot: # and not was_shoot_held:
+			var rock = preload("res://rock.tscn").instance()
+	
+			# Get position to create rock instance
+			var pos = get_node("arms/throw_origin").get_pos()
+			# x-flip if facing left
+			if get_node("arms").get_scale().x < 0:
+				pos.x = -pos.x
+				rock.x_velocity = -1.0 * rock.x_velocity
+				if walk_left:
+					rock.x_velocity -= 120.0
+			else:
+				if walk_right:
+					rock.x_velocity += 120.0
+				
+			# set rock position including player position
+			rock.set_pos(pos + get_pos())
+			# add rock to parent scene (the stage)
+			get_parent().add_child(rock)
+			arms_frame_name = 'attack'
+			arms_frame_timer = throw_anim_length
+			
+		else:
+			arms_frame_name = 'walk'
+		
+	
 	
 	# Handle left/right movement and frame management
 	if walk_left or walk_right:
@@ -100,7 +174,7 @@ func _integrate_forces(s):
 				
 		if not is_jumping and not is_falling:
 			frame_timer += step * walk_frame_rate
-			arms_frame_timer += step * walk_frame_rate * 0.67
+			
 			if frame_timer > 1.0:
 				frame_timer -= 1.0
 				if frame_name == 'base':
@@ -108,38 +182,27 @@ func _integrate_forces(s):
 					frame_name = 'walk'
 				else:
 					frame_name = 'base'
-			if arms_frame_timer > 1.0:
-				arms_frame_timer -= 1.0
-				if arms_frame_name == 'base':
-					arms_frame_name = 'walk'
-				else:
-					arms_frame_name = 'base'
 		elif is_jumping:
 			frame_name = 'jump'
-			arms_frame_name = 'attack'
 		elif is_falling: # and jump_timer < eff_jump_timer_default * 0.5:
 			frame_name = 'fall'
-			arms_frame_name = 'attack'
 		else:
 			frame_name = 'base'
-			arms_frame_name = 'base'
 			
 	else:
 		lv.x = 0.0
 		if not is_jumping and (not is_falling): # or jump_timer > eff_jump_timer_default * 0.5):
 			if not (frame_name == "walk" or frame_name == "base"):
 				frame_name = 'base'
-				arms_frame_name = 'base'
 		elif is_falling:  #and jump_timer <= eff_jump_timer_default * 0.5:
 			frame_name = 'fall'
-			arms_frame_name = 'walk'
 		else:
 			frame_name = 'jump'
-			arms_frame_name = 'attack'
 		
 	# Check for start jump
 	if not is_jumping and not is_falling:
 		if not was_jump_held and (walk_up or jump):
+			jump_count = 0
 			init_jump(eff_jump_timer_default)
 			get_node("foot_dust").set_emitting(true)
 			
@@ -171,13 +234,13 @@ func _integrate_forces(s):
 		jump_timer += 0.1
 		
 		
-		if jump_timer > eff_jump_timer_default * 0.25 and jump_timer < 3.0 and not was_jump_held and (walk_up or jump):
+		if jump_count < max_jump_count and jump_timer > eff_jump_timer_default * 0.25 and jump_timer < 3.0 and not was_jump_held and (walk_up or jump):
 			init_jump(eff_jump_timer_default * 1.25)
 		else:
 			if jump_timer > eff_jump_timer_default * 0.3:
-				lv.y += step * (1.0 * eff_jump_rate)
+				lv.y += step * (1.0 * eff_fall_rate)
 			elif jump_timer > 0.0:
-				lv.y += step * (0.7 * eff_jump_rate)
+				lv.y += step * (0.7 * eff_fall_rate)
 
 		if found_floor:
 			stop_fall()
@@ -186,6 +249,8 @@ func _integrate_forces(s):
 	
 	# Save previously holding jump state
 	was_jump_held = (walk_up or jump)
+	was_up_grav_down = increase_grav
+	was_shoot_held = shoot
 	
 	# Handle camera scaling based on movement/jumping state if it were enabled 
 #	var cam_scale_step = 0.001
@@ -243,7 +308,7 @@ func update_frame():
 	for frame in arms.get_children():
 		if frame.get_name() == "arms_" + arms_frame_name:
 			frame.show()
-		else:
+		elif frame.get_name().substr(0, 5) == "arms_":
 			frame.hide()
 
 func _ready():
@@ -254,25 +319,23 @@ func _ready():
 	get_node("player_cam").make_current()
 	get_node("player_cam").set_scale(Vector2(cam_scale, cam_scale))
 	
+	var scene = preload("res://rock.tscn")
+	get_node("arms/throw_origin").add_child(scene.instance())
+	
 func init_jump(jump_timer_length):
 	is_jumping = true
 	is_falling = false
 	jump_timer = jump_timer_length
-	#self.jump_rate = 200.0
-	#self.jump_rate = 8.0
 	total_jump_length = 0.0
 	#self.lock_jump_x = 0.0
+	jump_count += 1
 
 func init_fall():
 	is_jumping = false
 	is_falling = true
-	#self.jump_timer = self.timer_increment
-	#self.jump_rate = self.jump_rate
 	
 func stop_fall():
 	is_falling = false
-	
-	#self.jump_timer = 0.0
 
 func _fixed_process(delta):
 	pass

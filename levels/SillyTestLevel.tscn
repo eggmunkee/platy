@@ -7,8 +7,6 @@ extents = Vector2( 10, 10 )
 
 [node name="terrain" type="Node2D"]
 
-editor/display_folded = true
-
 [node name="StaticBody2D7" type="StaticBody2D" parent="."]
 
 transform/pos = Vector2( 1056.06, 255.715 )
@@ -37,6 +35,170 @@ trigger = false
 _update_shape_index = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D7"]
+
+polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
+uv = Vector2Array(  )
+color = Color( 0.462745, 0.247059, 0.247059, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="StaticBody2D32" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 1055.97, -1116.54 )
+transform/rot = -89.9764
+transform/scale = Vector2( 10.1203, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D32"]
+
+transform/pos = Vector2( 0.554794, 0.843609 )
+transform/scale = Vector2( 6.90668, 3.05466 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D32"]
+
+polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
+uv = Vector2Array(  )
+color = Color( 0.462745, 0.247059, 0.247059, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="StaticBody2D33" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( -32.0177, -1082.54 )
+transform/rot = -89.9764
+transform/scale = Vector2( 10.1203, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D33"]
+
+transform/pos = Vector2( 0.554794, 0.843609 )
+transform/scale = Vector2( 6.90668, 3.05466 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D33"]
+
+polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
+uv = Vector2Array(  )
+color = Color( 0.462745, 0.247059, 0.247059, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="StaticBody2D34" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( -32.0177, -2491.27 )
+transform/rot = -89.9764
+transform/scale = Vector2( 10.1203, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D34"]
+
+transform/pos = Vector2( 0.554794, 0.843609 )
+transform/scale = Vector2( 6.90668, 3.05466 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D34"]
+
+polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
+uv = Vector2Array(  )
+color = Color( 0.462745, 0.247059, 0.247059, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="StaticBody2D35" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 1056.82, -2519.98 )
+transform/rot = -89.9764
+transform/scale = Vector2( 10.1203, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D35"]
+
+transform/pos = Vector2( 0.554794, 0.843609 )
+transform/scale = Vector2( 6.90668, 3.05466 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D35"]
 
 polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
 uv = Vector2Array(  )

@@ -22,7 +22,7 @@ colors = ColorArray( 1, 1, 1, 1, 0.316406, 0.244238, 0.224945, 0 )
 
 [node name="player" type="RigidBody2D"]
 
-transform/pos = Vector2( 485.223, -2268.48 )
+transform/pos = Vector2( 479.527, -2289.41 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 2.92425, 0, 0, 3.06113, 0, 0 )
@@ -157,5 +157,29 @@ visibility/visible = false
 transform/pos = Vector2( 16.2332, -20.3628 )
 transform/scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 9 )
+
+[node name="throw_origin" type="Position2D" parent="arms"]
+
+transform/pos = Vector2( 22.641, -19.1484 )
+
+[node name="space_time" type="ProgressBar" parent="."]
+
+rect/scale = Vector2( 0.5, 0.4 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -20.0
+margin/top = -42.0
+margin/right = 60.0
+margin/bottom = -26.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = true
+percent/visible = true
 
 
