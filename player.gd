@@ -318,10 +318,7 @@ func _ready():
 	
 	get_node("player_cam").make_current()
 	get_node("player_cam").set_scale(Vector2(cam_scale, cam_scale))
-	
-	var scene = preload("res://rock.tscn")
-	get_node("arms/throw_origin").add_child(scene.instance())
-	
+
 func init_jump(jump_timer_length):
 	is_jumping = true
 	is_falling = false
