@@ -1,4 +1,8 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://rocks_item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://torch_item.tscn" type="PackedScene" id=2]
+[ext_resource path="res://crate.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -91,7 +95,7 @@ invert/border = 100.0
 
 [node name="StaticBody2D33" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( -32.0177, -1082.54 )
+transform/pos = Vector2( -32.7238, -549.09 )
 transform/rot = -89.9764
 transform/scale = Vector2( 10.1203, 1 )
 input/pickable = false
@@ -214,7 +218,7 @@ invert/border = 100.0
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( -31.5207, 302.646 )
+transform/pos = Vector2( -31.5607, 950.642 )
 transform/rot = -89.9764
 transform/scale = Vector2( 10.1203, 1 )
 input/pickable = false
@@ -295,7 +299,7 @@ invert/border = 100.0
 
 [node name="StaticBody2D10" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( 1088.49, 89.0211 )
+transform/pos = Vector2( 1082.49, 89.0211 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -334,7 +338,7 @@ invert/border = 100.0
 
 [node name="StaticBody2D9" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( 1080.95, 180.969 )
+transform/pos = Vector2( 1048.95, 180.969 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -373,7 +377,7 @@ invert/border = 100.0
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( 1066.71, 270.038 )
+transform/pos = Vector2( 1066.71, 440.038 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -878,45 +882,6 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="StaticBody2D26" type="StaticBody2D" parent="."]
-
-transform/pos = Vector2( 339.817, 244.061 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D26"]
-
-transform/scale = Vector2( 13.264, 0.661306 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D26"]
-
-transform/scale = Vector2( 1.89526, 0.200614 )
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 0.165004, 0.147629, 0.175781, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
 [node name="StaticBody2D27" type="StaticBody2D" parent="."]
 
 transform/pos = Vector2( 623.749, 225.689 )
@@ -1006,7 +971,7 @@ collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
-friction = 0.0
+friction = 0.25
 bounce = 0.0
 __meta__ = {
 "_edit_group_": true
@@ -1245,7 +1210,7 @@ collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
-friction = 0.0
+friction = 0.25
 bounce = 0.0
 __meta__ = {
 "_edit_group_": true
@@ -1428,5 +1393,97 @@ texture/scale = Vector2( 1, 1 )
 texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
+
+[node name="base" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 253.228, 199.662 )
+
+[node name="base 2" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 682.254, -767.85 )
+
+[node name="crate" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 159.586, 106.74 )
+
+[node name="crate1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 82.0831, 178.893 )
+
+[node name="crate2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 159.762, 149.193 )
+
+[node name="crate3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 159.526, 20.532 )
+
+[node name="crate8" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 987.059, 127.554 )
+
+[node name="crate9" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 979.522, 83.8405 )
+
+[node name="crate10" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 839.339, 303.913 )
+
+[node name="crate11" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 904.687, -421.741 )
+
+[node name="crate12" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 904.687, -466.12 )
+
+[node name="crate13" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 904.199, -509.035 )
+
+[node name="crate14" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1000.76, -422.716 )
+
+[node name="crate15" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1001.25, -466.12 )
+
+[node name="crate16" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1000.76, -509.523 )
+
+[node name="crate17" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1000.27, -553.414 )
+
+[node name="crate18" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1000.27, -596.817 )
+
+[node name="crate19" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1001.25, -640.22 )
+
+[node name="crate20" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1001.25, -683.623 )
+
+[node name="crate4" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 82.4292, 222.087 )
+
+[node name="crate5" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 160.329, 192.674 )
+
+[node name="crate6" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 159.355, 63.7161 )
+
+[node name="crate7" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 82.4726, 135.646 )
 
 

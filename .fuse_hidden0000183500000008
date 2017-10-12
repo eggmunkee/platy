@@ -10,8 +10,8 @@
 
 [node name="player" parent="stage" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 469.128, -42.2457 )
-z/z = 10
+transform/pos = Vector2( 500.402, -2792.16 )
+has_rocks = true
 
 [node name="TileMap" type="TileMap" parent="."]
 

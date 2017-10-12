@@ -10,7 +10,7 @@
 
 [node name="player" parent="stage" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 469.128, -42.2457 )
+transform/pos = Vector2( 474.219, 103.83 )
 z/z = 10
 
 [node name="TileMap" type="TileMap" parent="."]

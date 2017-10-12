@@ -1,8 +1,8 @@
 extends RigidBody2D
 
-const jump_timer_default = 2.5
-const walk_frame_rate = 7.0
-const throw_anim_length = 0.4
+const jump_timer_default = 2.5 #3.2   #2.5
+const walk_frame_rate = 10.0
+const throw_anim_length = 0.22  #0.4
 
 var gravity_ratio = 1.0
 
@@ -12,7 +12,7 @@ var gravity_ratio = 1.0
 var is_jumping = false
 var is_falling = false
 var jump_timer = 0.0
-var jump_rate = 35000.0
+var jump_rate = 35000.0 # 22000.0   # 35000.0
 var jump_count = 0
 var max_jump_count = 2
 #var jump_impulse = 50.0
@@ -36,6 +36,12 @@ var arms_frame_timer = 0.0
 var is_alive = true
 
 var grav_timer = 0.0
+
+# item flags
+export var has_rocks = false
+export var has_torch = true
+
+
 
 # key flags
 var was_jump_held = false
@@ -77,6 +83,7 @@ func _integrate_forces(s):
 	var walk_down = Input.is_action_pressed("ui_down")
 	var jump = Input.is_action_pressed("jump")
 	var shoot = Input.is_action_pressed("attack")
+	var throw = Input.is_action_pressed("throw")
 	var increase_grav = Input.is_action_pressed("up_grav")
 
 	
@@ -102,7 +109,20 @@ func _integrate_forces(s):
 	var eff_jump_rate = jump_rate
 	var eff_fall_rate = jump_rate / gravity_ratio
 	var eff_jump_timer_default = jump_timer_default * gravity_ratio
+	var eff_move_speed = base_move_speed
 	
+	if has_rocks:
+		eff_jump_timer_default *= 0.75
+		eff_move_speed *= 0.85
+		get_node("arms/rocks").show()
+		
+	else:
+		get_node("arms/rocks").hide()
+	
+	if has_torch:
+		get_node("arms/torch").show()
+	else:
+		get_node("arms/torch").hide()
 	
 	# Handle attacks
 	# Did just attack?
@@ -117,11 +137,11 @@ func _integrate_forces(s):
 		
 	else:
 		# Start attack?
-		if shoot: # and not was_shoot_held:
+		if has_rocks and shoot: # and not was_shoot_held:
 			var rock = preload("res://rock.tscn").instance()
 	
 			# Get position to create rock instance
-			var pos = get_node("arms/throw_origin").get_pos()
+			var pos = get_node("throw_origin").get_pos()
 			# x-flip if facing left
 			if get_node("arms").get_scale().x < 0:
 				pos.x = -pos.x
@@ -131,6 +151,9 @@ func _integrate_forces(s):
 			else:
 				if walk_right:
 					rock.x_velocity += 120.0
+					
+			rock.x_velocity += rand_range(-10.0, 10.0)
+			rock.y_velocity += rand_range(-10.0, 10.0)
 				
 			# set rock position including player position
 			rock.set_pos(pos + get_pos())
@@ -142,12 +165,33 @@ func _integrate_forces(s):
 		else:
 			arms_frame_name = 'walk'
 		
-	
+	if has_rocks and throw:
+		has_rocks = false
+		var rocks_item = preload("res://rocks_item.tscn").instance()
+		
+		var pos = get_node("drop_position").get_pos()
+		if not is_facing_right:
+			pos.x = -1.0 * pos.x
+		pos = pos + get_pos()
+		rocks_item.set_pos(pos)
+		get_parent().add_child(rocks_item)
+		
+	if has_torch and throw:
+		has_torch = false
+		var torch_item = preload("res://torch_item.tscn").instance()
+		
+		var pos = get_node("drop_position").get_pos()
+		if not is_facing_right:
+			pos.x = -1.0 * pos.x
+		pos = pos + get_pos()
+		torch_item.set_pos(pos)
+		get_parent().add_child(torch_item)
+		
 	
 	# Handle left/right movement and frame management
 	if walk_left or walk_right:
 		if walk_left:
-			lv.x += step * (-1.0 * self.base_move_speed)
+			lv.x += step * (-1.0 * eff_move_speed)
 			if is_facing_right:
 				is_facing_right = false
 				var scale = get_node("body").get_scale()
@@ -159,7 +203,7 @@ func _integrate_forces(s):
 				if not (is_falling or is_jumping):
 					get_node("foot_dust").set_emitting(true)
 		if walk_right:
-			lv.x += step * (self.base_move_speed)
+			lv.x += step * (eff_move_speed)
 			if not is_facing_right:
 				is_facing_right = true
 				var scale = get_node("body").get_scale()
@@ -338,5 +382,13 @@ func _fixed_process(delta):
 	pass
 	
 	
+func can_pickup_item():
+	return not (has_rocks or has_torch)
+
+
+func _on_Area2D_body_enter( body ):
 	
+	if has_torch and body extends preload("res://crate.gd"):
+		body.burn()
+		
 	

@@ -26,7 +26,7 @@ colors = ColorArray( 1, 1, 1, 1, 0.316406, 0.244238, 0.224945, 0 )
 
 custom_solver_bias = 0.0
 radius = 10.0
-height = 17.1035
+height = 13.1763
 
 [node name="player" type="RigidBody2D"]
 
@@ -39,7 +39,7 @@ collision/layers = 1
 collision/mask = 1
 mode = 2
 mass = 1.0
-friction = 0.5
+friction = 1.0
 bounce = 0.0
 gravity_scale = 1.0
 custom_integrator = true
@@ -57,7 +57,7 @@ __meta__ = {
 "_edit_group_": true
 }
 has_rocks = false
-has_torch = true
+has_torch = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -85,67 +85,6 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
-
-[node name="Label" type="Label" parent="player_cam"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -70.0
-margin/top = -92.0
-margin/right = -16.0
-margin/bottom = -78.0
-text = "C - jump"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Label1" type="Label" parent="player_cam"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 21.0
-margin/top = -91.0
-margin/right = 80.0
-margin/bottom = -77.0
-text = "X - attack"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Label2" type="Label" parent="player_cam"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -26.0
-margin/top = -71.0
-margin/right = 33.0
-margin/bottom = -57.0
-text = "Z - drop"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Label3" type="Label" parent="player_cam"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -58.0
-margin/top = -112.0
-margin/right = 61.0
-margin/bottom = -98.0
-text = "Arrow keys - move"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [node name="body" type="Node2D" parent="."]
 
@@ -214,7 +153,7 @@ color/color_ramp = SubResource( 2 )
 
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 16.2718, -20.1455 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 16.4655, -20.7268 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -223,7 +162,7 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arms/Area2D"]
 
-transform/pos = Vector2( 16.2718, -20.1455 )
+transform/pos = Vector2( 16.4655, -20.7268 )
 shape = SubResource( 3 )
 trigger = true
 _update_shape_index = 0

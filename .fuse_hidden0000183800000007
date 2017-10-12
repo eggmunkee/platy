@@ -26,6 +26,7 @@ y_velocity = -50.0
 
 [node name="sprite" type="Sprite" parent="."]
 
+visibility/self_opacity = 0.0
 transform/scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
@@ -42,7 +43,6 @@ config/amount = 32
 config/lifetime = 2.0
 config/emitting = false
 config/process_mode = 1
-config/half_extents = Vector2( 5, 5 )
 config/texture = ExtResource( 3 )
 params/direction = 0.0
 params/spread = 10.0
@@ -50,18 +50,16 @@ params/linear_velocity = 0.0
 params/spin_velocity = 0.0
 params/orbit_velocity = 0.0
 params/gravity_direction = 0.0
-params/gravity_strength = 0.0
+params/gravity_strength = 9.8
 params/radial_accel = 0.0
 params/tangential_accel = 0.0
 params/damping = 0.0
 params/initial_angle = 0.0
-params/initial_size = 2.0
-params/final_size = 4.0
+params/initial_size = 1.0
+params/final_size = 1.0
 params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
-randomness/initial_size = 1.0
-randomness/final_size = 1.0
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
@@ -69,7 +67,7 @@ playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/explode = ExtResource( 4 )
-playback/active = true
+playback/active = false
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
