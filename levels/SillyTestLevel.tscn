@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://rocks_item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://torch_item.tscn" type="PackedScene" id=2]
 [ext_resource path="res://crate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player_start.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -1485,5 +1486,9 @@ transform/pos = Vector2( 159.355, 63.7161 )
 [node name="crate7" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 82.4726, 135.646 )
+
+[node name="player_start" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 244.288, 13.9026 )
 
 

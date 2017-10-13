@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://based-stickman-1-base-2.png" type="Texture" id=1]
+
+[node name="player_start" type="Position2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 1 )
+
+

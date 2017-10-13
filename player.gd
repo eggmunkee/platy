@@ -39,7 +39,7 @@ var grav_timer = 0.0
 
 # item flags
 export var has_rocks = false
-export var has_torch = true
+export var has_torch = false
 
 
 
@@ -331,8 +331,9 @@ func _integrate_forces(s):
 	# Update player frame
 	update_frame()
 		
-	#floor_h_velocity = s.get_contact_collider_velocity_at_pos(floor_index).x
-	#lv.x += floor_h_velocity
+	if found_floor:
+		var floor_h_velocity = s.get_contact_collider_velocity_at_pos(floor_index).x
+		lv.x += floor_h_velocity
 		#lv.y += initial_y
 		
 

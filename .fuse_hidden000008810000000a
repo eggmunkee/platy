@@ -15,6 +15,8 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( 469.128, -42.2457 )
 z/z = 10
 
+[node name="level" type="Node2D" parent="stage"]
+
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0

@@ -17,8 +17,8 @@ func fixed_process(delta):
 	#get_node("torch").set_rot(-1.0 * rot)
 	
 
-func damage(amount, dir):
-	apply_impulse(Vector2(0.0,0.0), dir)
+func damage(amount):
+	
 	
 	if not is_burning:
 		life -= amount

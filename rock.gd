@@ -37,15 +37,21 @@ func _fixed_process(delta):
 func _on_rock_body_enter( body ):
 	
 	if body extends StaticBody2D or body extends RigidBody2D:
-		var push_velocity = Vector2(x_velocity * 10.0, y_velocity * 10.0)
-		x_velocity = 0.0
-		y_velocity = 0.0
-		life = 0.0
-		freeze = true
 		#get_node("sprite").hide()
 		#get_node("dust").set_emitting(true)
 		get_node("anim").play("explode")
 		
+		if body extends RigidBody2D:
+			var mass = body.get_mass()
+			var push_velocity = Vector2(x_velocity * 1000.0 / mass, y_velocity * 1000.0 / mass)
+			body.apply_impulse(Vector2(0.0,0.0), push_velocity)
+		
 		if body extends preload("res://crate.gd"):
-			body.damage(10.0, push_velocity)
+			body.damage(3.0)
+	
+	
+		x_velocity = 0.0
+		y_velocity = 0.0
+		life = 0.0
+		freeze = true
 	
