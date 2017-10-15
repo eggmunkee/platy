@@ -40,6 +40,7 @@ var grav_timer = 0.0
 # item flags
 export var has_rocks = false
 export var has_torch = false
+export var has_bottle = false
 
 
 
@@ -113,9 +114,8 @@ func _integrate_forces(s):
 	
 	if has_rocks:
 		eff_jump_timer_default *= 0.75
-		eff_move_speed *= 0.85
+		#eff_move_speed *= 0.85
 		get_node("arms/rocks").show()
-		
 	else:
 		get_node("arms/rocks").hide()
 	
@@ -123,7 +123,12 @@ func _integrate_forces(s):
 		get_node("arms/torch").show()
 	else:
 		get_node("arms/torch").hide()
-	
+
+	if has_bottle and arms_frame_timer <= 0.0:
+		get_node("arms/bottle").show()
+	else:
+		get_node("arms/bottle").hide()
+		
 	# Handle attacks
 	# Did just attack?
 	if arms_frame_timer > 0.0:
@@ -162,6 +167,31 @@ func _integrate_forces(s):
 			arms_frame_name = 'attack'
 			arms_frame_timer = throw_anim_length
 			
+		elif has_bottle and shoot:
+			var bottle = preload("res://bottle_proj.tscn").instance()
+	
+			# Get position to create rock instance
+			var pos = get_node("throw_origin").get_pos()
+			# x-flip if facing left
+			if get_node("arms").get_scale().x < 0:
+				pos.x = -pos.x
+				bottle.x_velocity = -1.0 * bottle.x_velocity
+				if walk_left:
+					bottle.x_velocity -= 120.0
+			else:
+				if walk_right:
+					bottle.x_velocity += 120.0
+					
+			bottle.x_velocity += rand_range(-10.0, 10.0)
+			bottle.y_velocity += rand_range(-10.0, 10.0)
+				
+			# set rock position including player position
+			bottle.set_pos(pos + get_pos())
+			bottle.throw()
+			# add rock to parent scene (the stage)
+			get_parent().add_child(bottle)
+			arms_frame_name = 'attack'
+			arms_frame_timer = throw_anim_length
 		else:
 			arms_frame_name = 'walk'
 		
@@ -187,6 +217,16 @@ func _integrate_forces(s):
 		torch_item.set_pos(pos)
 		get_parent().add_child(torch_item)
 		
+	if has_bottle and throw:
+		has_bottle = false
+		var bottle_item = preload("res://bottle_item.tscn").instance()
+		
+		var pos = get_node("drop_position").get_pos()
+		if not is_facing_right:
+			pos.x = -1.0 * pos.x
+		pos = pos + get_pos()
+		bottle_item.set_pos(pos)
+		get_parent().add_child(bottle_item)
 	
 	# Handle left/right movement and frame management
 	if walk_left or walk_right:
@@ -384,7 +424,7 @@ func _fixed_process(delta):
 	
 	
 func can_pickup_item():
-	return not (has_rocks or has_torch)
+	return not (has_rocks or has_torch or has_bottle)
 
 
 func _on_Area2D_body_enter( body ):
