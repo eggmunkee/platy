@@ -4,8 +4,8 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 var is_thrown = false
-var x_velocity = 300.0
-var y_velocity = 25.0
+var x_velocity = 170.0
+var y_velocity = -55.0
 var life = 25.0
 var freeze = false
 
@@ -28,25 +28,30 @@ func _integrate_forces(s):
 	var floor_object = null
 	var floor_index = -1
 
-	#get_angle_to(
+	if is_burning:
+		get_node("torch").show()
+		
+		var rot = get_rot()
+		get_node("torch").set_rot(-rot)
+		
+	else:
+		get_node("torch").hide()
 	
 	if not freeze:
 		for x in range(s.get_contact_count()):
 			var ci = s.get_contact_local_normal(x)
 			var trans = s.get_transform()
 			var rot = trans.get_rotation()
-			var ci2 = ci.rotated(rot)
+			var obj = s.get_contact_collider_object(x)
+			#var ci2 = ci.rotated(rot)
 	
 			#print("found contact")
-			if (ci2.dot(Vector2(0, -1)) > 0.7):
-				#print("found floor contact")
-				if found_floor:
-					pass
-					#print("2nd contact", ci)
+			if not obj extends preload("res://oil_proj.gd") and (ci.dot(Vector2(0, -1)) > 0.7):
+				
 				found_floor = true
 				floor_index = x
 			
-	if found_floor: # or (abs(lv.x) + abs(lv.y)) < 100.0:
+	if found_floor or (abs(lv.x) + abs(lv.y)) < 15.0:
 		freeze = true
 			
 	if found_floor:
@@ -97,7 +102,7 @@ func spawn_oil():
 		var bottle_lin_vel = get_linear_velocity()
 	
 		bottle_lin_vel.x *= rand_range(0.05, 0.12)
-		bottle_lin_vel.y *= rand_range(0.05, 0.12)
+		bottle_lin_vel.y *= rand_range(0.25, 0.52)
 		
 		oil.set_linear_velocity(bottle_lin_vel)
 		get_parent().add_child(oil)
@@ -132,11 +137,12 @@ func _on_bottle_body_enter( body ):
 	
 	# If hit
 	if body extends StaticBody2D or body extends RigidBody2D:
-		var lin_vel = get_linear_velocity()
-		#print( lin_vel)
-		if abs(lin_vel.x) + abs(lin_vel.y) < 10:
-			#print("body enter slow freeze")
-			freeze = true
+		if not body extends preload("res://oil_proj.gd"):
+			var lin_vel = get_linear_velocity()
+			#print( lin_vel)
+			if abs(lin_vel.x) + abs(lin_vel.y) < 10:
+				#print("body enter slow freeze")
+				freeze = true
 			
 		
 	

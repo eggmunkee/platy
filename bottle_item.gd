@@ -12,7 +12,7 @@ func _ready():
 
 func _on_bottle_item_body_enter( body ):
 	
-	if body extends preload("res://player.gd") and body.can_pickup_item():
+	if body extends preload("res://player.gd") and body.can_pickup_item("bottle"):
 		body.has_bottle = true
 		
 		queue_free()

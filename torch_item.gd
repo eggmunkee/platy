@@ -14,7 +14,7 @@ func _ready():
 
 func _on_base_body_enter( body ):
 	
-	if body extends preload("res://player.gd") and body.can_pickup_item():
+	if body extends preload("res://player.gd") and body.can_pickup_item("torch"):
 		body.has_torch = true
 		
 		queue_free()

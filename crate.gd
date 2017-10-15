@@ -3,6 +3,7 @@ extends RigidBody2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+var is_exploding = false
 var is_burning = false
 var life = 50
 var burn_time = 0.0
@@ -13,6 +14,10 @@ func _ready():
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
+	
+	var rot = get_rot()
+	
+	get_node("torch").set_rot(-rot)
 	
 	
 	if is_burning:
@@ -31,11 +36,11 @@ func _fixed_process(delta):
 func damage(amount):
 	
 	
-	if not is_burning:
+	if not is_exploding:
 		life -= amount
 		
 		if life <= 0:
-			is_burning = true
+			is_exploding = true
 			get_node("anim").play("explode")
 
 

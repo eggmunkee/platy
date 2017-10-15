@@ -1,21 +1,30 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://bottle_proj.gd" type="Script" id=1]
 [ext_resource path="res://bottle.png" type="Texture" id=2]
+[ext_resource path="res://torch.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 11.6975
+radius = 9.91333
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 3.38331, 7.56694 )
 
 [node name="bottle" type="RigidBody2D"]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -1.88937, 2.73958 )
 shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 0.803607, 0.59516, -0.59516, 0.803607, 6.14043, -9.44682 )
+shapes/1/trigger = false
 collision/layers = 1
-collision/mask = 1
+collision/mask = 3
 mode = 0
 mass = 25.0
 friction = 0.15
@@ -40,9 +49,18 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+transform/pos = Vector2( -1.88937, 2.73958 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="CollisionShape2D 2" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 6.14043, -9.44682 )
+transform/rot = -36.524
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 1
 
 [node name="oil_start" type="Node2D" parent="."]
 
@@ -69,6 +87,12 @@ transform/pos = Vector2( 5.96324, 5.55755 )
 [node name="oil_6" type="Position2D" parent="oil_start"]
 
 transform/pos = Vector2( -6.31763, -5.49523 )
+
+[node name="torch" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 9.91916, -13.2256 )
+transform/rot = -32.9837
+transform/scale = Vector2( 1.5, 1.5 )
 
 [connection signal="body_enter" from="." to="." method="_on_bottle_body_enter"]
 

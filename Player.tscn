@@ -254,24 +254,11 @@ texture = ExtResource( 9 )
 
 [node name="rocks" type="Node2D" parent="arms"]
 
-editor/display_folded = true
 transform/pos = Vector2( -3.84616, -6.2937 )
 
 [node name="rock_1" type="Sprite" parent="arms/rocks"]
 
-transform/pos = Vector2( -1.39859, -3.49658 )
-transform/scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 10 )
-
-[node name="rock_2" type="Sprite" parent="arms/rocks"]
-
-transform/pos = Vector2( 3.84616, 3.32178 )
-transform/scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 10 )
-
-[node name="rock_3" type="Sprite" parent="arms/rocks"]
-
-transform/pos = Vector2( -6.11887, 4.021 )
+transform/pos = Vector2( 17.9189, -7.78931 )
 transform/scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 10 )
 

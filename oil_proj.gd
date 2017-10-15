@@ -22,6 +22,9 @@ func _fixed_process(delta):
 	else:
 		queue_free()
 		
+	if is_burning:
+		var rot = get_rot()
+		get_node("flame").set_rot(-rot)
 	
 	if is_burning and life < 4.8 and life > 0.3:
 		var colliders = get_colliding_bodies()

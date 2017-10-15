@@ -36,7 +36,7 @@ func _fixed_process(delta):
 
 func _on_rock_body_enter( body ):
 	
-	if body extends StaticBody2D or body extends RigidBody2D:
+	if body extends StaticBody2D or body extends RigidBody2D and not body extends preload("res://oil_proj.gd"):
 		#get_node("sprite").hide()
 		#get_node("dust").set_emitting(true)
 		get_node("anim").play("explode")

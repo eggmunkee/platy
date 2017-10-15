@@ -25,7 +25,7 @@ var min_jump_length = 15.0
 var lock_jump_x = 0.0
 #var floor_h_velocity = 0.0
 var is_facing_right = true
-var cam_scale = 0.85
+var cam_scale = 0.65
 var cam_pause = 0.0
 
 var frame_name = 'base'
@@ -48,6 +48,7 @@ export var has_bottle = false
 var was_jump_held = false
 var was_shoot_held = false
 var was_up_grav_down = false
+var was_throw_held = false
 
 func _integrate_forces(s):
 	var lv = s.get_linear_velocity()
@@ -86,6 +87,7 @@ func _integrate_forces(s):
 	var shoot = Input.is_action_pressed("attack")
 	var throw = Input.is_action_pressed("throw")
 	var increase_grav = Input.is_action_pressed("up_grav")
+	var do_throw = throw and not was_throw_held
 
 	
 	if increase_grav and not was_up_grav_down:
@@ -94,7 +96,7 @@ func _integrate_forces(s):
 		
 	var space_time = get_node("space_time")
 	if grav_timer > 0.0:
-		grav_timer -= 0.1
+		grav_timer -= 0.001
 		
 		if grav_timer <= 0.0:
 			grav_timer = 0.0
@@ -112,7 +114,7 @@ func _integrate_forces(s):
 	var eff_jump_timer_default = jump_timer_default * gravity_ratio
 	var eff_move_speed = base_move_speed
 	
-	if has_rocks:
+	if has_rocks and arms_frame_timer <= 0.0:
 		eff_jump_timer_default *= 0.75
 		#eff_move_speed *= 0.85
 		get_node("arms/rocks").show()
@@ -125,6 +127,7 @@ func _integrate_forces(s):
 		get_node("arms/torch").hide()
 
 	if has_bottle and arms_frame_timer <= 0.0:
+		eff_jump_timer_default *= 0.75
 		get_node("arms/bottle").show()
 	else:
 		get_node("arms/bottle").hide()
@@ -188,14 +191,20 @@ func _integrate_forces(s):
 			# set rock position including player position
 			bottle.set_pos(pos + get_pos())
 			bottle.throw()
+			
+			if has_torch:
+				bottle.is_burning = true
 			# add rock to parent scene (the stage)
 			get_parent().add_child(bottle)
 			arms_frame_name = 'attack'
-			arms_frame_timer = throw_anim_length
+			arms_frame_timer = throw_anim_length * 2.0
+		elif has_torch and shoot:
+			arms_frame_name = 'walk'
 		else:
 			arms_frame_name = 'walk'
 		
-	if has_rocks and throw:
+	# Handle throw action
+	if has_rocks and do_throw:
 		has_rocks = false
 		var rocks_item = preload("res://rocks_item.tscn").instance()
 		
@@ -206,7 +215,7 @@ func _integrate_forces(s):
 		rocks_item.set_pos(pos)
 		get_parent().add_child(rocks_item)
 		
-	if has_torch and throw:
+	elif has_torch and do_throw:
 		has_torch = false
 		var torch_item = preload("res://torch_item.tscn").instance()
 		
@@ -217,7 +226,7 @@ func _integrate_forces(s):
 		torch_item.set_pos(pos)
 		get_parent().add_child(torch_item)
 		
-	if has_bottle and throw:
+	elif has_bottle and do_throw:
 		has_bottle = false
 		var bottle_item = preload("res://bottle_item.tscn").instance()
 		
@@ -335,6 +344,7 @@ func _integrate_forces(s):
 	was_jump_held = (walk_up or jump)
 	was_up_grav_down = increase_grav
 	was_shoot_held = shoot
+	was_throw_held = throw
 	
 	# Handle camera scaling based on movement/jumping state if it were enabled 
 #	var cam_scale_step = 0.001
@@ -423,7 +433,16 @@ func _fixed_process(delta):
 	pass
 	
 	
-func can_pickup_item():
+func can_pickup_item(new_item):
+	if new_item == "rock" or new_item == "bottle":
+		return not (has_rocks or has_bottle)
+	
+	# special case with torch + bottle
+	if new_item == "torch" and has_bottle:
+		return true
+	if new_item == "bottle" and has_torch:
+		return true
+		
 	return not (has_rocks or has_torch or has_bottle)
 
 
