@@ -151,6 +151,10 @@ transform/pos = Vector2( 254.126, 135.208 )
 
 transform/pos = Vector2( 743.127, -243.066 )
 
+[node name="base3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -108.949, -148.883 )
+
 [node name="player_start" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -142.685, -167.967 )
@@ -231,5 +235,9 @@ invert/border = 100.0
 [node name="bottle_item" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 462.753, 529.075 )
+
+[node name="bottle_item1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -99.7848, 105.627 )
 
 
