@@ -432,4 +432,7 @@ func _on_Area2D_body_enter( body ):
 	if has_torch and body extends preload("res://crate.gd"):
 		body.burn()
 		
+	if has_torch and body extends preload("res://oil_proj.gd"):
+		body.burn()
+		
 	

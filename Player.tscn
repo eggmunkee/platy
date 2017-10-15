@@ -26,8 +26,8 @@ colors = ColorArray( 1, 1, 1, 1, 0.316406, 0.244238, 0.224945, 0 )
 [sub_resource type="CapsuleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 10.0
-height = 17.1035
+radius = 14.0343
+height = 24.1453
 
 [node name="player" type="RigidBody2D"]
 
@@ -36,8 +36,8 @@ input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 2.92425, 0, 0, 3.06113, 0, 0 )
 shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
+collision/layers = 4
+collision/mask = 3
 mode = 2
 mass = 1.0
 friction = 0.5
@@ -216,16 +216,17 @@ color/color_ramp = SubResource( 2 )
 
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 16.2718, -20.1455 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 14.8425, -12.4236 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arms/Area2D"]
 
-transform/pos = Vector2( 16.2718, -20.1455 )
+transform/pos = Vector2( 14.8425, -12.4236 )
 shape = SubResource( 3 )
 trigger = true
 _update_shape_index = 0

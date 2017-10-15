@@ -102,8 +102,8 @@ input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1.31405, 0, 0, 1.32413, -0.196303, -0.00886914 )
 shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
+collision/layers = 2
+collision/mask = 3
 mode = 0
 mass = 150.0
 friction = 0.8
@@ -111,8 +111,8 @@ bounce = 0.0
 gravity_scale = 1.5
 custom_integrator = false
 continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
+contacts_reported = 15
+contact_monitor = true
 sleeping = false
 can_sleep = false
 velocity/linear = Vector2( 0, 0 )
@@ -150,5 +150,6 @@ autoplay = ""
 
 visibility/opacity = 0.0
 transform/scale = Vector2( 2.5, 2.5 )
+z/z = 1
 
 

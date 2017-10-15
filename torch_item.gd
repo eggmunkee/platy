@@ -18,3 +18,7 @@ func _on_base_body_enter( body ):
 		body.has_torch = true
 		
 		queue_free()
+	elif body extends preload("res://oil_proj.gd") or body extends preload("res://crate.gd"):
+		body.burn()
+	elif body extends preload("res://bottle_proj.gd"):
+		body.is_burning = true
