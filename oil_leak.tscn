@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://oil_leak.gd" type="Script" id=1]
+
+[node name="oil_leak" type="Node2D"]
+
+script/script = ExtResource( 1 )
+leak_rate = 0.5
+initial_velocity = Vector2( 0, 0 )
+
+[node name="leak_spot" type="Position2D" parent="."]
+
+
