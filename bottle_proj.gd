@@ -4,9 +4,9 @@ extends RigidBody2D
 # var a = 2
 # var b = "textvar"
 var is_thrown = false
-var x_velocity = 170.0
-var y_velocity = -55.0
-var life = 25.0
+var x_velocity = 175.0
+var y_velocity = -45.0
+var life = 15.0
 var freeze = false
 
 var is_burning = false
@@ -116,7 +116,7 @@ func throw():
 	is_thrown = true
 	
 	set_linear_velocity(Vector2(x_velocity, y_velocity))
-
+	set_angular_velocity(rand_range(-3.0,3.0))
 
 #func _on_bottle_body_enter( body ):
 #	

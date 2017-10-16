@@ -55,3 +55,6 @@ func _on_rock_body_enter( body ):
 		life = 0.0
 		freeze = true
 	
+	if body extends preload("res://switch_area.gd"):
+		body.toggle_switch()
+		

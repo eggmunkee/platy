@@ -180,10 +180,10 @@ func _integrate_forces(s):
 				pos.x = -pos.x
 				bottle.x_velocity = -1.0 * bottle.x_velocity
 				if walk_left:
-					bottle.x_velocity -= 120.0
+					bottle.x_velocity -= 180.0
 			else:
 				if walk_right:
-					bottle.x_velocity += 120.0
+					bottle.x_velocity += 180.0
 					
 			bottle.x_velocity += rand_range(-10.0, 10.0)
 			bottle.y_velocity += rand_range(-10.0, 10.0)

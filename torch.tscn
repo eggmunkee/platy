@@ -15,7 +15,7 @@ config/texture = ExtResource( 1 )
 params/direction = 180.0
 params/spread = 180.0
 params/linear_velocity = 5.0
-params/spin_velocity = 0.0
+params/spin_velocity = 1.0
 params/orbit_velocity = 0.0
 params/gravity_direction = 180.0
 params/gravity_strength = 25.0
@@ -29,6 +29,7 @@ params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
 randomness/linear_velocity = 0.4
+randomness/spin_velocity = 0.3
 color/color = Color( 0.308594, 0.245402, 0.235062, 1 )
 
 [node name="fire" type="Particles2D" parent="."]
@@ -43,7 +44,7 @@ config/texture = ExtResource( 1 )
 params/direction = 180.0
 params/spread = 180.0
 params/linear_velocity = 3.0
-params/spin_velocity = 0.0
+params/spin_velocity = 0.5
 params/orbit_velocity = 0.0
 params/gravity_direction = 180.0
 params/gravity_strength = 20.0
@@ -57,6 +58,7 @@ params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
 randomness/linear_velocity = 0.4
+randomness/spin_velocity = 1.0
 color/color = Color( 0.996094, 0.837809, 0.501938, 1 )
 
 
