@@ -434,15 +434,13 @@ func _fixed_process(delta):
 	
 	
 func can_pickup_item(new_item):
-	if new_item == "rock" or new_item == "bottle":
-		return not (has_rocks or has_bottle)
-	
 	# special case with torch + bottle
-	if new_item == "torch" and has_bottle:
+	if new_item == "torch" and has_bottle and not has_torch:
 		return true
-	if new_item == "bottle" and has_torch:
+	if new_item == "bottle" and has_torch and not has_bottle:
 		return true
-		
+	
+	# otherwise, if have no items
 	return not (has_rocks or has_torch or has_bottle)
 
 
