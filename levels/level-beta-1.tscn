@@ -1,0 +1,150 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://crate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://bottle_item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://torch_item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://platform_wooden.tscn" type="PackedScene" id=5]
+[ext_resource path="res://level_exit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://player_start.tscn" type="PackedScene" id=7]
+
+[node name="level" type="Node2D"]
+
+[node name="solid" type="Node2D" parent="."]
+
+[node name="platform" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -29.9595, 15.0448 )
+
+[node name="platform2" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 299.995, 15.0448 )
+
+[node name="platform3" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 529.995, 15.0448 )
+
+[node name="platform4" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 419.995, 125.045 )
+
+[node name="platform5" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 189.995, 125.045 )
+
+[node name="platform6" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -40.0052, 125.045 )
+
+[node name="platform7" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -350.005, 125.045 )
+
+[node name="platform8" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -445.012, 30.3035 )
+transform/rot = 90.0
+
+[node name="platform11 2" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 624.988, -79.6965 )
+transform/rot = 90.0
+
+[node name="platform9" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -444.883, -169.743 )
+transform/rot = 90.0
+
+[node name="platform11" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 625.117, -279.743 )
+transform/rot = 90.0
+
+[node name="platform10" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -444.679, -369.687 )
+transform/rot = 90.0
+
+[node name="platform11 3" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 625.321, -479.687 )
+transform/rot = 90.0
+
+[node name="entities" type="Node2D" parent="."]
+
+[node name="crate" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 108.16, -21.0943 )
+
+[node name="crate1" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 405.364, -22.4418 )
+
+[node name="crate2" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 152.599, -21.0848 )
+
+[node name="crate3" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 118.341, -63.7749 )
+
+[node name="crate4" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 161.558, -63.7749 )
+
+[node name="crate5" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 387.552, -66.0848 )
+
+[node name="crate6" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 113.494, -106.909 )
+
+[node name="crate7" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 131.459, -162.042 )
+
+[node name="crate8" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 144.662, -204.734 )
+
+[node name="crate9" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 161.468, -106.909 )
+
+[node name="crate10" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 144.662, -248.306 )
+
+[node name="bottle_item" parent="entities" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 140.999, -302.814 )
+
+[node name="base" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 190.058, 98.9408 )
+
+[node name="platform" parent="entities" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -194.582, 114.603 )
+burn_time = 5.0
+
+[node name="platform1" parent="entities" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 135.418, 4.60326 )
+burn_time = 5.0
+
+[node name="platform2" parent="entities" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 135.418, -135.397 )
+burn_time = 5.0
+
+[node name="level_exit" parent="entities" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 496.373, 70.3948 )
+
+[node name="player_start" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( -0.663422, -27.2001 )
+
+

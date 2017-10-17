@@ -5,6 +5,7 @@ const walk_frame_rate = 10.0
 const throw_anim_length = 0.22  #0.4
 
 var gravity_ratio = 1.0
+var max_fall_length = 25.0
 
 # class member variables go here, for example:
 # var a = 2
@@ -430,8 +431,10 @@ func stop_fall():
 	is_falling = false
 
 func _fixed_process(delta):
-	pass
 	
+	
+	if jump_timer > max_fall_length:
+		get_node("/root/world").call_deferred("restart_level")
 	
 func can_pickup_item(new_item):
 	# special case with torch + bottle

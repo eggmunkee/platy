@@ -21,16 +21,18 @@ func _fixed_process(delta):
 			set_opacity(life / 1.5)
 	else:
 		queue_free()
-		
+
+	# Keep certain items vertically aligned
+	var rot = get_rot()
+	get_node("Sprite").set_rot(-rot)
 	if is_burning:
-		var rot = get_rot()
 		get_node("flame").set_rot(-rot)
 	
 	if is_burning and life < 4.8 and life > 0.3:
 		var colliders = get_colliding_bodies()
 		
 		for body in colliders:
-			if body extends get_script() or body extends preload("res://crate.gd"):
+			if body extends get_script() or body extends preload("res://crate.gd") or body extends preload("res://static_crate.gd"):
 				body.burn()
 	
 func burn():

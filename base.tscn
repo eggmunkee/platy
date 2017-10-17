@@ -6,6 +6,7 @@
 [node name="world" type="Node2D"]
 
 script/script = ExtResource( 1 )
+current_level = 1
 
 [node name="stage" type="Node2D" parent="."]
 

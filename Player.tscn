@@ -26,8 +26,8 @@ colors = ColorArray( 1, 1, 1, 1, 0.316406, 0.244238, 0.224945, 0 )
 [sub_resource type="CapsuleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 14.0343
-height = 24.1453
+radius = 12.1147
+height = 16.8634
 
 [node name="player" type="RigidBody2D"]
 

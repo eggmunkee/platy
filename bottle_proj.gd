@@ -95,6 +95,7 @@ func spawn_oil():
 	if is_burning:
 		var explosion = preload("res://explosion.tscn").instance()
 		explosion.set_pos(get_pos())
+		explosion.set_z(get_z() + 1)
 		get_parent().add_child(explosion)
 	
 	for oil_spot in get_node("oil_start").get_children():
