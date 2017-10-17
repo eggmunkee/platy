@@ -386,6 +386,7 @@ func _integrate_forces(s):
 		var floor_h_velocity = s.get_contact_collider_velocity_at_pos(floor_index).x
 		lv.x += floor_h_velocity
 		#lv.y += initial_y
+		lv.y += 15.0
 		
 
 #	lv += s.get_total_gravity()*step

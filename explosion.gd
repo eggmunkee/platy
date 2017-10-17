@@ -6,6 +6,8 @@ extends Area2D
 
 var life = 1.5
 
+var affected_objects = []
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -24,11 +26,76 @@ func _fixed_process(delta):
 		
 	if life < -1.5:
 		queue_free()
+		
+
+		
+	for body in affected_objects:
+		
+		var is_pushable = body extends RigidBody2D and not body extends preload("res://oil_proj.gd")
+		var is_burnable = body extends preload("res://oil_proj.gd") or body extends preload("res://crate.gd") or body extends preload("res://bottle_proj.gd")
+		
+		if is_pushable or is_burnable:
+			
+			var body_pos = body.get_pos()
+			var my_pos = get_pos()
+			var diff = body_pos - my_pos
+			var dist = sqrt(pow(diff.x, 2.0) + pow(diff.y,2.0))
+			
+			# ONly burn a closer distance
+			if is_burnable and dist < 20.0:
+				body.burn()
+			
+			var max_dist = 50.0
+			
+			diff *= max(0.0, (max_dist - dist) / max_dist) * 50000.0 * delta
+			
+			#if life < 1.0:
+			diff *= max(0.0, life)
+			
+			if body extends preload("res://player.gd"):
+				diff *= 0.5
+			
+			if life < 0.0:
+				is_pushable = false
+			
+			if is_pushable:
+				body.apply_impulse(Vector2(0.0,0.0), Vector2(diff) )
+		
+		
 
 
 func _on_explosion_body_enter( body ):
 	
-	if body extends preload("res://oil_proj.gd") or body extends preload("res://crate.gd"):
-		body.burn()
+	affected_objects.append(body)
+	
+	
+func _on_explosion_body_exit( body ):
+	
+	var index = affected_objects.find(body)
+	if index >= 0:
+		affected_objects.remove(index)
+
+	
+#	var is_pushable = body extends RigidBody2D and not body extends preload("res://oil_proj.gd")
+#	
+#	var is_burnable = body extends preload("res://oil_proj.gd") or body extends preload("res://crate.gd") or body extends preload("res://bottle_proj.gd")
+#	
+#	if is_pushable or is_burnable:
+#		
+#		var body_pos = body.get_pos()
+#		var my_pos = get_pos()
+#		var diff = body_pos - my_pos
+#		var dist = sqrt(pow(diff.x, 2.0) + pow(diff.y,2.0))
+#		
+#		# ONly burn a closer distance
+#		if is_burnable and dist < 20.0:
+#			body.burn()
+#		
+#		diff *= max(0.1, (50.0 - dist)) * 150.0
+#		#print (diff)
+#		
+#		if is_pushable:
+#			body.apply_impulse(Vector2(0.0,0.0), Vector2(diff) )
 		
 	
+

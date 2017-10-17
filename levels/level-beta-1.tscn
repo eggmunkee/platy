@@ -141,7 +141,7 @@ burn_time = 5.0
 
 [node name="level_exit" parent="entities" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 496.373, 70.3948 )
+transform/pos = Vector2( 543.891, 219.042 )
 
 [node name="player_start" parent="." instance=ExtResource( 7 )]
 

@@ -243,6 +243,6 @@ transform/pos = Vector2( -99.7848, 105.627 )
 
 [node name="level_exit" parent="." instance=ExtResource( 7 )]
 
-transform/pos = Vector2( -67.6578, 528.02 )
+transform/pos = Vector2( -70.5839, 544.113 )
 
 

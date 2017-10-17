@@ -117,6 +117,9 @@ func spawn_oil():
 	
 	
 
+func burn():
+	is_burning = true
+
 func throw():
 	is_thrown = true
 	
