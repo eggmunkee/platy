@@ -39,7 +39,11 @@ func update_frame():
 
 func _on_switch_area_body_enter( body ):
 	
-	if body extends preload("res://player.gd") or body extends preload("res://bottle_proj.gd") or body extends preload("res://rock.gd"):
+	if body extends preload("res://player.gd") or body extends preload("res://bottle_proj.gd"):
 
 		toggle_switch()
 	
+
+func _on_switch_area_area_enter( area ):
+	if area extends preload("res://rock.gd"):
+		toggle_switch()

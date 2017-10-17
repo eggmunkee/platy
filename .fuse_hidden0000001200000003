@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://rock.gd" type="Script" id=1]
-[ext_resource path="res://rock.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://dust-cloud-1.png" type="Texture" id=3]
 [ext_resource path="res://rock_anim.tres" type="Animation" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 6.45537
+radius = 7.51241
 
 [node name="rock" type="Area2D"]
 
@@ -27,7 +27,7 @@ y_velocity = -50.0
 
 [node name="sprite" type="Sprite" parent="."]
 
-transform/scale = Vector2( 0.5, 0.5 )
+transform/scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

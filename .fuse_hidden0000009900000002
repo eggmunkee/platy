@@ -9,7 +9,7 @@
 [ext_resource path="res://based-stickman-1-action-1.png" type="Texture" id=7]
 [ext_resource path="res://based-stickman-1-action-3.png" type="Texture" id=8]
 [ext_resource path="res://based-stickman-1-action-2.png" type="Texture" id=9]
-[ext_resource path="res://rock.png" type="Texture" id=10]
+[ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://torch.tscn" type="PackedScene" id=11]
 [ext_resource path="res://bottle.tscn" type="PackedScene" id=12]
 
@@ -259,7 +259,7 @@ transform/pos = Vector2( -3.84616, -6.2937 )
 [node name="rock_1" type="Sprite" parent="arms/rocks"]
 
 transform/pos = Vector2( 17.9189, -7.78931 )
-transform/scale = Vector2( 0.55, 0.55 )
+transform/scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 10 )
 
 [node name="torch" parent="arms" instance=ExtResource( 11 )]

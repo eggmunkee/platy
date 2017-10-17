@@ -18,7 +18,6 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 3073
 script/script = ExtResource( 1 )
 is_on = false
 
@@ -33,6 +32,8 @@ frame = 1
 shape = SubResource( 1 )
 trigger = true
 _update_shape_index = 0
+
+[connection signal="area_enter" from="." to="." method="_on_switch_area_area_enter"]
 
 [connection signal="body_enter" from="." to="." method="_on_switch_area_body_enter"]
 

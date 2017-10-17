@@ -201,11 +201,7 @@ func _integrate_forces(s):
 		elif has_torch and shoot:
 			arms_frame_name = 'walk'
 		else:
-			#if frame_timer < walk_frame_rate
-			if frame_name == 'base' or frame_name == 'walk':
-				arms_frame_name = frame_name
-			else:
-				arms_frame_name = 'base'
+			arms_frame_name = 'base'
 		
 	# Handle throw action
 	if has_rocks and do_throw:

@@ -46,7 +46,8 @@ func _integrate_forces(s):
 			#var ci2 = ci.rotated(rot)
 	
 			#print("found contact")
-			if not obj extends preload("res://oil_proj.gd") and (ci.dot(Vector2(0, -1)) > 0.7):
+			# removed not obj extends preload("res://oil_proj.gd")
+			if (ci.dot(Vector2(0, -1)) > 0.7) and not obj extends preload("res://player.gd"):
 				
 				found_floor = true
 				floor_index = x
@@ -90,9 +91,12 @@ func _fixed_process(delta):
 	
 	
 func spawn_oil():
+
+	if is_burning:
+		var explosion = preload("res://explosion.tscn").instance()
+		explosion.set_pos(get_pos())
+		get_parent().add_child(explosion)
 	
-	
-				
 	for oil_spot in get_node("oil_start").get_children():
 		var oil = preload("res://oil_proj.tscn").instance()
 		var start_pos = oil_spot.get_pos()

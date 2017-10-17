@@ -70,23 +70,23 @@ transform/pos = Vector2( 6.19064, -9.5945 )
 
 [node name="oil_2" type="Position2D" parent="oil_start"]
 
-transform/pos = Vector2( 6.30872, -2.27032 )
+transform/pos = Vector2( 7.82021, -1.70351 )
 
 [node name="oil_3" type="Position2D" parent="oil_start"]
 
-transform/pos = Vector2( -5.6002, -0.128525 )
+transform/pos = Vector2( -11.3627, 1.5719 )
 
 [node name="oil_4" type="Position2D" parent="oil_start"]
 
-transform/pos = Vector2( -3.67251, 10.281 )
+transform/pos = Vector2( -5.75081, 11.0367 )
 
 [node name="oil_5" type="Position2D" parent="oil_start"]
 
-transform/pos = Vector2( 5.96324, 5.55755 )
+transform/pos = Vector2( 5.96324, 8.67499 )
 
 [node name="oil_6" type="Position2D" parent="oil_start"]
 
-transform/pos = Vector2( -6.31763, -5.49523 )
+transform/pos = Vector2( -4.3338, -6.62885 )
 
 [node name="torch" parent="." instance=ExtResource( 3 )]
 
