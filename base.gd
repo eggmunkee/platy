@@ -4,6 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "textvar"
 var was_next_level_pr = false
+var was_pause_pr = false
 
 export var current_level = 1
 
@@ -30,10 +31,27 @@ func restart_level():
 func _fixed_process(delta):
 	var next_level_pr = Input.is_action_pressed("level_1")
 	
+	var quit_pr = Input.is_action_pressed("quit")
+	var pause_pr = Input.is_action_pressed("pause")
+	
+	# Quit handling
+	if quit_pr:
+		get_tree().quit()
+	
+	# Pause handling
+	if pause_pr and not was_pause_pr:
+		var is_paused = not get_tree().is_paused()
+		get_tree().set_pause(is_paused)
+		if is_paused:
+			get_node("stage/player/player_cam/pause").show()
+		else:
+			get_node("stage/player/player_cam/pause").hide()
+	
 	if not was_next_level_pr and next_level_pr:
 		call_deferred("next_level")
 	
 	was_next_level_pr = next_level_pr
+	was_pause_pr = pause_pr
 	
 func load_level_num(num):
 	if num == 1:

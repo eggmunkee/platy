@@ -1,17 +1,18 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
-[ext_resource path="res://based-stickman-1-base-1.png" type="Texture" id=2]
-[ext_resource path="res://based-stickman-1-base-2.png" type="Texture" id=3]
-[ext_resource path="res://based-stickman-1-base-3.png" type="Texture" id=4]
-[ext_resource path="res://based-stickman-1-base-4.png" type="Texture" id=5]
-[ext_resource path="res://dust-cloud-1.png" type="Texture" id=6]
-[ext_resource path="res://based-stickman-1-action-1.png" type="Texture" id=7]
-[ext_resource path="res://based-stickman-1-action-3.png" type="Texture" id=8]
-[ext_resource path="res://based-stickman-1-action-2.png" type="Texture" id=9]
-[ext_resource path="res://rock.png" type="Texture" id=10]
-[ext_resource path="res://torch.tscn" type="PackedScene" id=11]
-[ext_resource path="res://bottle.tscn" type="PackedScene" id=12]
+[ext_resource path="res://player_cam.tscn" type="PackedScene" id=2]
+[ext_resource path="res://based-stickman-1-base-1.png" type="Texture" id=3]
+[ext_resource path="res://based-stickman-1-base-2.png" type="Texture" id=4]
+[ext_resource path="res://based-stickman-1-base-3.png" type="Texture" id=5]
+[ext_resource path="res://based-stickman-1-base-4.png" type="Texture" id=6]
+[ext_resource path="res://dust-cloud-1.png" type="Texture" id=7]
+[ext_resource path="res://based-stickman-1-action-1.png" type="Texture" id=8]
+[ext_resource path="res://based-stickman-1-action-3.png" type="Texture" id=9]
+[ext_resource path="res://based-stickman-1-action-2.png" type="Texture" id=10]
+[ext_resource path="res://rock.png" type="Texture" id=11]
+[ext_resource path="res://torch.tscn" type="PackedScene" id=12]
+[ext_resource path="res://bottle.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -68,86 +69,7 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="player_cam" type="Camera2D" parent="."]
-
-offset = Vector2( 0, -50 )
-anchor_mode = 1
-rotating = false
-current = false
-zoom = Vector2( 1, 1 )
-limit/left = -10000000
-limit/top = -10000000
-limit/right = 10000000
-limit/bottom = 10000000
-drag_margin/h_enabled = true
-drag_margin/v_enabled = true
-smoothing/enable = false
-smoothing/speed = 5.0
-drag_margin/left = 0.1
-drag_margin/top = 0.2
-drag_margin/right = 0.1
-drag_margin/bottom = 0.2
-
-[node name="Label" type="Label" parent="player_cam"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -70.0
-margin/top = -92.0
-margin/right = -16.0
-margin/bottom = -78.0
-text = "C - jump"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Label1" type="Label" parent="player_cam"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 21.0
-margin/top = -91.0
-margin/right = 80.0
-margin/bottom = -77.0
-text = "X - attack"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Label2" type="Label" parent="player_cam"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -26.0
-margin/top = -71.0
-margin/right = 33.0
-margin/bottom = -57.0
-text = "Z - drop"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Label3" type="Label" parent="player_cam"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -58.0
-margin/top = -112.0
-margin/right = 61.0
-margin/bottom = -98.0
-text = "Arrow keys - move"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+[node name="player_cam" parent="." instance=ExtResource( 2 )]
 
 [node name="body" type="Node2D" parent="."]
 
@@ -156,25 +78,25 @@ editor/display_folded = true
 [node name="body_base" type="Sprite" parent="body"]
 
 transform/scale = Vector2( 0.15, 0.14 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="body_walk" type="Sprite" parent="body"]
 
 visibility/visible = false
 transform/scale = Vector2( 0.15, 0.14 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="body_jump" type="Sprite" parent="body"]
 
 visibility/visible = false
 transform/scale = Vector2( 0.15, 0.14 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="body_fall" type="Sprite" parent="body"]
 
 visibility/visible = false
 transform/scale = Vector2( 0.15, 0.14 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="foot_dust" type="Particles2D" parent="."]
 
@@ -186,7 +108,7 @@ config/emit_timeout = 0.1
 config/emitting = false
 config/process_mode = 1
 config/local_space = false
-config/texture = ExtResource( 6 )
+config/texture = ExtResource( 7 )
 params/direction = 189.82
 params/spread = 10.0
 params/linear_velocity = 5.0
@@ -235,7 +157,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( -2.11783, -20.7783 )
 transform/scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 37.8516, -1.02539 )
 
 [node name="arms_walk" type="Sprite" parent="arms"]
@@ -243,14 +165,14 @@ offset = Vector2( 37.8516, -1.02539 )
 visibility/visible = false
 transform/pos = Vector2( 4.84149, -19.6509 )
 transform/scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="arms_attack" type="Sprite" parent="arms"]
 
 visibility/visible = false
 transform/pos = Vector2( 16.2332, -20.3628 )
 transform/scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="rocks" type="Node2D" parent="arms"]
 
@@ -260,13 +182,13 @@ transform/pos = Vector2( -3.84616, -6.2937 )
 
 transform/pos = Vector2( 17.9189, -7.78931 )
 transform/scale = Vector2( 0.55, 0.55 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
-[node name="torch" parent="arms" instance=ExtResource( 11 )]
+[node name="torch" parent="arms" instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 16.8174, -21.1086 )
 
-[node name="bottle" parent="arms" instance=ExtResource( 12 )]
+[node name="bottle" parent="arms" instance=ExtResource( 13 )]
 
 transform/pos = Vector2( 14.7221, -15.3032 )
 transform/scale = Vector2( 0.75, 0.75 )
