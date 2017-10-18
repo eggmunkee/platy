@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://crate.tscn" type="PackedScene" id=2]
@@ -6,7 +6,11 @@
 [ext_resource path="res://torch_item.tscn" type="PackedScene" id=4]
 [ext_resource path="res://platform_wooden.tscn" type="PackedScene" id=5]
 [ext_resource path="res://level_exit.tscn" type="PackedScene" id=6]
-[ext_resource path="res://player_start.tscn" type="PackedScene" id=7]
+[ext_resource path="res://switch_area_2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://switch_area.tscn" type="PackedScene" id=8]
+[ext_resource path="res://oil_leak.tscn" type="PackedScene" id=9]
+[ext_resource path="res://bottle_proj.tscn" type="PackedScene" id=10]
+[ext_resource path="res://player_start.tscn" type="PackedScene" id=11]
 
 [node name="level" type="Node2D"]
 
@@ -16,38 +20,125 @@
 
 transform/pos = Vector2( -29.9595, 15.0448 )
 
+[node name="platform8" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -339.96, -504.955 )
+
+[node name="platform22" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -339.96, -334.955 )
+
+[node name="platform23" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -149.96, -324.955 )
+
+[node name="platform1" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 325.312, -98.0384 )
+transform/rot = -22.1475
+
 [node name="platform2" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 299.995, 15.0448 )
+transform/pos = Vector2( 279.995, 15.0448 )
+
+[node name="platform20" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 334.995, -60.9552 )
 
 [node name="platform3" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 529.995, 15.0448 )
+transform/pos = Vector2( 509.995, 15.0448 )
 
 [node name="platform4" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 419.995, 125.045 )
+transform/pos = Vector2( 394.995, 125.045 )
 
 [node name="platform5" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 189.995, 125.045 )
+transform/pos = Vector2( 227.995, 125.045 )
+
+[node name="exit_platform" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 77.2146, 155.045 )
+transform/scale = Vector2( 0.569362, 1 )
+
+[node name="platform13" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 289.995, 119.485 )
+transform/rot = 90.0
+
+[node name="platform21" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 230.995, 159.485 )
+transform/rot = 90.0
+
+[node name="platform24" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 132.995, 180.201 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.540127, 1 )
+
+[node name="platform26" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -454.005, -26.6985 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.480765, 1 )
+
+[node name="platform25" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 19.995, 180.201 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.540127, 1 )
+
+[node name="platform14" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 229.995, -55.8577 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.746317, 1 )
 
 [node name="platform6" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( -40.0052, 125.045 )
+transform/pos = Vector2( -75.0052, 125.045 )
+
+[node name="platform12" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 71.9113, 229.045 )
+transform/scale = Vector2( 0.565109, 1 )
 
 [node name="platform7" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( -350.005, 125.045 )
+transform/pos = Vector2( -533.454, -73.955 )
+transform/scale = Vector2( 0.857777, 1 )
 
-[node name="platform8" parent="solid" instance=ExtResource( 1 )]
+[node name="platform16" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( -445.012, 30.3035 )
+transform/pos = Vector2( -350.005, -674.955 )
+
+[node name="platform17" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -160.005, -684.955 )
+
+[node name="platform18" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 29.995, -694.955 )
+
+[node name="platform19" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 129.995, -704.955 )
+
+[node name="platform113" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 229.988, -229.697 )
 transform/rot = 90.0
 
-[node name="platform11 2" parent="solid" instance=ExtResource( 1 )]
+[node name="platform114" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 624.988, -79.6965 )
+transform/pos = Vector2( 229.988, -429.697 )
+transform/rot = 90.0
+
+[node name="platform115" parent="solid" instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 229.988, -609.697 )
 transform/rot = 90.0
 
 [node name="platform9" parent="solid" instance=ExtResource( 1 )]
@@ -57,17 +148,18 @@ transform/rot = 90.0
 
 [node name="platform11" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 625.117, -279.743 )
+transform/pos = Vector2( -614.883, 25.0946 )
 transform/rot = 90.0
+transform/scale = Vector2( 0.94242, 1 )
 
 [node name="platform10" parent="solid" instance=ExtResource( 1 )]
 
 transform/pos = Vector2( -444.679, -369.687 )
 transform/rot = 90.0
 
-[node name="platform11 3" parent="solid" instance=ExtResource( 1 )]
+[node name="platform15" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 625.321, -479.687 )
+transform/pos = Vector2( -444.679, -569.687 )
 transform/rot = 90.0
 
 [node name="entities" type="Node2D" parent="."]
@@ -78,7 +170,23 @@ transform/pos = Vector2( 108.16, -21.0943 )
 
 [node name="crate1" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 405.364, -22.4418 )
+transform/pos = Vector2( 447.364, -11.4418 )
+transform/rot = 0.816023
+
+[node name="crate12" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 380.16, 96.2113 )
+transform/rot = 0.816023
+
+[node name="crate14" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 468.761, 96.4775 )
+transform/rot = 0.816023
+
+[node name="crate17" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 574.761, -12.5225 )
+transform/rot = 0.816023
 
 [node name="crate2" parent="entities" instance=ExtResource( 2 )]
 
@@ -94,7 +202,19 @@ transform/pos = Vector2( 161.558, -63.7749 )
 
 [node name="crate5" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 387.552, -66.0848 )
+transform/pos = Vector2( 497.996, -56.1708 )
+
+[node name="crate11" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 541.996, -56.1708 )
+
+[node name="crate15" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 488.996, -11.1708 )
+
+[node name="crate16" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 530.996, -12.1708 )
 
 [node name="crate6" parent="entities" instance=ExtResource( 2 )]
 
@@ -122,11 +242,22 @@ transform/pos = Vector2( 140.999, -302.814 )
 
 [node name="base" parent="entities" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 190.058, 98.9408 )
+transform/pos = Vector2( -416.067, -535.913 )
+is_on = true
 
 [node name="platform" parent="entities" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( -194.582, 114.603 )
+transform/pos = Vector2( -204.582, 114.603 )
+burn_time = 5.0
+
+[node name="platform4" parent="entities" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -359.397, 124.603 )
+burn_time = 5.0
+
+[node name="platform5" parent="entities" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -514.582, 114.603 )
 burn_time = 5.0
 
 [node name="platform1" parent="entities" instance=ExtResource( 5 )]
@@ -134,17 +265,71 @@ burn_time = 5.0
 transform/pos = Vector2( 135.418, 4.60326 )
 burn_time = 5.0
 
+[node name="platform3" parent="entities" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 391.326, 68.6033 )
+transform/scale = Vector2( 0.960906, 1 )
+burn_time = 5.0
+
 [node name="platform2" parent="entities" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 135.418, -135.397 )
+transform/pos = Vector2( 124.418, -135.397 )
 burn_time = 5.0
 
 [node name="level_exit" parent="entities" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 543.891, 219.042 )
+transform/pos = Vector2( 72.6982, 191.996 )
 
-[node name="player_start" parent="." instance=ExtResource( 7 )]
+[node name="switch_area" parent="entities" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 259.849, 96.3704 )
+
+[node name="switch_area 2" parent="entities" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( -589.875, -42.987 )
+
+[node name="switch_area3" parent="entities" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 316.05, 96.2626 )
+is_on = true
+
+[node name="switch_area4" parent="entities" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 121.991, 35.5129 )
+is_on = true
+
+[node name="oil_leak" parent="entities" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 248.002, -165.744 )
+leak_rate = 0.6
+initial_velocity = Vector2( 5, 15 )
+is_on = false
+
+[node name="base 2" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 421.962, -74.9746 )
+is_on = false
+
+[node name="bottle" parent="entities" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 316, 52 )
+transform/rot = -72.8474
+unbreakable = true
+
+[node name="player_start" parent="." instance=ExtResource( 11 )]
 
 transform/pos = Vector2( -0.663422, -27.2001 )
+
+[connection signal="switch_input" from="entities/switch_area" to="entities/oil_leak" method="input_value"]
+
+[connection signal="switch_input" from="entities/switch_area 2" to="entities/base 2" method="input_value"]
+
+[connection signal="switch_input" from="entities/switch_area3" to="entities/switch_area4" method="input_signal"]
+
+[connection signal="switch_input" from="entities/switch_area3" to="solid/exit_platform" method="destroy"]
+
+[connection signal="switch_input" from="entities/switch_area4" to="entities/switch_area3" method="input_signal"]
+
+[connection signal="switch_input" from="entities/switch_area4" to="solid/exit_platform" method="destroy"]
 
 

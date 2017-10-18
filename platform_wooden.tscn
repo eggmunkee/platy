@@ -94,7 +94,7 @@ burn_time = 1.5
 
 polygon = Vector2Array( 100, -5, 100, 5, -100, 5, -100, -5 )
 uv = Vector2Array(  )
-color = Color( 0.0976562, 0.0858784, 0.0831604, 1 )
+color = Color( 0.289062, 0.217079, 0.153564, 1 )
 vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null

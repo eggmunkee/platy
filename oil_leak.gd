@@ -6,6 +6,8 @@ extends Node2D
 export var leak_rate = 0.5
 export var initial_velocity = Vector2(0.0,0.0)
 var leak_timer = leak_rate
+export var is_on = true
+
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -13,11 +15,16 @@ func _ready():
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
-	leak_timer -= delta
 	
-	if leak_timer < 0.0:
-		leak()
-		leak_timer += leak_rate
+	if is_on:
+		leak_timer -= delta
+		
+		if leak_timer < 0.0:
+			leak()
+			leak_timer += leak_rate
+	
+func input_value(new_value):
+	is_on = new_value
 	
 func leak():
 	var oil = preload("res://oil_proj.tscn").instance()

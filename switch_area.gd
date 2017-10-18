@@ -13,6 +13,7 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	set_fixed_process(true)
+	update_frame()
 	
 func _fixed_process(delta):
 	if switch_timer > 0.0:
@@ -47,3 +48,7 @@ func _on_switch_area_body_enter( body ):
 func _on_switch_area_area_enter( area ):
 	if area extends preload("res://rock.gd"):
 		toggle_switch()
+
+
+func input_value( input_value ):
+	pass # replace with function body

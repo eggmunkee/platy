@@ -8,6 +8,7 @@ var x_velocity = 175.0
 var y_velocity = -45.0
 var life = 15.0
 var freeze = false
+export var unbreakable = false
 
 var is_burning = false
 
@@ -47,12 +48,16 @@ func _integrate_forces(s):
 	
 			#print("found contact")
 			# removed not obj extends preload("res://oil_proj.gd")
-			if (ci.dot(Vector2(0, -1)) > 0.7) and not obj extends preload("res://player.gd"):
+			var not_player = true
+			if obj:
+				not_player = not obj extends preload("res://player.gd")
+			
+			if (ci.dot(Vector2(0, -1)) > 0.7) and not_player:
 				
 				found_floor = true
 				floor_index = x
 			
-	if found_floor or (abs(lv.x) + abs(lv.y)) < 15.0:
+	if not unbreakable and (found_floor or (abs(lv.x) + abs(lv.y)) < 15.0):
 		freeze = true
 			
 	if found_floor:
@@ -76,7 +81,7 @@ func _integrate_forces(s):
 	
 func _fixed_process(delta):
 	
-	if is_thrown:
+	if is_thrown and not unbreakable:
 		if not freeze:
 			life -= delta
 			if life <= 0:
@@ -103,6 +108,9 @@ func spawn_oil():
 		var start_pos = oil_spot.get_pos()
 		start_pos = start_pos + get_pos()
 		oil.set_pos(start_pos)
+		
+		var scale = rand_range(0.75, 1.1)
+		oil.set_scale(Vector2(scale,scale))
 		
 		var bottle_lin_vel = get_linear_velocity()
 	
@@ -144,13 +152,14 @@ func throw():
 func _on_bottle_body_enter( body ):
 	
 	# If hit
-	if body extends StaticBody2D or body extends RigidBody2D:
-		if not body extends preload("res://oil_proj.gd"):
-			var lin_vel = get_linear_velocity()
-			#print( lin_vel)
-			if abs(lin_vel.x) + abs(lin_vel.y) < 10:
-				#print("body enter slow freeze")
-				freeze = true
+	if not unbreakable:
+		if body extends StaticBody2D or body extends RigidBody2D:
+			if not body extends preload("res://oil_proj.gd"):
+				var lin_vel = get_linear_velocity()
+				#print( lin_vel)
+				if abs(lin_vel.x) + abs(lin_vel.y) < 10:
+					#print("body enter slow freeze")
+					freeze = true
 			
 		
 	

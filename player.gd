@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 const jump_timer_default = 2.5 #3.2   #2.5
-const walk_frame_rate = 10.0
+const walk_frame_rate = 5.0
 const throw_anim_length = 0.22  #0.4
 
 var gravity_ratio = 1.0
@@ -18,7 +18,8 @@ var jump_count = 0
 var max_jump_count = 2
 #var jump_impulse = 50.0
 var max_fall = 8.0
-var base_move_speed = 12000.0
+var base_move_speed = 18000.0
+var slow_walk_ratio = 0.25
 var timer_increment = 0.8
 
 var total_jump_length = 0.0
@@ -28,6 +29,8 @@ var lock_jump_x = 0.0
 var is_facing_right = true
 var cam_scale = 0.65
 var cam_pause = 0.0
+
+var run_timer = 0.0
 
 var frame_name = 'base'
 var frame_timer = 0.0
@@ -114,6 +117,7 @@ func _integrate_forces(s):
 	var eff_fall_rate = jump_rate / gravity_ratio
 	var eff_jump_timer_default = jump_timer_default * gravity_ratio
 	var eff_move_speed = base_move_speed
+	var eff_slow_walk_speed = slow_walk_ratio * eff_move_speed
 	
 	if has_rocks and arms_frame_timer <= 0.0:
 		eff_jump_timer_default *= 0.75
@@ -240,6 +244,12 @@ func _integrate_forces(s):
 	
 	# Handle left/right movement and frame management
 	if walk_left or walk_right:
+		run_timer += step
+		
+		if run_timer < 0.5:
+			var speed_diff = eff_move_speed - eff_slow_walk_speed
+			eff_move_speed = eff_slow_walk_speed + speed_diff * (run_timer / 0.5)
+		
 		if walk_left:
 			lv.x += step * (-1.0 * eff_move_speed)
 			if is_facing_right:
@@ -286,6 +296,7 @@ func _integrate_forces(s):
 	else:
 		lv.x = 0.0
 		if not is_jumping and (not is_falling): # or jump_timer > eff_jump_timer_default * 0.5):
+			run_timer = 0.0
 			if not (frame_name == "walk" or frame_name == "base"):
 				frame_name = 'base'
 		elif is_falling:  #and jump_timer <= eff_jump_timer_default * 0.5:

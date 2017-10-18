@@ -27,7 +27,7 @@ func _fixed_process(delta):
 			var colliders = get_colliding_bodies()
 			
 			for body in colliders:
-				if body extends get_script() or body extends preload("res://oil_proj.gd"):
+				if body extends get_script() or body extends preload("res://static_crate.gd") or body extends preload("res://oil_proj.gd"):
 					body.burn()
 				elif body extends preload("res://bottle_proj.gd"):
 					body.freeze = true
