@@ -27,7 +27,7 @@ var min_jump_length = 15.0
 var lock_jump_x = 0.0
 #var floor_h_velocity = 0.0
 var is_facing_right = true
-var cam_scale = 0.65
+var cam_scale = 0.6
 var cam_pause = 0.0
 
 var floor_timer = 0.0
@@ -109,6 +109,19 @@ func _integrate_forces(s):
 	var increase_grav = Input.is_action_pressed("up_grav")
 	var do_throw = throw and not was_throw_held
 	var kill = Input.is_action_pressed("suicide")
+	
+	var zoom_up = Input.is_action_pressed("zoom_up")
+	var zoom_down = Input.is_action_pressed("zoom_down")
+	
+	if zoom_down and cam_scale < 1.5:
+		cam_scale += 0.5 * step
+		if cam_scale > 1.5:
+			cam_scale = 1.5
+	elif zoom_up and cam_scale > 0.3:
+		cam_scale -= 0.5 * step
+		if cam_scale < 0.3:
+			cam_scale = 0.3
+		
 
 	
 	if not is_alive:

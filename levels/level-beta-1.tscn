@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://crate.tscn" type="PackedScene" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://switch_area.tscn" type="PackedScene" id=8]
 [ext_resource path="res://oil_leak.tscn" type="PackedScene" id=9]
 [ext_resource path="res://bottle_proj.tscn" type="PackedScene" id=10]
-[ext_resource path="res://player_start.tscn" type="PackedScene" id=11]
+[ext_resource path="res://spikes.tscn" type="PackedScene" id=11]
+[ext_resource path="res://player_start.tscn" type="PackedScene" id=12]
 
 [node name="level" type="Node2D"]
 
@@ -66,11 +67,6 @@ transform/scale = Vector2( 0.569362, 1 )
 [node name="platform13" parent="solid" instance=ExtResource( 1 )]
 
 transform/pos = Vector2( 289.995, 119.485 )
-transform/rot = 90.0
-
-[node name="platform21" parent="solid" instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 230.995, 159.485 )
 transform/rot = 90.0
 
 [node name="platform24" parent="solid" instance=ExtResource( 1 )]
@@ -322,9 +318,31 @@ transform/pos = Vector2( -453.675, 24.0943 )
 leak_rate = 2.1
 is_on = true
 
-[node name="player_start" parent="." instance=ExtResource( 11 )]
+[node name="spikes" parent="entities" instance=ExtResource( 11 )]
 
-transform/pos = Vector2( -0.663422, -27.2001 )
+transform/pos = Vector2( -150, -338 )
+
+[node name="spikes4" parent="entities" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( -602.809, 77.9459 )
+transform/rot = -90.0
+
+[node name="spikes5" parent="entities" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( -466.809, -22.0541 )
+transform/rot = 90.0
+
+[node name="spikes2" parent="entities" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 254.191, 111.946 )
+
+[node name="spikes3" parent="entities" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 206.191, 111.946 )
+
+[node name="player_start" parent="." instance=ExtResource( 12 )]
+
+transform/pos = Vector2( 107.377, -648.435 )
 
 [connection signal="switch_input" from="entities/switch_area" to="entities/oil_leak" method="input_value"]
 
