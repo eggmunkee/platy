@@ -33,6 +33,10 @@ func _fixed_process(delta):
 		
 		var is_pushable = body extends RigidBody2D and not body extends preload("res://oil_proj.gd")
 		var is_burnable = body extends preload("res://oil_proj.gd") or body extends preload("res://crate.gd") or body extends preload("res://bottle_proj.gd")
+		var is_player = body extends preload("res://player.gd")
+		
+		if life < 0.0:
+			is_burnable = false
 		
 		if is_pushable or is_burnable:
 			
@@ -42,8 +46,10 @@ func _fixed_process(delta):
 			var dist = sqrt(pow(diff.x, 2.0) + pow(diff.y,2.0))
 			
 			# ONly burn a closer distance
-			if is_burnable and dist < 20.0:
+			if is_burnable and dist < 35.0 and life > 0.0:
 				body.burn()
+			if dist < 45.0 and life > 0.2 and is_player:
+				body.kill()
 			
 			var max_dist = 50.0
 			
@@ -52,8 +58,9 @@ func _fixed_process(delta):
 			#if life < 1.0:
 			diff *= max(0.0, life)
 			
-			if body extends preload("res://player.gd"):
+			if is_player:
 				diff *= 0.5
+				
 			
 			if life < 0.0:
 				is_pushable = false

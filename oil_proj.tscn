@@ -22,7 +22,7 @@ radius = 1.62829
 [sub_resource type="CircleShape2D" id=4]
 
 custom_solver_bias = 0.0
-radius = 5.0
+radius = 10.5502
 
 [sub_resource type="Animation" id=5]
 
@@ -116,7 +116,6 @@ autoplay = "start"
 
 [node name="fire_shape" type="CollisionShape2D" parent="."]
 
-visibility/visible = false
 shape = SubResource( 4 )
 trigger = true
 _update_shape_index = 3

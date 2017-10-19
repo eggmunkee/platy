@@ -40,6 +40,7 @@ var arms_frame_name = 'base'
 var arms_frame_timer = 0.0
 
 var is_alive = true
+var kill_timer = 5.0
 
 var grav_timer = 0.0
 
@@ -57,8 +58,13 @@ var was_up_grav_down = false
 var was_throw_held = false
 
 func _integrate_forces(s):
+
 	var lv = s.get_linear_velocity()
 	var initial_y = lv.y
+	
+	var phys_rotation = s.get_transform().get_rotation()
+	var is_tilted = abs(phys_rotation) > 0.7
+
 	#if not is_jumping:
 	#lv.y = 0.0
 	lv.x = 0.0
@@ -67,6 +73,8 @@ func _integrate_forces(s):
 	var found_floor = false
 	var floor_object = null
 	var floor_index = -1
+	
+	var hit_head = false
 	
 	if floor_timer > 0.0:
 		floor_timer -= step
@@ -87,6 +95,8 @@ func _integrate_forces(s):
 			floor_index = x
 			floor_timer = ghost_floor_time
 #			
+		#elif (ci.dot(Vector2(0,1)) > 0.7):
+		#	call_deferred("kill")
 
 	# check input/keyboard state
 	var walk_left = Input.is_action_pressed("ui_left")
@@ -98,8 +108,30 @@ func _integrate_forces(s):
 	var throw = Input.is_action_pressed("throw")
 	var increase_grav = Input.is_action_pressed("up_grav")
 	var do_throw = throw and not was_throw_held
+	var kill = Input.is_action_pressed("suicide")
 
 	
+	if not is_alive:
+		if kill_timer < 3.0:
+			walk_left = false
+			walk_right = false
+		walk_up = false
+		walk_down = false
+		jump = false
+		shoot = false
+		throw = false
+		kill = false
+		
+		if is_facing_right:
+			if phys_rotation > -0.4:
+				s.set_angular_velocity(rand_range(1.0,6.0))
+		else:
+			if phys_rotation < 0.4:
+				s.set_angular_velocity(rand_range(-6.0,-1.0))
+
+	if kill:
+		kill()
+
 	if increase_grav and not was_up_grav_down:
 		gravity_ratio *= 1.50
 		grav_timer += 10.0
@@ -216,37 +248,13 @@ func _integrate_forces(s):
 		
 	# Handle throw action
 	if has_rocks and do_throw:
-		has_rocks = false
-		var rocks_item = preload("res://rocks_item.tscn").instance()
-		
-		var pos = get_node("drop_position").get_pos()
-		if not is_facing_right:
-			pos.x = -1.0 * pos.x
-		pos = pos + get_pos()
-		rocks_item.set_pos(pos)
-		get_parent().add_child(rocks_item)
+		drop_rocks()
 		
 	elif has_torch and do_throw:
-		has_torch = false
-		var torch_item = preload("res://torch_item.tscn").instance()
-		
-		var pos = get_node("drop_position").get_pos()
-		if not is_facing_right:
-			pos.x = -1.0 * pos.x
-		pos = pos + get_pos()
-		torch_item.set_pos(pos)
-		get_parent().add_child(torch_item)
+		drop_torch()
 		
 	elif has_bottle and do_throw:
-		has_bottle = false
-		var bottle_item = preload("res://bottle_item.tscn").instance()
-		
-		var pos = get_node("drop_position").get_pos()
-		if not is_facing_right:
-			pos.x = -1.0 * pos.x
-		pos = pos + get_pos()
-		bottle_item.set_pos(pos)
-		get_parent().add_child(bottle_item)
+		drop_bottle()
 	
 	# Handle left/right movement and frame management
 	if walk_left or walk_right:
@@ -256,9 +264,9 @@ func _integrate_forces(s):
 			var speed_diff = eff_move_speed - eff_slow_walk_speed
 			eff_move_speed = eff_slow_walk_speed + speed_diff * (run_timer / 0.5)
 		
-		if walk_left:
+		if walk_left and not is_tilted:
 			lv.x += step * (-1.0 * eff_move_speed)
-			if is_facing_right:
+			if is_facing_right and is_alive:
 				is_facing_right = false
 				var scale = get_node("body").get_scale()
 				scale.x = -1.0 * abs(scale.x)
@@ -268,9 +276,9 @@ func _integrate_forces(s):
 				get_node("arms").set_scale(scale)
 				if not (is_falling or is_jumping):
 					get_node("foot_dust").set_emitting(true)
-		if walk_right:
+		if walk_right and not is_tilted:
 			lv.x += step * (eff_move_speed)
-			if not is_facing_right:
+			if not is_facing_right and is_alive:
 				is_facing_right = true
 				var scale = get_node("body").get_scale()
 				scale.x = 1.0 * abs(scale.x)
@@ -414,6 +422,59 @@ func _integrate_forces(s):
 #	lv += s.get_total_gravity()*step
 	s.set_linear_velocity(lv)
 
+func drop_rocks():
+	if has_rocks:
+		has_rocks = false
+		var rocks_item = preload("res://rocks_item.tscn").instance()
+		
+		var pos = get_node("drop_position").get_pos()
+		if not is_facing_right:
+			pos.x = -1.0 * pos.x
+		pos = pos + get_pos()
+		rocks_item.set_pos(pos)
+		get_parent().add_child(rocks_item)
+
+func drop_bottle():
+	if has_bottle:
+		has_bottle = false
+		var bottle_item = preload("res://bottle_item.tscn").instance()
+		
+		var pos = get_node("drop_position").get_pos()
+		if not is_facing_right:
+			pos.x = -1.0 * pos.x
+		pos = pos + get_pos()
+		bottle_item.set_pos(pos)
+		get_parent().add_child(bottle_item)
+		
+func drop_torch():
+	if has_torch:
+		has_torch = false
+		var torch_item = preload("res://torch_item.tscn").instance()
+		
+		var pos = get_node("drop_position").get_pos()
+		if not is_facing_right:
+			pos.x = -1.0 * pos.x
+		pos = pos + get_pos()
+		torch_item.set_pos(pos)
+		get_parent().add_child(torch_item)
+
+func kill():
+	call_deferred("_kill")
+	
+func _kill():
+	
+	if is_alive:
+		is_alive = false
+		set_mode(MODE_RIGID)
+		#set_use_custom_integrator(false)
+		
+		apply_impulse(Vector2(0.0,0.0), Vector2(rand_range(-15000.0,15000.0),rand_range(-500.0,500.0)))
+		
+		drop_torch()
+		drop_rocks()
+		drop_bottle()
+		
+
 func update_frame():
 	# Handle showing player frame
 	var body = get_node("body")
@@ -457,9 +518,19 @@ func _fixed_process(delta):
 	
 	
 	if jump_timer > max_fall_length:
-		get_node("/root/world").call_deferred("restart_level")
+		kill()
+	
+	if not is_alive:
+		kill_timer -= delta
+		
+		if kill_timer < 0.0:
+			get_node("/root/world").restart_level()
 	
 func can_pickup_item(new_item):
+	
+	if not is_alive:
+		return false
+	
 	# special case with torch + bottle
 	if new_item == "torch" and has_bottle and not has_torch:
 		return true
