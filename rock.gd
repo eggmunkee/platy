@@ -43,11 +43,11 @@ func _on_rock_body_enter( body ):
 		
 		if body extends RigidBody2D:
 			var mass = body.get_mass()
-			var push_velocity = Vector2(x_velocity * 1000.0 / mass, y_velocity * 1000.0 / mass)
+			var push_velocity = Vector2(x_velocity * 2000.0 / mass, y_velocity * 2000.0 / mass)
 			body.apply_impulse(Vector2(0.0,0.0), push_velocity)
 		
-		if body extends preload("res://crate.gd"):
-			body.damage(3.0)
+		if body extends preload("res://crate.gd") or body extends preload("res://static_crate.gd"):
+			body.damage(10.0)
 	
 	
 		x_velocity = 0.0

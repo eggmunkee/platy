@@ -59,7 +59,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=3]
 
-resource/name = "explosion"
+resource/name = "explode"
 length = 1.0
 loop = false
 step = 0.1
@@ -72,6 +72,18 @@ tracks/0/keys = {
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 1 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
 }
 
 [node name="platform" type="StaticBody2D"]
@@ -144,7 +156,7 @@ playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/burn = SubResource( 2 )
-anims/explosion = SubResource( 3 )
+anims/explode = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

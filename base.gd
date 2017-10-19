@@ -95,4 +95,4 @@ func load_level_1():
 	return load("res://levels/level-beta-1.tscn").instance()
 	
 func load_level_2():
-	return load("res://levels/test-1.tscn").instance()
+	return load("res://levels/level-beta-2.tscn").instance()

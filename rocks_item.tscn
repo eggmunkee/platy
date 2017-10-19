@@ -28,30 +28,29 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Sprite1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 5.69581, 10.0454 )
-transform/scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="."]
-
-transform/pos = Vector2( -7.97415, 8.97091 )
-transform/scale = Vector2( 0.8, 0.7 )
+transform/pos = Vector2( 3.55989, -4.84144 )
+transform/rot = 80.0
+transform/scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="."]
 
-transform/pos = Vector2( -8.40133, -5.19088 )
-transform/scale = Vector2( 0.8, 0.8 )
-z/z = -1
+transform/pos = Vector2( -5.41103, -5.33327 )
+transform/scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 2 )
 
-[node name="Sprite1" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( 1.99354, -2.70551 )
-transform/rot = 80.0
-z/z = -5
+transform/pos = Vector2( -4.12948, 3.98707 )
+transform/scale = Vector2( 0.8, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 4.69904, 6.05833 )
+transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [connection signal="body_enter" from="." to="." method="_on_base_body_enter"]

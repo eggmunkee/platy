@@ -11,6 +11,8 @@ current_level = 1
 
 [node name="stage" type="Node2D" parent="."]
 
+process/pause_mode = 1
+
 [node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
 
 

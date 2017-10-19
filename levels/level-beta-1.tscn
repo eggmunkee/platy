@@ -22,7 +22,8 @@ transform/pos = Vector2( -29.9595, 15.0448 )
 
 [node name="platform8" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( -339.96, -504.955 )
+transform/pos = Vector2( -360.421, -474.955 )
+transform/scale = Vector2( 0.798102, 1 )
 
 [node name="platform22" parent="solid" instance=ExtResource( 1 )]
 
@@ -222,11 +223,15 @@ transform/pos = Vector2( 113.494, -106.909 )
 
 [node name="crate7" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 131.459, -162.042 )
+transform/pos = Vector2( 91.459, -162.042 )
+
+[node name="crate13" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 134.459, -162.042 )
 
 [node name="crate8" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 144.662, -204.734 )
+transform/pos = Vector2( 104.662, -204.734 )
 
 [node name="crate9" parent="entities" instance=ExtResource( 2 )]
 
@@ -234,15 +239,15 @@ transform/pos = Vector2( 161.468, -106.909 )
 
 [node name="crate10" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 144.662, -248.306 )
+transform/pos = Vector2( 104.662, -248.306 )
 
 [node name="bottle_item" parent="entities" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 140.999, -302.814 )
+transform/pos = Vector2( -412, -513.813 )
 
 [node name="base" parent="entities" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( -416.067, -535.913 )
+transform/pos = Vector2( 103.932, -289.914 )
 is_on = true
 
 [node name="platform" parent="entities" instance=ExtResource( 5 )]
@@ -293,11 +298,6 @@ transform/pos = Vector2( -589.875, -42.987 )
 transform/pos = Vector2( 316.05, 96.2626 )
 is_on = true
 
-[node name="switch_area4" parent="entities" instance=ExtResource( 8 )]
-
-transform/pos = Vector2( 121.991, 35.5129 )
-is_on = true
-
 [node name="oil_leak" parent="entities" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 248.002, -165.744 )
@@ -316,6 +316,12 @@ transform/pos = Vector2( 316, 52 )
 transform/rot = -72.8474
 unbreakable = true
 
+[node name="oil_leak 2" parent="entities" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( -453.675, 24.0943 )
+leak_rate = 2.1
+is_on = true
+
 [node name="player_start" parent="." instance=ExtResource( 11 )]
 
 transform/pos = Vector2( -0.663422, -27.2001 )
@@ -324,12 +330,6 @@ transform/pos = Vector2( -0.663422, -27.2001 )
 
 [connection signal="switch_input" from="entities/switch_area 2" to="entities/base 2" method="input_value"]
 
-[connection signal="switch_input" from="entities/switch_area3" to="entities/switch_area4" method="input_signal"]
-
 [connection signal="switch_input" from="entities/switch_area3" to="solid/exit_platform" method="destroy"]
-
-[connection signal="switch_input" from="entities/switch_area4" to="entities/switch_area3" method="input_signal"]
-
-[connection signal="switch_input" from="entities/switch_area4" to="solid/exit_platform" method="destroy"]
 
 

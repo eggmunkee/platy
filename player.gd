@@ -15,11 +15,11 @@ var is_falling = false
 var jump_timer = 0.0
 var jump_rate = 35000.0 # 22000.0   # 35000.0
 var jump_count = 0
-var max_jump_count = 2
+var max_jump_count = 1
 #var jump_impulse = 50.0
 var max_fall = 8.0
 var base_move_speed = 18000.0
-var slow_walk_ratio = 0.25
+var slow_walk_ratio = 0.5
 var timer_increment = 0.8
 
 var total_jump_length = 0.0
@@ -30,6 +30,8 @@ var is_facing_right = true
 var cam_scale = 0.65
 var cam_pause = 0.0
 
+var floor_timer = 0.0
+var ghost_floor_time = 0.1
 var run_timer = 0.0
 
 var frame_name = 'base'
@@ -66,6 +68,9 @@ func _integrate_forces(s):
 	var floor_object = null
 	var floor_index = -1
 	
+	if floor_timer > 0.0:
+		floor_timer -= step
+	
 		
 	#lv.x -= floor_h_velocity
 	#floor_h_velocity = 0.0
@@ -80,6 +85,7 @@ func _integrate_forces(s):
 				#print("2nd contact", ci)
 			found_floor = true
 			floor_index = x
+			floor_timer = ghost_floor_time
 #			
 
 	# check input/keyboard state
@@ -338,8 +344,13 @@ func _integrate_forces(s):
 	elif is_falling:
 		jump_timer += 0.1
 		
+		if floor_timer > 0.0 and not was_jump_held and (walk_up or jump):
+			jump_count = 0
+			floor_timer = 0.0
+			init_jump(eff_jump_timer_default)
+			get_node("foot_dust").set_emitting(true)
 		
-		if jump_count < max_jump_count and jump_timer > eff_jump_timer_default * 0.25 and jump_timer < 3.0 and not was_jump_held and (walk_up or jump):
+		elif jump_count < max_jump_count and jump_timer > eff_jump_timer_default * 0.25 and jump_timer < 3.0 and not was_jump_held and (walk_up or jump):
 			init_jump(eff_jump_timer_default * 1.25)
 		else:
 			if jump_timer > eff_jump_timer_default * 0.3:

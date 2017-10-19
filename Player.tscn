@@ -40,13 +40,13 @@ shapes/0/trigger = false
 collision/layers = 4
 collision/mask = 3
 mode = 2
-mass = 10.0
+mass = 3.0
 friction = 0.5
 bounce = 0.0
 gravity_scale = 1.0
 custom_integrator = true
 continuous_cd = 0
-contacts_reported = 3
+contacts_reported = 5
 contact_monitor = false
 sleeping = false
 can_sleep = true
@@ -216,7 +216,7 @@ percent/visible = true
 
 [node name="throw_origin" type="Position2D" parent="."]
 
-transform/pos = Vector2( 21.5678, -15.4995 )
+transform/pos = Vector2( 21.5678, -10.4995 )
 
 [node name="drop_position" type="Position2D" parent="."]
 
