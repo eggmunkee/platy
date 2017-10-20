@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://spikes.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "automated"
+length = 5.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("spikes:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1.25, 2.5, 3.75, 5 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -12 ), Vector2( 0, -12 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="retracting_spikes" type="Node2D"]
+
+[node name="spikes" parent="." instance=ExtResource( 1 )]
+
+z/z = -1
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/automated = SubResource( 1 )
+next/automated = "automated"
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "automated"
+
+[connection signal="finished" from="anim" to="anim" method="play" binds= [ "\"automated\"" ]]
+
+

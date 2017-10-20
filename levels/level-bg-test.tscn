@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player_start.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://bottle_item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://level_exit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://torch_item.tscn" type="PackedScene" id=7]
+[ext_resource path="res://retracting_spikes.tscn" type="PackedScene" id=8]
 
 [node name="level" type="Node2D"]
 
@@ -237,7 +238,7 @@ transform/scale = Vector2( 5, 5 )
 
 [node name="player_start" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 2068.48, 596.523 )
+transform/pos = Vector2( 9326.81, 69.304 )
 
 [node name="switch_area" parent="." instance=ExtResource( 3 )]
 
@@ -266,6 +267,22 @@ transform/pos = Vector2( 8421.83, 332.922 )
 
 transform/pos = Vector2( 2358.86, 609.688 )
 is_on = true
+
+[node name="retracting_spikes" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 2359.2, 643.327 )
+
+[node name="retracting_spikes1" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 2419.2, 643.327 )
+
+[node name="retracting_spikes2" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 2479.2, 643.327 )
+
+[node name="retracting_spikes3" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 2299.2, 643.327 )
 
 [connection signal="switch_input" from="switch_area" to="wooden_door" method="set_open"]
 
