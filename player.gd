@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 const jump_timer_default = 2.5 #3.2   #2.5
-const walk_frame_rate = 5.0
+const walk_frame_rate = 8.0
 const throw_anim_length = 0.22  #0.4
 
 var gravity_ratio = 1.0
@@ -136,10 +136,10 @@ func _integrate_forces(s):
 		kill = false
 		
 		if is_facing_right:
-			if phys_rotation > -0.4:
+			if phys_rotation > -1.5 and phys_rotation < 1.5:
 				s.set_angular_velocity(rand_range(1.0,6.0))
 		else:
-			if phys_rotation < 0.4:
+			if phys_rotation < 1.5 and phys_rotation > -1.5:
 				s.set_angular_velocity(rand_range(-6.0,-1.0))
 
 	if kill:

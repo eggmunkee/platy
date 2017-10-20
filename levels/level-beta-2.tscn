@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://player_start.tscn" type="PackedScene" id=1]
 [ext_resource path="res://platform_wooden.tscn" type="PackedScene" id=2]
@@ -7,12 +7,13 @@
 [ext_resource path="res://level_exit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://rocks_item.tscn" type="PackedScene" id=6]
 [ext_resource path="res://spikes.tscn" type="PackedScene" id=7]
+[ext_resource path="res://torch_item.tscn" type="PackedScene" id=8]
 
 [node name="level" type="Node2D"]
 
 [node name="player_start" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 0, -40 )
+transform/pos = Vector2( 82.0003, -339.001 )
 
 [node name="entities" type="Node2D" parent="."]
 
@@ -38,8 +39,14 @@ transform/scale = Vector2( 2.09018, 1 )
 
 [node name="platform3" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -368.159, -160 )
-transform/scale = Vector2( 1.99504, 1 )
+transform/pos = Vector2( -267.601, -160 )
+transform/scale = Vector2( 1.00872, 1 )
+life = 1000
+
+[node name="platform5" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -523.601, -160 )
+transform/scale = Vector2( 1.00872, 1 )
 life = 1000
 
 [node name="platform4" parent="entities" instance=ExtResource( 2 )]
@@ -81,7 +88,7 @@ life = 1000
 
 [node name="platform16" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 32.6486, -230.504 )
+transform/pos = Vector2( 32.6486, -227.986 )
 transform/rot = 40.6654
 transform/scale = Vector2( 1.84664, 1 )
 life = 1000
@@ -244,5 +251,20 @@ transform/pos = Vector2( 479.889, -363.011 )
 [node name="spikes4" parent="entities" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 414.889, -363.011 )
+
+[node name="spikes6" parent="entities" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( -91.4364, -140.924 )
+transform/rot = 40.5964
+
+[node name="base 2" parent="entities" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 835.673, 258.378 )
+is_on = true
+
+[node name="base3" parent="entities" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 585.454, -540.515 )
+is_on = true
 
 

@@ -11,29 +11,28 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 scroll/offset = Vector2( 0, 0 )
-scroll/base_offset = Vector2( -900, -500 )
-scroll/base_scale = Vector2( 0.7, 0.2 )
-scroll/limit_begin = Vector2( -600, -900 )
-scroll/limit_end = Vector2( 6000, 4000 )
-scroll/ignore_camera_zoom = false
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 15250, 6000 )
+scroll/ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 
-motion/scale = Vector2( 0.1, 0.1 )
-motion/offset = Vector2( -200, -200 )
+motion/scale = Vector2( 0.05, 0.05 )
+motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer"]
 
-transform/pos = Vector2( 3.79443, 0 )
-transform/scale = Vector2( 1.5, 1.5 )
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 centered = false
 
 [node name="ParallaxLayer 2" type="ParallaxLayer" parent="."]
 
-motion/scale = Vector2( 0.2, 0.2 )
-motion/offset = Vector2( -200, -300 )
+motion/scale = Vector2( 0.1, 0.1 )
+motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer 2"]
@@ -41,12 +40,10 @@ motion/mirroring = Vector2( 0, 0 )
 transform/scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
 centered = false
-flip_v = true
 
 [node name="ParallaxLayer 3" type="ParallaxLayer" parent="."]
 
 visibility/visible = false
-transform/pos = Vector2( 0, -7.78125 )
 motion/scale = Vector2( 0.6, 0.6 )
 motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 0, 0 )

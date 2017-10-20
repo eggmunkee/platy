@@ -7,12 +7,12 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 9.91333
+radius = 8.0
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 3.38331, 7.56694 )
+extents = Vector2( 3.38331, 6.66081 )
 
 [node name="bottle" type="RigidBody2D"]
 
@@ -21,7 +21,7 @@ shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -1.88937, 2.73958 )
 shapes/0/trigger = false
 shapes/1/shape = SubResource( 2 )
-shapes/1/transform = Matrix32( 0.803607, 0.59516, -0.59516, 0.803607, 6.14043, -9.44682 )
+shapes/1/transform = Matrix32( 0.803608, 0.595159, -0.595159, 0.803608, 5.7698, -7.73037 )
 shapes/1/trigger = false
 collision/layers = 1
 collision/mask = 3
@@ -41,23 +41,27 @@ velocity/angular = 0.0
 damp_override/linear = -1.0
 damp_override/angular = -1.0
 script/script = ExtResource( 1 )
+unbreakable = false
 
 [node name="Sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( 0.174824, -1.92307 )
+transform/pos = Vector2( 0.139859, -1.53846 )
+transform/scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 transform/pos = Vector2( -1.88937, 2.73958 )
+transform/scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="CollisionShape2D 2" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 6.14043, -9.44682 )
+transform/pos = Vector2( 5.7698, -7.73037 )
 transform/rot = -36.524
+transform/scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 1

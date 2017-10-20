@@ -71,7 +71,7 @@ func load_level(name):
 		get_node("stage").remove_child(ch)
 	
 	# Add player
-	var player = preload("res://Player.tscn").instance()
+	var player = preload("res://player.tscn").instance()
 		
 	var level = null
 	
@@ -92,7 +92,7 @@ func load_level(name):
 	
 # Level loading methods - since resource names can't be variables ?!?!
 func load_level_1():
-	return load("res://levels/level-beta-1.tscn").instance()
+	return load("res://levels/level-bg-test.tscn").instance()
 	
 func load_level_2():
 	return load("res://levels/level-beta-2.tscn").instance()

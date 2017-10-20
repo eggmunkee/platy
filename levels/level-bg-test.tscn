@@ -1,0 +1,274 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player_start.tscn" type="PackedScene" id=2]
+[ext_resource path="res://switch_area_2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://wooden_door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://bottle_item.tscn" type="PackedScene" id=5]
+[ext_resource path="res://level_exit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://torch_item.tscn" type="PackedScene" id=7]
+
+[node name="level" type="Node2D"]
+
+[node name="platform" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 1287, 400 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform1" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 2737, 400 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform2" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 2017, 530 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform3" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 737.003, 670 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform10" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 943.209, 843.795 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform4" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 1067, 1160 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform11" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 777.003, 1480 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform12" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 1517, 1880 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform13" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 2417, 2330 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform14" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 3537, 2330 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform26" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 6447, 1900 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform15" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 4427, 2180 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform26 3" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 7337, 1750 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform16" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 5267, 2040 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform26 2" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 8177, 1610 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform17" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 4167, 1870 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform18" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 4027, 1730 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform19" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 5147, 1580 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform27" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 8737, 1470 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform28" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 7107, 1050 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform29" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 8837, 790 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform30" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 8837, 940 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform20" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 5697, 1470 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform27 2" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 9287, 1360 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform273" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 7657, 940 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform276 2" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 9387, 680 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform21" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 5367, 1320 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform27 3" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 8957, 1210 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform274" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 7327, 790 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform276" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 9057, 530 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform22" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 5177, 1180 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform27 4" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 8767, 1070 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform275" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 7137, 650 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform277" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 5927, 500 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform278" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 4787, 440 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform279" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 3897, 330 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform276 3" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 8867, 390 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform23" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 4547, 1060 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform24" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 4067, 950 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform25" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 3857, 840 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform5" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 1997, 1050 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform6" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 2927, 940 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform7" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 3107, 840 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform8" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 3227, 740 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="platform9" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 2087, 660 )
+transform/scale = Vector2( 5, 5 )
+
+[node name="player_start" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 2068.48, 596.523 )
+
+[node name="switch_area" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1969.19, 595.34 )
+is_on = true
+
+[node name="wooden_door" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1892.23, 594.767 )
+transform/scale = Vector2( -0.65, 0.65 )
+
+[node name="wooden_door1" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2134.81, 594.895 )
+transform/scale = Vector2( 0.65, 0.65 )
+
+[node name="bottle_item" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1930.46, 613.42 )
+
+[node name="level_exit" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 8421.83, 332.922 )
+
+[node name="base" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 2358.86, 609.688 )
+is_on = true
+
+[connection signal="switch_input" from="switch_area" to="wooden_door" method="set_open"]
+
+[connection signal="switch_input" from="switch_area" to="wooden_door1" method="set_closed"]
+
+

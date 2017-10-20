@@ -24,13 +24,15 @@ func _fixed_process(delta):
 		burn_time -= delta
 		
 		if burn_time < 0.25:
-			var colliders = get_colliding_bodies()
-			
-			for body in colliders:
-				if body extends get_script() or body extends preload("res://crate.gd") or body extends preload("res://oil_proj.gd"):
-					body.burn()
-				elif body extends preload("res://bottle_proj.gd"):
-					body.freeze = true
+			pass
+#			var colliders = get_colliding_bodies()
+#			self.get_shape(0).collide(
+#			
+#			for body in colliders:
+#				if body extends get_script() or body extends preload("res://crate.gd") or body extends preload("res://oil_proj.gd"):
+#					body.burn()
+#				elif body extends preload("res://bottle_proj.gd"):
+#					body.freeze = true
 	
 
 func damage(amount):
