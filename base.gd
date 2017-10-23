@@ -12,7 +12,7 @@ var need_next_level = false
 
 export var current_level = 1
 
-var level_list = ["level-2","level-1","level-beta-1", "level-beta-2", "SillyTestLevel"]
+var level_list = ["level-1","level-2","level-beta-1", "level-beta-2", "SillyTestLevel", "level-bg-test"]
 
 func _ready():
 	# Called every time the node is added to the scene.
