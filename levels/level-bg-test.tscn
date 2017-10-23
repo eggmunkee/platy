@@ -238,7 +238,7 @@ transform/scale = Vector2( 5, 5 )
 
 [node name="player_start" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 9326.81, 69.304 )
+transform/pos = Vector2( 2010.69, 597.636 )
 
 [node name="switch_area" parent="." instance=ExtResource( 3 )]
 

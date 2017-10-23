@@ -1,23 +1,22 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://player_cam.tscn" type="PackedScene" id=2]
-[ext_resource path="res://based-stickman-1-base-1.png" type="Texture" id=3]
-[ext_resource path="res://based-stickman-1-base-2.png" type="Texture" id=4]
-[ext_resource path="res://based-stickman-1-base-3.png" type="Texture" id=5]
-[ext_resource path="res://based-stickman-1-base-4.png" type="Texture" id=6]
+[ext_resource path="res://char_base.png" type="Texture" id=3]
+[ext_resource path="res://char_walk.png" type="Texture" id=4]
+[ext_resource path="res://char_jump.png" type="Texture" id=5]
+[ext_resource path="res://char_fall.png" type="Texture" id=6]
 [ext_resource path="res://dust-cloud-1.png" type="Texture" id=7]
-[ext_resource path="res://based-stickman-1-action-1.png" type="Texture" id=8]
-[ext_resource path="res://based-stickman-1-action-3.png" type="Texture" id=9]
-[ext_resource path="res://based-stickman-1-action-2.png" type="Texture" id=10]
-[ext_resource path="res://rock.png" type="Texture" id=11]
-[ext_resource path="res://torch.tscn" type="PackedScene" id=12]
-[ext_resource path="res://bottle.tscn" type="PackedScene" id=13]
+[ext_resource path="res://char_arms_base.png" type="Texture" id=8]
+[ext_resource path="res://char_arms_attack.png" type="Texture" id=9]
+[ext_resource path="res://rock.png" type="Texture" id=10]
+[ext_resource path="res://torch.tscn" type="PackedScene" id=11]
+[ext_resource path="res://bottle.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 3.24252, 9.66345 )
+extents = Vector2( 2.69418, 6.20997 )
 
 [sub_resource type="ColorRamp" id=2]
 
@@ -27,15 +26,14 @@ colors = ColorArray( 1, 1, 1, 1, 0.316406, 0.244238, 0.224945, 0 )
 [sub_resource type="CapsuleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 12.1147
-height = 16.8634
+radius = 6.71972
+height = 9.44128
 
 [node name="player" type="RigidBody2D"]
 
-transform/pos = Vector2( 479.527, -2289.41 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 2.92425, 0, 0, 3.06113, 0, 0 )
+shapes/0/transform = Matrix32( 2.92425, 0, 0, 3.06113, 0, -0.999999 )
 shapes/0/trigger = false
 collision/layers = 4
 collision/mask = 3
@@ -64,6 +62,7 @@ has_bottle = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+transform/pos = Vector2( 0, -0.999999 )
 transform/scale = Vector2( 2.92425, 3.06113 )
 shape = SubResource( 1 )
 trigger = false
@@ -73,35 +72,34 @@ _update_shape_index = 0
 
 [node name="body" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="body_base" type="Sprite" parent="body"]
 
-transform/scale = Vector2( 0.15, 0.14 )
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="body_walk" type="Sprite" parent="body"]
 
 visibility/visible = false
-transform/scale = Vector2( 0.15, 0.14 )
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="body_jump" type="Sprite" parent="body"]
 
 visibility/visible = false
-transform/scale = Vector2( 0.15, 0.14 )
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="body_fall" type="Sprite" parent="body"]
 
 visibility/visible = false
-transform/scale = Vector2( 0.15, 0.14 )
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 
 [node name="foot_dust" type="Particles2D" parent="."]
 
+visibility/visible = false
 visibility/opacity = 0.8
-transform/pos = Vector2( 0.269257, 22.1938 )
+transform/pos = Vector2( 0.269257, 15.1938 )
 config/amount = 15
 config/lifetime = 0.8
 config/emit_timeout = 0.1
@@ -138,7 +136,7 @@ color/color_ramp = SubResource( 2 )
 
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 14.8425, -12.4236 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 12.5674, -10.5692 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -148,50 +146,46 @@ collision/mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arms/Area2D"]
 
-transform/pos = Vector2( 14.8425, -12.4236 )
+transform/pos = Vector2( 12.5674, -10.5692 )
 shape = SubResource( 3 )
 trigger = true
 _update_shape_index = 0
 
 [node name="arms_base" type="Sprite" parent="arms"]
 
-transform/pos = Vector2( -2.11783, -20.7783 )
-transform/scale = Vector2( 0.15, 0.15 )
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
-offset = Vector2( 37.8516, -1.02539 )
 
 [node name="arms_walk" type="Sprite" parent="arms"]
 
 visibility/visible = false
-transform/pos = Vector2( 4.84149, -19.6509 )
-transform/scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 9 )
+transform/scale = Vector2( 2, 2 )
 
 [node name="arms_attack" type="Sprite" parent="arms"]
 
 visibility/visible = false
-transform/pos = Vector2( 16.2332, -20.3628 )
-transform/scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 10 )
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
 
 [node name="rocks" type="Node2D" parent="arms"]
 
-transform/pos = Vector2( -3.84616, -6.2937 )
-
 [node name="rock_1" type="Sprite" parent="arms/rocks"]
 
-transform/pos = Vector2( 17.9189, -7.78931 )
-transform/scale = Vector2( 0.55, 0.55 )
-texture = ExtResource( 11 )
+transform/pos = Vector2( 7.9189, -2.78931 )
+transform/scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 10 )
 
-[node name="torch" parent="arms" instance=ExtResource( 12 )]
+[node name="torch" parent="arms" instance=ExtResource( 11 )]
 
-transform/pos = Vector2( 16.8174, -21.1086 )
-
-[node name="bottle" parent="arms" instance=ExtResource( 13 )]
-
-transform/pos = Vector2( 14.7221, -15.3032 )
+visibility/visible = false
+transform/pos = Vector2( 13.8174, -6.1086 )
 transform/scale = Vector2( 0.75, 0.75 )
+
+[node name="bottle" parent="arms" instance=ExtResource( 12 )]
+
+visibility/visible = false
+transform/pos = Vector2( 10.7221, -3.73039 )
+transform/scale = Vector2( 0.5, 0.5 )
 monitoring = false
 
 [node name="space_time" type="ProgressBar" parent="."]
@@ -216,11 +210,11 @@ percent/visible = true
 
 [node name="throw_origin" type="Position2D" parent="."]
 
-transform/pos = Vector2( 21.5678, -10.4995 )
+transform/pos = Vector2( 13.5678, -4.4995 )
 
 [node name="drop_position" type="Position2D" parent="."]
 
-transform/pos = Vector2( -36.4886, 14.8101 )
+transform/pos = Vector2( -26.4886, 6.8101 )
 
 [connection signal="body_enter" from="arms/Area2D" to="." method="_on_Area2D_body_enter"]
 

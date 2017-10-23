@@ -5,7 +5,7 @@ const walk_frame_rate = 8.0
 const throw_anim_length = 0.22  #0.4
 
 var gravity_ratio = 1.0
-var max_fall_length = 25.0
+var max_fall_length = 15.0
 
 # class member variables go here, for example:
 # var a = 2
@@ -27,7 +27,7 @@ var min_jump_length = 15.0
 var lock_jump_x = 0.0
 #var floor_h_velocity = 0.0
 var is_facing_right = true
-var cam_scale = 0.6
+var cam_scale = 0.75
 var cam_pause = 0.0
 
 var floor_timer = 0.0
@@ -41,6 +41,7 @@ var arms_frame_timer = 0.0
 
 var is_alive = true
 var kill_timer = 5.0
+var kill_flash = 0.0
 
 var grav_timer = 0.0
 
@@ -56,6 +57,22 @@ var was_jump_held = false
 var was_shoot_held = false
 var was_up_grav_down = false
 var was_throw_held = false
+var was_kill_held = false
+
+var was_respawn = false
+
+func respawn():
+	has_rocks = false
+	has_bottle = false
+	has_torch = false
+	is_alive = true
+	kill_timer = 5.0
+	set_mode(MODE_CHARACTER)
+	set_rot(0.0)
+	set_angular_velocity(0.0)
+	set_linear_velocity(Vector2(0.0,0.0))
+	was_respawn = true
+	
 
 func _integrate_forces(s):
 
@@ -64,6 +81,15 @@ func _integrate_forces(s):
 	
 	var phys_rotation = s.get_transform().get_rotation()
 	var is_tilted = abs(phys_rotation) > 0.7
+	
+	if was_respawn:
+		var curr_loc = s.get_transform().get_origin()
+		s.set_transform(Matrix32(0.0, curr_loc))
+		s.set_angular_velocity(0.0)
+		s.set_linear_velocity(Vector2(0.0, 0.0))
+		lv = Vector2(0.0,0.0)
+		initial_y = lv.y
+		was_respawn = false
 
 	#if not is_jumping:
 	#lv.y = 0.0
@@ -133,7 +159,6 @@ func _integrate_forces(s):
 		jump = false
 		shoot = false
 		throw = false
-		kill = false
 		
 		if is_facing_right:
 			if phys_rotation > -1.5 and phys_rotation < 1.5:
@@ -142,8 +167,11 @@ func _integrate_forces(s):
 			if phys_rotation < 1.5 and phys_rotation > -1.5:
 				s.set_angular_velocity(rand_range(-6.0,-1.0))
 
-	if kill:
-		kill()
+	if not was_kill_held and kill:
+		if is_alive:
+			kill()
+		else:
+			kill_timer = -1.0
 
 	if increase_grav and not was_up_grav_down:
 		gravity_ratio *= 1.50
@@ -255,7 +283,7 @@ func _integrate_forces(s):
 			arms_frame_name = 'attack'
 			arms_frame_timer = throw_anim_length * 2.0
 		elif has_torch and shoot:
-			arms_frame_name = 'walk'
+			arms_frame_name = 'attack'
 		else:
 			arms_frame_name = 'base'
 		
@@ -277,9 +305,10 @@ func _integrate_forces(s):
 			var speed_diff = eff_move_speed - eff_slow_walk_speed
 			eff_move_speed = eff_slow_walk_speed + speed_diff * (run_timer / 0.5)
 		
-		if walk_left and not is_tilted:
+		if walk_left: # and not is_tilted:
 			lv.x += step * (-1.0 * eff_move_speed)
-			if is_facing_right and is_alive:
+			lv.y -= step * (0.5)
+			if is_facing_right: # and is_alive:
 				is_facing_right = false
 				var scale = get_node("body").get_scale()
 				scale.x = -1.0 * abs(scale.x)
@@ -289,9 +318,10 @@ func _integrate_forces(s):
 				get_node("arms").set_scale(scale)
 				if not (is_falling or is_jumping):
 					get_node("foot_dust").set_emitting(true)
-		if walk_right and not is_tilted:
+		if walk_right: # and not is_tilted:
 			lv.x += step * (eff_move_speed)
-			if not is_facing_right and is_alive:
+			lv.y -= step * (0.5)
+			if not is_facing_right: # and is_alive:
 				is_facing_right = true
 				var scale = get_node("body").get_scale()
 				scale.x = 1.0 * abs(scale.x)
@@ -389,6 +419,7 @@ func _integrate_forces(s):
 	was_up_grav_down = increase_grav
 	was_shoot_held = shoot
 	was_throw_held = throw
+	was_kill_held = kill
 	
 	# Handle camera scaling based on movement/jumping state if it were enabled 
 #	var cam_scale_step = 0.001
@@ -421,6 +452,7 @@ func _integrate_forces(s):
 #				cam_pause = 5.5
 		
 	get_node("player_cam").set_zoom(Vector2(cam_scale, cam_scale))
+	#get_node("player_cam/ui").set_scale(Vector2(cam_scale, cam_scale))
 
 	# Update player frame
 	update_frame()
@@ -481,7 +513,7 @@ func _kill():
 		set_mode(MODE_RIGID)
 		#set_use_custom_integrator(false)
 		
-		apply_impulse(Vector2(0.0,0.0), Vector2(rand_range(-15000.0,15000.0),rand_range(-500.0,500.0)))
+		#apply_impulse(Vector2(0.0,0.0), Vector2(rand_range(-15000.0,15000.0),rand_range(-500.0,500.0)))
 		
 		drop_torch()
 		drop_rocks()
@@ -509,7 +541,7 @@ func _ready():
 	# Initialization here
 	set_fixed_process(true)
 	
-	get_node("player_cam").make_current()
+	#get_node("player_cam").make_current()
 	get_node("player_cam").set_scale(Vector2(cam_scale, cam_scale))
 
 func init_jump(jump_timer_length):
@@ -535,9 +567,17 @@ func _fixed_process(delta):
 	
 	if not is_alive:
 		kill_timer -= delta
+		kill_flash -= delta
+		
+		if kill_flash < 0.0:
+			kill_flash = 0.15
+		elif kill_flash < 0.06:
+			show()
+		else:
+			hide()
 		
 		if kill_timer < 0.0:
-			get_node("/root/world").restart_level()
+			get_node("/root/world").call_deferred("restart_level")
 	
 func can_pickup_item(new_item):
 	

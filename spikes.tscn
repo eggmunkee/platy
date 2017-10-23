@@ -6,7 +6,7 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 28, -2, 32, 10, -32, 10, -28, -2 )
+points = Vector2Array( 28, -2, 30, 8, -30, 8, -28, -2 )
 
 [node name="spikes" type="Area2D"]
 

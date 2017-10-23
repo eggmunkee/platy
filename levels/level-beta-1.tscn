@@ -17,6 +17,9 @@
 
 [node name="solid" type="Node2D" parent="."]
 
+editor/display_folded = true
+transform/pos = Vector2( 1060, 980 )
+
 [node name="platform" parent="solid" instance=ExtResource( 1 )]
 
 transform/pos = Vector2( -29.9595, 15.0448 )
@@ -160,6 +163,9 @@ transform/pos = Vector2( -444.679, -569.687 )
 transform/rot = 90.0
 
 [node name="entities" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1060, 980 )
 
 [node name="crate" parent="entities" instance=ExtResource( 2 )]
 
@@ -342,7 +348,7 @@ transform/pos = Vector2( 206.191, 111.946 )
 
 [node name="player_start" parent="." instance=ExtResource( 12 )]
 
-transform/pos = Vector2( 107.377, -648.435 )
+transform/pos = Vector2( 1167.38, 331.565 )
 
 [connection signal="switch_input" from="entities/switch_area" to="entities/oil_leak" method="input_value"]
 

@@ -1,0 +1,147 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://player_start.tscn" type="PackedScene" id=1]
+[ext_resource path="res://platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level_exit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://crate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://rocks_item.tscn" type="PackedScene" id=5]
+[ext_resource path="res://torch_item.tscn" type="PackedScene" id=6]
+
+[node name="level" type="Node2D"]
+
+[node name="player_start" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 420.322, 374.989 )
+
+[node name="static" type="Node2D" parent="."]
+
+[node name="platform" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 270, 3310 )
+transform/rot = 90.0
+transform/scale = Vector2( 30, 1 )
+
+[node name="platform1" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 560, 3310 )
+transform/rot = 90.0
+transform/scale = Vector2( 30, 1 )
+
+[node name="platform 2" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 415, 310 )
+transform/scale = Vector2( 1.5, 1 )
+
+[node name="platform3" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 415, 6312 )
+transform/scale = Vector2( 1.5, 1 )
+
+[node name="platform 3" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 420.134, 398.561 )
+transform/scale = Vector2( 0.5, 1 )
+
+[node name="platform4" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 510.134, 908.561 )
+transform/scale = Vector2( 0.5, 1 )
+
+[node name="platform6" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 320.134, 2458.56 )
+transform/scale = Vector2( 0.5, 1 )
+
+[node name="platform7" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 320.134, 3018.56 )
+transform/scale = Vector2( 0.5, 1 )
+
+[node name="platform9" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 420.134, 3698.56 )
+transform/scale = Vector2( 0.5, 1 )
+
+[node name="platform10" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 410.134, 3948.56 )
+transform/scale = Vector2( 0.5, 1 )
+
+[node name="entities" type="Node2D" parent="."]
+
+[node name="level_exit" parent="entities" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 413.934, 6275.05 )
+
+[node name="crate" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 479.837, 881.888 )
+
+[node name="crate3 2" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 352.49, 2431.04 )
+
+[node name="crate33" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 338.886, 2990.16 )
+
+[node name="crate35" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 436.438, 3921.43 )
+
+[node name="crate1" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 479.837, 838.659 )
+
+[node name="crate3" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 352.49, 2387.81 )
+
+[node name="crate4" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 338.886, 2946.93 )
+
+[node name="crate5" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 436.438, 3878.2 )
+
+[node name="crate2" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 465.788, 795.431 )
+
+[node name="crate6" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 465.788, 372.431 )
+
+[node name="crate3 3" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 338.44, 2344.58 )
+
+[node name="crate34" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 324.836, 2903.7 )
+
+[node name="crate35 2" parent="entities" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 422.389, 3834.97 )
+
+[node name="base" parent="entities" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 298.437, 2992.65 )
+
+[node name="base 2" parent="entities" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 446.322, 2624.87 )
+is_on = true
+
+[node name="base3" parent="entities" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 526.322, 2514.87 )
+is_on = true
+
+[node name="base4" parent="entities" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 486.322, 2574.87 )
+is_on = true
+
+

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://base.gd" type="Script" id=1]
-[ext_resource path="res://blue-cloudy-plx-bg.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://blue-cloudy-plx-bg.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=4]
 
 [node name="world" type="Node2D"]
 
@@ -13,6 +15,69 @@ current_level = 1
 
 process/pause_mode = 1
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+[node name="player" parent="stage" instance=ExtResource( 2 )]
+
+has_torch = true
+has_bottle = true
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="top_panel" type="Panel" parent="ui"]
+
+visibility/self_opacity = 0.5
+rect/min_size = Vector2( 500, 80 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 607.0
+margin/bottom = 87.0
+
+[node name="ui" parent="ui/top_panel" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 42.9538, 41.8979 )
+
+[node name="Label" type="Label" parent="ui/top_panel"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 74.0
+margin/top = 26.0
+margin/right = 108.0
+margin/bottom = 40.0
+text = "LVL"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="level_num" type="Label" parent="ui/top_panel"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 144.0
+margin/top = 26.0
+margin/right = 162.0
+margin/bottom = 40.0
+text = "99"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
