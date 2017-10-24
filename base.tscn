@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://base.gd" type="Script" id=1]
-[ext_resource path="res://player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://blue-cloudy-plx-bg.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui.tscn" type="PackedScene" id=4]
+[ext_resource path="res://blue-cloudy-plx-bg.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=3]
 
 [node name="world" type="Node2D"]
 
@@ -15,12 +14,7 @@ current_level = 1
 
 process/pause_mode = 1
 
-[node name="player" parent="stage" instance=ExtResource( 2 )]
-
-has_torch = true
-has_bottle = true
-
-[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
 
 [node name="ui" type="CanvasLayer" parent="."]
 
@@ -42,7 +36,7 @@ margin/top = 7.0
 margin/right = 607.0
 margin/bottom = 87.0
 
-[node name="ui" parent="ui/top_panel" instance=ExtResource( 4 )]
+[node name="ui" parent="ui/top_panel" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 42.9538, 41.8979 )
 

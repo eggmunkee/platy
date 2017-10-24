@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player_start.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://level_exit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://torch_item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://retracting_spikes.tscn" type="PackedScene" id=8]
+[ext_resource path="res://crate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://spikes.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sign-right-arrow.png" type="Texture" id=11]
 
 [node name="level" type="Node2D"]
 
@@ -28,17 +31,12 @@ transform/scale = Vector2( 5, 5 )
 
 [node name="platform3" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 737.003, 670 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform10" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 943.209, 843.795 )
+transform/pos = Vector2( 967.003, 660 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform4" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 1067, 1160 )
+transform/pos = Vector2( 1067, 1220 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform11" parent="." instance=ExtResource( 1 )]
@@ -53,7 +51,7 @@ transform/scale = Vector2( 5, 5 )
 
 [node name="platform13" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 2417, 2330 )
+transform/pos = Vector2( 2307, 2330 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform14" parent="." instance=ExtResource( 1 )]
@@ -63,7 +61,7 @@ transform/scale = Vector2( 5, 5 )
 
 [node name="platform26" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 6447, 1900 )
+transform/pos = Vector2( 6537, 1900 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform15" parent="." instance=ExtResource( 1 )]
@@ -78,97 +76,42 @@ transform/scale = Vector2( 5, 5 )
 
 [node name="platform16" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 5267, 2040 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform26 2" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 8177, 1610 )
+transform/pos = Vector2( 5167, 2040 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform17" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 4167, 1870 )
+transform/pos = Vector2( 4157, 1900 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform18" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 4027, 1730 )
+transform/pos = Vector2( 4017, 1760 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform19" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 5147, 1580 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform27" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 8737, 1470 )
+transform/pos = Vector2( 5167, 1680 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform28" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 7107, 1050 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform29" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 8837, 790 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform30" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 8837, 940 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform20" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 5697, 1470 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform27 2" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 9287, 1360 )
+transform/pos = Vector2( 5577, 1070 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform273" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 7657, 940 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform276 2" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 9387, 680 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform21" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 5367, 1320 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform27 3" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 8957, 1210 )
+transform/pos = Vector2( 6127, 960 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform274" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 7327, 790 )
+transform/pos = Vector2( 5797, 810 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform276" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 9057, 530 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform22" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 5177, 1180 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform27 4" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 8767, 1070 )
+transform/pos = Vector2( 7167, 1610 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform275" parent="." instance=ExtResource( 1 )]
@@ -193,43 +136,34 @@ transform/scale = Vector2( 5, 5 )
 
 [node name="platform276 3" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 8867, 390 )
+transform/pos = Vector2( 6977, 1470 )
+transform/scale = Vector2( 5, 5 )
+friction = 0.8
+
+[node name="platform27" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 4417, 1070 )
 transform/scale = Vector2( 5, 5 )
 
-[node name="platform23" parent="." instance=ExtResource( 1 )]
+[node name="platform29" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 4547, 1060 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform24" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 4067, 950 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform25" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 3857, 840 )
+transform/pos = Vector2( 3257, 1070 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform5" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 1997, 1050 )
+transform/pos = Vector2( 1997, 1070 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform6" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 2927, 940 )
+transform/pos = Vector2( 2657, 960 )
 transform/scale = Vector2( 5, 5 )
 
 [node name="platform7" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 3107, 840 )
-transform/scale = Vector2( 5, 5 )
-
-[node name="platform8" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 3227, 740 )
-transform/scale = Vector2( 5, 5 )
+transform/pos = Vector2( 2757, 850 )
+transform/scale = Vector2( 3, 2 )
 
 [node name="platform9" parent="." instance=ExtResource( 1 )]
 
@@ -238,11 +172,11 @@ transform/scale = Vector2( 5, 5 )
 
 [node name="player_start" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 2010.69, 597.636 )
+transform/pos = Vector2( 1619.94, 996.393 )
 
 [node name="switch_area" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1969.19, 595.34 )
+transform/pos = Vector2( 1968.65, 595.34 )
 is_on = true
 
 [node name="wooden_door" parent="." instance=ExtResource( 4 )]
@@ -261,11 +195,16 @@ transform/pos = Vector2( 1930.46, 613.42 )
 
 [node name="level_exit" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 8421.83, 332.922 )
+transform/pos = Vector2( 6591.83, 1412.92 )
 
 [node name="base" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 2358.86, 609.688 )
+is_on = true
+
+[node name="base1" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 2921.08, 2335.27 )
 is_on = true
 
 [node name="retracting_spikes" parent="." instance=ExtResource( 8 )]
@@ -283,6 +222,381 @@ transform/pos = Vector2( 2479.2, 643.327 )
 [node name="retracting_spikes3" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 2299.2, 643.327 )
+
+[node name="crate" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 2194.56, 482.991 )
+
+[node name="crate34" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 1218.88, 1432.7 )
+
+[node name="crate35" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 1175.88, 1432.7 )
+
+[node name="crate37" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 1132.88, 1432.7 )
+
+[node name="crate38" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 1089.88, 1432.7 )
+
+[node name="crate39" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 1046.88, 1432.7 )
+
+[node name="crate36" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 604.563, 1172.58 )
+
+[node name="crate1" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 2580.32, 612.713 )
+
+[node name="crate32" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 2576.32, 570.713 )
+
+[node name="crate33" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 2574.32, 528.713 )
+
+[node name="crate2" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5421.48, 453.117 )
+
+[node name="crate3" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5463.77, 453.117 )
+
+[node name="crate7" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6413.77, 453.117 )
+
+[node name="crate4" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5442.09, 410.404 )
+
+[node name="crate5" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5733.08, 913.811 )
+
+[node name="crate6" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5785.13, 913.811 )
+
+[node name="crate8" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6564.45, 1423.65 )
+friction = 0.99
+
+[node name="crate29" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6521.45, 1423.65 )
+friction = 0.99
+
+[node name="crate30" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6527.45, 1380.65 )
+friction = 0.99
+
+[node name="crate31" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6533.45, 1337.65 )
+friction = 0.99
+
+[node name="crate9" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6570.92, 1381.27 )
+friction = 0.99
+
+[node name="crate10" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6620.43, 1423.65 )
+friction = 0.99
+
+[node name="crate24" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6748.43, 1423.65 )
+friction = 0.99
+
+[node name="crate11" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6612.98, 1381.27 )
+friction = 0.99
+
+[node name="crate25 2" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6739.98, 1381.27 )
+friction = 0.99
+
+[node name="crate253" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6704.98, 1338.27 )
+friction = 0.99
+
+[node name="crate255 2" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6691.98, 1295.27 )
+friction = 0.99
+
+[node name="crate2553" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6564.98, 1295.27 )
+friction = 0.99
+
+[node name="crate12" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6662.48, 1423.97 )
+friction = 0.99
+
+[node name="crate24 2" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6790.48, 1423.97 )
+friction = 0.99
+
+[node name="crate13" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6655.37, 1381.27 )
+friction = 0.99
+
+[node name="crate25" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6782.37, 1381.27 )
+friction = 0.99
+
+[node name="crate26" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6747.37, 1338.27 )
+friction = 0.99
+
+[node name="crate27" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6734.37, 1295.27 )
+friction = 0.99
+
+[node name="crate28" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6607.37, 1295.27 )
+friction = 0.99
+
+[node name="crate14" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6576.42, 1338.88 )
+friction = 0.99
+
+[node name="crate19" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5206.42, 1633.88 )
+
+[node name="crate20" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5163.42, 1633.88 )
+
+[node name="crate21" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5119.42, 1633.88 )
+
+[node name="crate22" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5076.42, 1633.88 )
+
+[node name="crate23" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 5189.42, 1590.88 )
+
+[node name="crate15" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6619.13, 1338.56 )
+friction = 0.99
+
+[node name="crate16" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6661.51, 1338.56 )
+friction = 0.99
+
+[node name="crate17" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6705.84, 1423.97 )
+friction = 0.99
+
+[node name="crate24 3" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6833.84, 1423.97 )
+friction = 0.99
+
+[node name="crate18" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6697.43, 1381.59 )
+friction = 0.99
+
+[node name="crate25 3" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6824.43, 1381.59 )
+friction = 0.99
+
+[node name="crate254" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6789.43, 1338.59 )
+friction = 0.99
+
+[node name="crate255" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6776.43, 1295.59 )
+friction = 0.99
+
+[node name="crate257" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6876.43, 1423.59 )
+friction = 0.99
+
+[node name="crate258" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6866.43, 1381.59 )
+friction = 0.99
+
+[node name="crate259" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6832.43, 1338.59 )
+friction = 0.99
+
+[node name="crate260" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6819.43, 1295.59 )
+friction = 0.99
+
+[node name="crate256" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 6649.43, 1295.59 )
+friction = 0.99
+
+[node name="spikes" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 5342.98, 553.817 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes10" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 3976.32, 479.106 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes1" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 6230.8, 564.98 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes9" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 7859.07, 709.133 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes6" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 6260.8, 1122.19 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes11" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 6880.8, 1122.19 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes12" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 6880.8, 1170.19 )
+transform/scale = Vector2( 10, -3 )
+
+[node name="spikes13" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 6260.8, 1170.19 )
+transform/scale = Vector2( 10, -3 )
+
+[node name="spikes7" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 5000.8, 1122.19 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes14" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 2920.8, 2382.19 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes8" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 3840.8, 1122.19 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes2" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 3314.08, 479.588 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes3" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 1531.54, 717.413 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes4" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 331.544, 717.413 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="spikes5" parent="." instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 2581.54, 717.413 )
+transform/scale = Vector2( 10, 3 )
+
+[node name="sign" type="Sprite" parent="."]
+
+transform/pos = Vector2( 2315.79, 358.972 )
+z/z = -1
+texture = ExtResource( 11 )
+
+[node name="sign4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 5887.8, 459.274 )
+z/z = -1
+texture = ExtResource( 11 )
+
+[node name="sign5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 7109.17, 609.539 )
+transform/scale = Vector2( -1, 1 )
+z/z = -1
+texture = ExtResource( 11 )
+
+[node name="sign1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 2665.79, 918.972 )
+transform/scale = Vector2( -1, 1 )
+z/z = -1
+texture = ExtResource( 11 )
+
+[node name="sign2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 1045.79, 1178.97 )
+transform/scale = Vector2( -1, 1 )
+z/z = -1
+texture = ExtResource( 11 )
+
+[node name="sign3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 785.794, 1438.97 )
+z/z = -1
+texture = ExtResource( 11 )
+
+[node name="sign6" type="Sprite" parent="."]
+
+transform/pos = Vector2( 1515.79, 1838.97 )
+z/z = -1
+texture = ExtResource( 11 )
+
+[node name="sign7" type="Sprite" parent="."]
+
+transform/pos = Vector2( 2305.79, 2288.97 )
+z/z = -1
+texture = ExtResource( 11 )
 
 [connection signal="switch_input" from="switch_area" to="wooden_door" method="set_open"]
 

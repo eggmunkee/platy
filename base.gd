@@ -144,6 +144,8 @@ func _real_load():
 	
 		get_node("stage").add_child(level)
 		get_node("stage").add_child(player)
+		
+		player.get_node("player_cam").make_current()
 			
 		player.set_pos(level.get_node("player_start").get_pos())
 		#player.respawn()

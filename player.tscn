@@ -70,6 +70,8 @@ _update_shape_index = 0
 
 [node name="player_cam" parent="." instance=ExtResource( 2 )]
 
+visibility/visible = false
+
 [node name="body" type="Node2D" parent="."]
 
 [node name="body_base" type="Sprite" parent="body"]
