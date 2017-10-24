@@ -576,10 +576,14 @@ func _fixed_process(delta):
 	if not is_alive:
 		kill_timer -= delta
 		kill_flash -= delta
-		get_node("blood_effect").set_emitting(true)
 		var rot = get_rot()
 	
 		get_node("blood_effect").set_rot(-rot)
+		
+		if kill_timer > 1.5:
+			get_node("blood_effect").set_emitting(true)
+		else:
+			get_node("blood_effect").set_emitting(false)
 		
 		if kill_timer < 4.5:
 		
