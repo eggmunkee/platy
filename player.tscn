@@ -74,6 +74,8 @@ visibility/visible = false
 
 [node name="body" type="Node2D" parent="."]
 
+editor/display_folded = true
+
 [node name="body_base" type="Sprite" parent="body"]
 
 transform/scale = Vector2( 2, 2 )
@@ -133,6 +135,8 @@ randomness/initial_angle = 1.0
 color/color_ramp = SubResource( 2 )
 
 [node name="arms" type="Node2D" parent="."]
+
+editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="arms"]
 
@@ -217,6 +221,34 @@ transform/pos = Vector2( 13.5678, -4.4995 )
 [node name="drop_position" type="Position2D" parent="."]
 
 transform/pos = Vector2( -26.4886, 6.8101 )
+
+[node name="blood_effect" type="Particles2D" parent="."]
+
+config/amount = 15
+config/lifetime = 1.0
+config/emitting = false
+config/process_mode = 1
+config/half_extents = Vector2( 8, 8 )
+config/local_space = false
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 9.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 2.0
+params/final_size = 3.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/initial_size = 0.3
+randomness/final_size = 0.3
+color/color = Color( 0.414062, 0.011322, 0.011322, 0.814196 )
 
 [connection signal="body_enter" from="arms/Area2D" to="." method="_on_Area2D_body_enter"]
 

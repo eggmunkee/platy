@@ -53,11 +53,12 @@ export var has_bottle = false
 
 
 # key flags
-var was_jump_held = false
-var was_shoot_held = false
-var was_up_grav_down = false
-var was_throw_held = false
-var was_kill_held = false
+# Init all to true to avoid any initally held key acting
+var was_jump_held = true
+var was_shoot_held = true
+var was_up_grav_down = true
+var was_throw_held = true
+var was_kill_held = true
 
 var was_respawn = false
 
@@ -151,12 +152,13 @@ func _integrate_forces(s):
 
 	
 	if not is_alive:
-		if kill_timer < 3.0:
+		if kill_timer < 3.1:
+			jump = false
+		if kill_timer < 2.3:
 			walk_left = false
 			walk_right = false
 		walk_up = false
 		walk_down = false
-		jump = false
 		shoot = false
 		throw = false
 		
@@ -171,7 +173,7 @@ func _integrate_forces(s):
 		if is_alive:
 			kill()
 		else:
-			kill_timer = -1.0
+			kill_timer = 0.0
 
 	if increase_grav and not was_up_grav_down:
 		gravity_ratio *= 1.50
@@ -197,6 +199,9 @@ func _integrate_forces(s):
 	var eff_jump_timer_default = jump_timer_default * gravity_ratio
 	var eff_move_speed = base_move_speed
 	var eff_slow_walk_speed = slow_walk_ratio * eff_move_speed
+	
+	if not is_alive:
+		eff_jump_timer_default *= 0.5
 	
 	if has_rocks and arms_frame_timer <= 0.0:
 		eff_jump_timer_default *= 0.75
@@ -304,6 +309,9 @@ func _integrate_forces(s):
 		if run_timer < 0.5:
 			var speed_diff = eff_move_speed - eff_slow_walk_speed
 			eff_move_speed = eff_slow_walk_speed + speed_diff * (run_timer / 0.5)
+			
+		if not is_alive:
+			eff_move_speed *= 0.5
 		
 		if walk_left: # and not is_tilted:
 			lv.x += step * (-1.0 * eff_move_speed)
@@ -568,13 +576,21 @@ func _fixed_process(delta):
 	if not is_alive:
 		kill_timer -= delta
 		kill_flash -= delta
+		get_node("blood_effect").set_emitting(true)
+		var rot = get_rot()
+	
+		get_node("blood_effect").set_rot(-rot)
 		
-		if kill_flash < 0.0:
-			kill_flash = 0.15
-		elif kill_flash < 0.06:
-			show()
-		else:
-			hide()
+		if kill_timer < 4.5:
+		
+			if kill_flash < 0.0:
+				kill_flash = 0.15
+			elif kill_flash < 0.08:
+				get_node("body").show()
+				get_node("arms").show()
+			else:
+				get_node("body").hide()
+				get_node("arms").hide()
 		
 		if kill_timer < 0.0:
 			get_node("/root/world").call_deferred("restart_level")

@@ -92,6 +92,14 @@ transform/pos = Vector2( 253, -79 )
 
 transform/pos = Vector2( 93, 1 )
 
+[node name="crate6" parent="entities" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 273, 1 )
+
+[node name="crate7" parent="entities" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 473, 1 )
+
 [node name="crate3" parent="entities" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 17, -79 )
