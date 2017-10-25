@@ -13,7 +13,7 @@
 
 [node name="player_start" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 1135.56, 951.473 )
+transform/pos = Vector2( 1072.56, 1075.47 )
 
 [node name="entities" type="Node2D" parent="."]
 
@@ -45,57 +45,51 @@ transform/pos = Vector2( -267.601, -160 )
 transform/scale = Vector2( 1.00872, 1 )
 life = 1000
 
-[node name="platform5" parent="entities" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( -523.601, -160 )
-transform/scale = Vector2( 1.00872, 1 )
-life = 1000
-
 [node name="platform9" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -933.601, -90 )
+transform/pos = Vector2( -883.601, -90 )
 transform/scale = Vector2( 1.00872, 1 )
 life = 1000
 
 [node name="platform18" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -973.601, -20 )
+transform/pos = Vector2( -773.601, -20 )
 transform/scale = Vector2( 1.00872, 1 )
 life = 1000
 
 [node name="platform19" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -793.601, 50 )
+transform/pos = Vector2( -653.601, 50 )
 transform/scale = Vector2( 1.00872, 1 )
 life = 1000
 
 [node name="platform20" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -623.601, 120 )
+transform/pos = Vector2( -533.601, 120 )
 transform/scale = Vector2( 1.00872, 1 )
 life = 1000
 
 [node name="platform21" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -453.601, 190 )
+transform/pos = Vector2( -383.601, 190 )
 transform/scale = Vector2( 1.00872, 1 )
 life = 1000
 
 [node name="platform22" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -293.601, 260 )
-transform/scale = Vector2( 1.00872, 1 )
-life = 1000
-
-[node name="platform23" parent="entities" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( -133.601, 330 )
+transform/pos = Vector2( -203.601, 260 )
 transform/scale = Vector2( 1.00872, 1 )
 life = 1000
 
 [node name="platform4" parent="entities" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -780, -160 )
+transform/pos = Vector2( -680, -160 )
+transform/scale = Vector2( 2, 1 )
+life = 1000
+
+[node name="platform24" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -1010, -160 )
 life = 1000
 
 [node name="platform8" parent="entities" instance=ExtResource( 2 )]
@@ -117,6 +111,13 @@ transform/rot = 90.0
 
 transform/pos = Vector2( -104, -15 )
 transform/rot = 90.0
+life = 1000
+
+[node name="platform23" parent="entities" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -172, -5.99998 )
+transform/rot = 90.0
+transform/scale = Vector2( 1.5, 1 )
 life = 1000
 
 [node name="platform12" parent="entities" instance=ExtResource( 2 )]
@@ -152,9 +153,29 @@ transform/pos = Vector2( 530, -510 )
 
 transform/pos = Vector2( -700, -187 )
 
+[node name="crate19" parent="entities" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -895, -187 )
+
 [node name="crate1" parent="entities" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( -810, -187 )
+transform/pos = Vector2( -790, -187 )
+
+[node name="crate21" parent="entities" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -852, -187 )
+
+[node name="crate22" parent="entities" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -938, -187 )
+
+[node name="crate23" parent="entities" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -915, -230 )
+
+[node name="crate24" parent="entities" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -872, -230 )
 
 [node name="crate2" parent="entities" instance=ExtResource( 3 )]
 
@@ -266,7 +287,8 @@ transform/pos = Vector2( 430, -540 )
 
 [node name="level_exit" parent="entities" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( -770, -197 )
+transform/pos = Vector2( -770, -190 )
+z/z = -1
 
 [node name="base" parent="entities" instance=ExtResource( 6 )]
 
@@ -275,6 +297,11 @@ transform/pos = Vector2( 415.751, 261.694 )
 [node name="spikes" parent="entities" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 305.194, 167.138 )
+
+[node name="spikes7" parent="entities" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( -158.806, 109.138 )
+transform/rot = -90.0
 
 [node name="spikes5" parent="entities" instance=ExtResource( 7 )]
 

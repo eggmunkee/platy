@@ -13,7 +13,7 @@
 
 [node name="player_start" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 795.32, 741.342 )
+transform/pos = Vector2( 795.32, 743.342 )
 
 [node name="static" type="Node2D" parent="."]
 
@@ -38,6 +38,45 @@ transform/scale = Vector2( 3, 2 )
 
 transform/pos = Vector2( -200, 70 )
 
+[node name="platform7" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -535, 208 )
+
+[node name="platform8" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -673, 115 )
+transform/scale = Vector2( 2, 1 )
+
+[node name="platform9" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -505, 201 )
+transform/scale = Vector2( 0.16, 0.5 )
+
+[node name="platform10" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -535, 196 )
+transform/scale = Vector2( 0.16, 0.5 )
+
+[node name="platform11" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -565, 191 )
+transform/scale = Vector2( 0.16, 0.5 )
+
+[node name="platform12" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -595, 186 )
+transform/scale = Vector2( 0.16, 0.5 )
+
+[node name="platform5" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -365, 141 )
+transform/rot = 45.0
+
+[node name="platform6" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -407, 45 )
+transform/rot = 45.0
+
 [node name="platform1" parent="static" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 600, 70 )
@@ -49,7 +88,14 @@ z/z = -1
 
 [node name="level_exit" parent="entities" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 516.359, -7.2 )
+transform/pos = Vector2( 516.359, 0.8 )
+z/z = -1
+
+[node name="level_exit1" parent="entities" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -518.641, 134.8 )
+transform/scale = Vector2( 0.8, 0.8 )
+z/z = -1
 
 [node name="retracting_spikes" parent="entities" instance=ExtResource( 4 )]
 
@@ -108,6 +154,11 @@ transform/pos = Vector2( 17, -79 )
 
 transform/pos = Vector2( -57, 32 )
 
+[node name="spikes4 2" parent="entities" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -246, 63 )
+transform/rot = 45.0
+
 [node name="spikes3 2" parent="entities" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 739, 31 )
@@ -116,6 +167,11 @@ transform/pos = Vector2( 739, 31 )
 
 transform/pos = Vector2( -121, 32 )
 
+[node name="spikes4" parent="entities" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -295, 103 )
+transform/rot = 45.0
+
 [node name="spikes3" parent="entities" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 675, 31 )
@@ -123,6 +179,11 @@ transform/pos = Vector2( 675, 31 )
 [node name="spikes2" parent="entities" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -185, 32 )
+
+[node name="spikes4 3" parent="entities" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -337, 152 )
+transform/rot = 45.0
 
 [node name="spikes3 3" parent="entities" instance=ExtResource( 6 )]
 

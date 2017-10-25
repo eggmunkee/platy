@@ -164,7 +164,6 @@ transform/rot = 90.0
 
 [node name="entities" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 1060, 980 )
 
 [node name="crate" parent="entities" instance=ExtResource( 2 )]
@@ -285,7 +284,8 @@ burn_time = 5.0
 
 [node name="level_exit" parent="entities" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 72.6982, 191.996 )
+transform/pos = Vector2( 75.6982, 198.996 )
+z/z = -1
 
 [node name="switch_area" parent="entities" instance=ExtResource( 7 )]
 

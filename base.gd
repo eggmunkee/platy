@@ -32,6 +32,10 @@ func update_ui_level():
 	level_num_str = level_num_str.substr(level_num_str.length() - 2, 2)
 	get_node("ui/top_panel/level_num").set_text(level_num_str)
 	
+func update_paused(is_paused):
+	get_tree().set_pause(is_paused)
+	get_node("ui/top_panel/paused").set_hidden(not is_paused)
+	
 func restart_level():
 	need_restart = true
 	
@@ -97,11 +101,7 @@ func _fixed_process(delta):
 		# Pause handling
 		if pause_pr and not was_pause_pr:
 			var is_paused = not get_tree().is_paused()
-			get_tree().set_pause(is_paused)
-			if is_paused:
-				get_node("stage/player/player_cam/pause").show()
-			else:
-				get_node("stage/player/player_cam/pause").hide()
+			update_paused(is_paused)
 		
 		if not is_loading and not was_next_level_pr and next_level_pr:
 			call_deferred("next_level")
@@ -149,7 +149,7 @@ func _real_load():
 			
 		player.set_pos(level.get_node("player_start").get_pos())
 		#player.respawn()
-		level.get_node("player_start").hide()
+		#level.get_node("player_start").hide()
 	
 # Level loading method
 func _load_level_name(name):
@@ -163,6 +163,10 @@ func _load_level_name(name):
 
 
 func _on_screen_resized():
+	var vp_rect = get_viewport_rect()
 	var top_panel = get_node("ui/top_panel")
 	var curr_height = top_panel.get_size().y
-	top_panel.set_size(Vector2(get_viewport_rect().size.width-14, curr_height))
+	top_panel.set_size(Vector2(vp_rect.size.width-14, curr_height))
+	var paused_label = get_node("ui/top_panel/paused")
+	var curr_paused_y = paused_label.get_pos().y
+	paused_label.set_pos(Vector2((top_panel.get_size().x - paused_label.get_size().x) / 2, curr_paused_y))

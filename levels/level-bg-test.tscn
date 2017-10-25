@@ -172,12 +172,11 @@ transform/scale = Vector2( 5, 5 )
 
 [node name="player_start" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 1619.94, 996.393 )
+transform/pos = Vector2( 1950.26, 614.933 )
 
 [node name="switch_area" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1968.65, 595.34 )
-is_on = true
+transform/pos = Vector2( 2011.65, 599.34 )
 
 [node name="wooden_door" parent="." instance=ExtResource( 4 )]
 
@@ -191,11 +190,12 @@ transform/scale = Vector2( 0.65, 0.65 )
 
 [node name="bottle_item" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 1930.46, 613.42 )
+transform/pos = Vector2( 2074.28, 613.42 )
 
 [node name="level_exit" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 6591.83, 1412.92 )
+transform/pos = Vector2( 6591.83, 1419.92 )
+z/z = -1
 
 [node name="base" parent="." instance=ExtResource( 7 )]
 

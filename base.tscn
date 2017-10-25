@@ -38,7 +38,7 @@ margin/bottom = 87.0
 
 [node name="ui" parent="ui/top_panel" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 42.9538, 41.8979 )
+transform/pos = Vector2( 32.9538, 41.8979 )
 
 [node name="Label" type="Label" parent="ui/top_panel"]
 
@@ -52,6 +52,24 @@ margin/top = 26.0
 margin/right = 108.0
 margin/bottom = 40.0
 text = "LVL"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="paused" type="Label" parent="ui/top_panel"]
+
+visibility/visible = false
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 224.0
+margin/top = 26.0
+margin/right = 275.0
+margin/bottom = 40.0
+text = "PAUSED"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
