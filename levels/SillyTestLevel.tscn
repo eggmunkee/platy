@@ -20,7 +20,7 @@ extents = Vector2( 10, 10 )
 [node name="StaticBody2D7" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1398.99, 2323.37 )
+transform/pos = Vector2( 2918.99, 2743.37 )
 transform/rot = -89.9764
 transform/scale = Vector2( 10.1203, 1 )
 input/pickable = false
@@ -62,7 +62,7 @@ invert/border = 100.0
 [node name="StaticBody2D32" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1398.9, 951.119 )
+transform/pos = Vector2( 2918.9, 1371.12 )
 transform/rot = -89.9764
 transform/scale = Vector2( 10.1203, 1 )
 input/pickable = false
@@ -104,7 +104,7 @@ invert/border = 100.0
 [node name="StaticBody2D33" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 310.21, 1518.57 )
+transform/pos = Vector2( 1830.21, 1938.57 )
 transform/rot = -89.9764
 transform/scale = Vector2( 10.1203, 1 )
 input/pickable = false
@@ -143,94 +143,10 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="StaticBody2D34" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 310.916, -423.611 )
-transform/rot = -89.9764
-transform/scale = Vector2( 10.1203, 1 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D34"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D34"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 0.462745, 0.247059, 0.247059, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
-[node name="StaticBody2D35" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 1399.75, -452.321 )
-transform/rot = -89.9764
-transform/scale = Vector2( 10.1203, 1 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D35"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D35"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 0.462745, 0.247059, 0.247059, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 311.373, 3018.3 )
+transform/pos = Vector2( 1831.37, 3438.3 )
 transform/rot = -89.9764
 transform/scale = Vector2( 10.1203, 1 )
 input/pickable = false
@@ -272,7 +188,7 @@ invert/border = 100.0
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 904.693, 2675.45 )
+transform/pos = Vector2( 2424.69, 3095.45 )
 transform/scale = Vector2( 10.1203, 1 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -313,7 +229,7 @@ invert/border = 100.0
 [node name="StaticBody2D10" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1425.42, 2156.68 )
+transform/pos = Vector2( 2945.42, 2576.68 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -353,7 +269,7 @@ invert/border = 100.0
 [node name="StaticBody2D9" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1391.88, 2248.63 )
+transform/pos = Vector2( 2911.88, 2668.63 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -393,7 +309,7 @@ invert/border = 100.0
 [node name="StaticBody2D8" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1409.64, 2507.7 )
+transform/pos = Vector2( 2929.64, 2927.7 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -433,7 +349,7 @@ invert/border = 100.0
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1062.72, 2275.56 )
+transform/pos = Vector2( 2582.72, 2695.56 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -473,7 +389,7 @@ invert/border = 100.0
 [node name="StaticBody2D17" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1168.88, 2056.38 )
+transform/pos = Vector2( 2688.88, 2476.38 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -513,7 +429,7 @@ invert/border = 100.0
 [node name="StaticBody2D18" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 966.366, 2032.12 )
+transform/pos = Vector2( 2486.37, 2452.12 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -553,7 +469,7 @@ invert/border = 100.0
 [node name="StaticBody2D19" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 659.831, 2031.38 )
+transform/pos = Vector2( 2179.83, 2451.38 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -593,7 +509,7 @@ invert/border = 100.0
 [node name="StaticBody2D20" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 636.563, 1910.61 )
+transform/pos = Vector2( 2156.56, 2330.61 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -633,7 +549,7 @@ invert/border = 100.0
 [node name="StaticBody2D21" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 883.655, 1930.55 )
+transform/pos = Vector2( 2403.66, 2350.55 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -673,7 +589,7 @@ invert/border = 100.0
 [node name="StaticBody2D22" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1234.9, 1815.32 )
+transform/pos = Vector2( 2754.9, 2235.32 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -713,7 +629,7 @@ invert/border = 100.0
 [node name="StaticBody2D23" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1234.9, 1674.6 )
+transform/pos = Vector2( 2754.9, 2094.6 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -753,7 +669,7 @@ invert/border = 100.0
 [node name="StaticBody2D24" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 868.142, 1742.19 )
+transform/pos = Vector2( 2388.14, 2162.19 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -793,7 +709,7 @@ invert/border = 100.0
 [node name="StaticBody2D25" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 879.834, 2462.04 )
+transform/pos = Vector2( 2399.83, 2882.04 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -833,7 +749,7 @@ invert/border = 100.0
 [node name="StaticBody2D28" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 473.824, 2482.54 )
+transform/pos = Vector2( 1993.82, 2902.54 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -873,7 +789,7 @@ invert/border = 100.0
 [node name="StaticBody2D29" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1109.5, 2402.57 )
+transform/pos = Vector2( 2629.5, 2822.57 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -913,7 +829,7 @@ invert/border = 100.0
 [node name="StaticBody2D27" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 966.683, 2293.35 )
+transform/pos = Vector2( 2486.68, 2713.35 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -953,7 +869,7 @@ invert/border = 100.0
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 827.37, 2310.93 )
+transform/pos = Vector2( 2347.37, 2730.93 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -993,7 +909,7 @@ invert/border = 100.0
 [node name="StaticBody2D1" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 552.89, 2313.24 )
+transform/pos = Vector2( 2072.89, 2733.24 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -1033,7 +949,7 @@ invert/border = 100.0
 [node name="StaticBody2D15" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 661.138, 2402.69 )
+transform/pos = Vector2( 2181.14, 2822.69 )
 transform/scale = Vector2( 0.117624, 0.194355 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -1074,7 +990,7 @@ invert/border = 100.0
 [node name="StaticBody2D14" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 739.793, 2462.97 )
+transform/pos = Vector2( 2259.79, 2882.97 )
 transform/scale = Vector2( 0.117624, 0.194355 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -1115,7 +1031,7 @@ invert/border = 100.0
 [node name="StaticBody2D13" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 661.138, 2502.66 )
+transform/pos = Vector2( 2181.14, 2922.66 )
 transform/scale = Vector2( 0.117624, 0.194355 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -1156,7 +1072,7 @@ invert/border = 100.0
 [node name="StaticBody2D12" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 569.986, 2471.79 )
+transform/pos = Vector2( 2089.99, 2891.79 )
 transform/scale = Vector2( 0.117624, 0.194355 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -1197,7 +1113,7 @@ invert/border = 100.0
 [node name="StaticBody2D11" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 506.768, 2554.12 )
+transform/pos = Vector2( 2026.77, 2974.12 )
 transform/scale = Vector2( 0.117624, 0.194355 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -1238,7 +1154,7 @@ invert/border = 100.0
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 412.799, 2345.27 )
+transform/pos = Vector2( 1932.8, 2765.27 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -1275,278 +1191,159 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 728.619, 373.109 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D6"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 0.4375, 0.220459, 0.220459, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
-[node name="StaticBody2D16" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 933.106, 461.719 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D16"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D16"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 0.4375, 0.220459, 0.220459, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
-[node name="StaticBody2D30" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 671.816, 847.969 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D30"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D30"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 0.4375, 0.220459, 0.220459, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
 [node name="base" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 596.162, 2267.32 )
+transform/pos = Vector2( 2116.16, 2687.32 )
 
 [node name="base 2" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 1125.19, 1299.81 )
+transform/pos = Vector2( 2645.19, 1719.81 )
 is_on = true
 
 [node name="crate" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 502.52, 2174.4 )
+transform/pos = Vector2( 2022.52, 2594.4 )
 
 [node name="crate1" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 425.017, 2246.55 )
+transform/pos = Vector2( 1945.02, 2666.55 )
 
 [node name="crate2" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 502.696, 2216.85 )
+transform/pos = Vector2( 2022.7, 2636.85 )
 
 [node name="crate3" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 502.46, 2088.19 )
+transform/pos = Vector2( 2022.46, 2508.19 )
 
 [node name="crate8" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1181.99, 2328.21 )
+transform/pos = Vector2( 2701.99, 2748.21 )
 
 [node name="crate21" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1182.99, 2285.21 )
+transform/pos = Vector2( 2702.99, 2705.21 )
 
 [node name="crate22" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1181.99, 2242.21 )
+transform/pos = Vector2( 2701.99, 2662.21 )
 
 [node name="crate9" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1242.46, 2371.5 )
+transform/pos = Vector2( 2762.46, 2791.5 )
 
 [node name="crate23" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1242.46, 2328.5 )
+transform/pos = Vector2( 2762.46, 2748.5 )
 
 [node name="crate24" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1242.46, 2286.5 )
+transform/pos = Vector2( 2762.46, 2706.5 )
 
 [node name="crate25" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1242.46, 2243.5 )
+transform/pos = Vector2( 2762.46, 2663.5 )
 
 [node name="crate10" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1182.27, 2371.57 )
+transform/pos = Vector2( 2702.27, 2791.57 )
 
 [node name="crate11" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1247.62, 1645.92 )
+transform/pos = Vector2( 2767.62, 2065.92 )
 
 [node name="crate12" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1247.62, 1601.54 )
+transform/pos = Vector2( 2767.62, 2021.54 )
 
 [node name="crate13" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1247.13, 1558.62 )
+transform/pos = Vector2( 2767.13, 1978.62 )
 
 [node name="crate14" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1343.69, 1644.94 )
+transform/pos = Vector2( 2863.69, 2064.94 )
 
 [node name="crate15" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1344.18, 1601.54 )
+transform/pos = Vector2( 2864.18, 2021.54 )
 
 [node name="crate16" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1343.69, 1558.14 )
+transform/pos = Vector2( 2863.69, 1978.14 )
 
 [node name="crate17" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1343.2, 1514.25 )
+transform/pos = Vector2( 2863.2, 1934.25 )
 
 [node name="crate18" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1343.2, 1470.84 )
+transform/pos = Vector2( 2863.2, 1890.84 )
 
 [node name="crate19" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1344.18, 1427.44 )
+transform/pos = Vector2( 2864.18, 1847.44 )
 
 [node name="crate20" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 1344.18, 1384.04 )
+transform/pos = Vector2( 2864.18, 1804.04 )
 
 [node name="crate4" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 425.363, 2289.75 )
+transform/pos = Vector2( 1945.36, 2709.75 )
 
 [node name="crate5" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 503.263, 2260.33 )
+transform/pos = Vector2( 2023.26, 2680.33 )
 
 [node name="crate6" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 502.289, 2131.38 )
+transform/pos = Vector2( 2022.29, 2551.38 )
 
 [node name="crate7" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 425.407, 2203.31 )
+transform/pos = Vector2( 1945.41, 2623.31 )
 
 [node name="player_start" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 587.222, 2081.56 )
+transform/pos = Vector2( 2107.22, 2501.56 )
 
 [node name="bottle_item" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 865.826, 2260.41 )
+transform/pos = Vector2( 2385.83, 2680.41 )
 
 [node name="oil_leak" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 771.936, 2269.66 )
+transform/pos = Vector2( 2291.94, 2689.66 )
 leak_rate = 0.75
 initial_velocity = Vector2( 250, -250 )
 is_on = true
 
 [node name="base 3" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 941.937, 2186.66 )
+transform/pos = Vector2( 2461.94, 2606.66 )
 is_on = true
 
 [node name="switch_area" parent="." instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 973.652, 2400.96 )
+transform/pos = Vector2( 2493.65, 2820.96 )
 
 [node name="switch_area1" parent="." instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 805.651, 2431.96 )
+transform/pos = Vector2( 2325.65, 2851.96 )
 
 [node name="level_exit" parent="." instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 1017.8, 1287.03 )
+transform/pos = Vector2( 2537.8, 1714.03 )
+z/z = -1
 
 [node name="platform" parent="." instance=ExtResource( 9 )]
 
-transform/pos = Vector2( 1018.13, 1323.79 )
+transform/pos = Vector2( 2538.13, 1743.79 )
 
 [node name="platform1" parent="." instance=ExtResource( 9 )]
 
-transform/pos = Vector2( 1267.8, 2543.93 )
+transform/pos = Vector2( 2787.8, 2963.93 )
 
 [connection signal="switch_input" from="switch_area" to="switch_area1" method="input_signal"]
 

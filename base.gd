@@ -36,6 +36,16 @@ func update_paused(is_paused):
 	get_tree().set_pause(is_paused)
 	get_node("ui/top_panel/paused").set_hidden(not is_paused)
 	
+func update_hearts(num):
+	
+	var i = 0
+	for heart in get_node("ui/top_panel/hearts").get_children():
+		i += 1
+		if num < i:
+			heart.hide()
+		else:
+			heart.show()
+	
 func restart_level():
 	need_restart = true
 	

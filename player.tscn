@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://player_cam.tscn" type="PackedScene" id=2]
@@ -10,8 +10,9 @@
 [ext_resource path="res://char_arms_base.png" type="Texture" id=8]
 [ext_resource path="res://char_arms_attack.png" type="Texture" id=9]
 [ext_resource path="res://rock.png" type="Texture" id=10]
-[ext_resource path="res://torch.tscn" type="PackedScene" id=11]
-[ext_resource path="res://bottle.tscn" type="PackedScene" id=12]
+[ext_resource path="res://media/torch-handle.png" type="Texture" id=11]
+[ext_resource path="res://torch.tscn" type="PackedScene" id=12]
+[ext_resource path="res://bottle.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -59,6 +60,7 @@ __meta__ = {
 has_rocks = false
 has_torch = false
 has_bottle = false
+num_hearts = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -136,8 +138,6 @@ color/color_ramp = SubResource( 2 )
 
 [node name="arms" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="Area2D" type="Area2D" parent="arms"]
 
 input/pickable = true
@@ -175,22 +175,35 @@ texture = ExtResource( 9 )
 
 [node name="rocks" type="Node2D" parent="arms"]
 
+visibility/visible = false
+
 [node name="rock_1" type="Sprite" parent="arms/rocks"]
 
 transform/pos = Vector2( 7.9189, -2.78931 )
 transform/scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 10 )
 
-[node name="torch" parent="arms" instance=ExtResource( 11 )]
+[node name="torch" type="Node2D" parent="arms"]
 
 visibility/visible = false
-transform/pos = Vector2( 13.8174, -6.1086 )
+
+[node name="handle" type="Sprite" parent="arms/torch"]
+
+transform/pos = Vector2( 12, -6 )
+transform/rot = -15.0
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+
+[node name="torch" parent="arms/torch" instance=ExtResource( 12 )]
+
+transform/pos = Vector2( 12.8174, -9.1086 )
 transform/scale = Vector2( 0.75, 0.75 )
 
-[node name="bottle" parent="arms" instance=ExtResource( 12 )]
+[node name="bottle" parent="arms" instance=ExtResource( 13 )]
 
 visibility/visible = false
-transform/pos = Vector2( 10.7221, -3.73039 )
+transform/pos = Vector2( 9.7221, -4.73039 )
+transform/rot = 5.0
 transform/scale = Vector2( 0.5, 0.5 )
 monitoring = false
 
@@ -216,11 +229,11 @@ percent/visible = true
 
 [node name="throw_origin" type="Position2D" parent="."]
 
-transform/pos = Vector2( 13.5678, -4.4995 )
+transform/pos = Vector2( 17.5678, -4.4995 )
 
 [node name="drop_position" type="Position2D" parent="."]
 
-transform/pos = Vector2( -26.4886, 6.8101 )
+transform/pos = Vector2( -26.4886, 3.8101 )
 
 [node name="blood_effect" type="Particles2D" parent="."]
 

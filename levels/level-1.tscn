@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://player_start.tscn" type="PackedScene" id=1]
 [ext_resource path="res://platform.tscn" type="PackedScene" id=2]
@@ -8,16 +8,17 @@
 [ext_resource path="res://spikes.tscn" type="PackedScene" id=6]
 [ext_resource path="res://bottle_item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://torch_item.tscn" type="PackedScene" id=8]
+[ext_resource path="res://heart_item.tscn" type="PackedScene" id=9]
 
 [node name="level" type="Node2D"]
 
 [node name="player_start" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 795.32, 743.342 )
+transform/pos = Vector2( 2415.32, 3745.34 )
 
 [node name="static" type="Node2D" parent="."]
 
-transform/pos = Vector2( 842.44, 705.828 )
+transform/pos = Vector2( 2462.44, 3707.83 )
 
 [node name="platform2" parent="static" instance=ExtResource( 2 )]
 
@@ -37,6 +38,11 @@ transform/scale = Vector2( 3, 2 )
 [node name="platform" parent="static" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -200, 70 )
+
+[node name="platform13" parent="static" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -358, -27 )
+transform/scale = Vector2( 0.66, 1 )
 
 [node name="platform7" parent="static" instance=ExtResource( 2 )]
 
@@ -81,9 +87,29 @@ transform/rot = 45.0
 
 transform/pos = Vector2( 600, 70 )
 
+[node name="hearts label" type="Label" parent="static"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -863.0
+margin/top = -35.0
+margin/right = -484.0
+margin/bottom = 13.0
+custom_colors/font_color = Color( 0.972656, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Picking up hearts while dying will revive you.
+
+You can save them up to revive you if harmed in the future."
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="entities" type="Node2D" parent="."]
 
-transform/pos = Vector2( 765.32, 737.342 )
+transform/pos = Vector2( 2385.32, 3739.34 )
 z/z = -1
 
 [node name="level_exit" parent="entities" instance=ExtResource( 3 )]
@@ -115,7 +141,7 @@ transform/pos = Vector2( 450, 31 )
 
 [node name="retracting_spikes4" parent="entities" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 438.673, -45.6732 )
+transform/pos = Vector2( 438.673, -40.6732 )
 transform/rot = 180.0
 
 [node name="crate" parent="entities" instance=ExtResource( 5 )]
@@ -180,6 +206,14 @@ transform/pos = Vector2( 675, 31 )
 
 transform/pos = Vector2( -185, 32 )
 
+[node name="spikes5" parent="entities" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -536, 72 )
+
+[node name="spikes6" parent="entities" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -686, 72 )
+
 [node name="spikes4 3" parent="entities" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -337, 152 )
@@ -204,6 +238,17 @@ transform/pos = Vector2( -150, -40 )
 [node name="base" parent="entities" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 760, -40 )
-is_on = true
+
+[node name="heart_item" parent="entities" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( -460, 60 )
+
+[node name="heart_item1" parent="entities" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( -760, 60 )
+
+[node name="heart_item2" parent="entities" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( -610, 60 )
 
 

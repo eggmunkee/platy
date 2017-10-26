@@ -43,13 +43,15 @@ var is_alive = true
 var kill_timer = 5.0
 var kill_flash = 0.0
 
+var is_god = false
+
 var grav_timer = 0.0
 
 # item flags
 export var has_rocks = false
 export var has_torch = false
 export var has_bottle = false
-
+export var num_hearts = 0
 
 
 # key flags
@@ -59,7 +61,7 @@ var was_shoot_held = true
 var was_up_grav_down = true
 var was_throw_held = true
 var was_kill_held = true
-
+var was_god_held = true
 var was_respawn = false
 
 func respawn():
@@ -68,6 +70,7 @@ func respawn():
 	has_torch = false
 	is_alive = true
 	kill_timer = 5.0
+	jump_timer = 0.0
 	set_mode(MODE_CHARACTER)
 	set_rot(0.0)
 	set_angular_velocity(0.0)
@@ -136,6 +139,8 @@ func _integrate_forces(s):
 	var increase_grav = Input.is_action_pressed("up_grav")
 	var do_throw = throw and not was_throw_held
 	var kill = Input.is_action_pressed("suicide")
+	var god_pr = Input.is_action_pressed("god")
+	var do_god = not was_god_held and god_pr
 	
 	var zoom_up = Input.is_action_pressed("zoom_up")
 	var zoom_down = Input.is_action_pressed("zoom_down")
@@ -174,6 +179,9 @@ func _integrate_forces(s):
 			kill()
 		else:
 			kill_timer = 0.0
+			
+	if do_god:
+		is_god = not is_god
 
 	if increase_grav and not was_up_grav_down:
 		gravity_ratio *= 1.50
@@ -210,7 +218,7 @@ func _integrate_forces(s):
 	else:
 		get_node("arms/rocks").hide()
 	
-	if has_torch:
+	if has_torch and (not has_bottle or arms_frame_timer <= 0.0):
 		get_node("arms/torch").show()
 	else:
 		get_node("arms/torch").hide()
@@ -287,7 +295,9 @@ func _integrate_forces(s):
 			get_parent().add_child(bottle)
 			arms_frame_name = 'attack'
 			arms_frame_timer = throw_anim_length * 2.0
-		elif has_torch and shoot:
+		#elif has_torch and shoot:
+		#	arms_frame_name = 'attack'
+		elif not (has_torch or has_bottle or has_rocks) and shoot:
 			arms_frame_name = 'attack'
 		else:
 			arms_frame_name = 'base'
@@ -370,7 +380,7 @@ func _integrate_forces(s):
 			frame_name = 'jump'
 		
 	# Check for start jump
-	if not is_jumping and not is_falling:
+	if (not is_jumping and not is_falling) or (is_god and not was_jump_held and (walk_up or jump)):
 		if not was_jump_held and (walk_up or jump):
 			jump_count = 0
 			init_jump(eff_jump_timer_default)
@@ -427,6 +437,7 @@ func _integrate_forces(s):
 	was_up_grav_down = increase_grav
 	was_shoot_held = shoot
 	was_throw_held = throw
+	was_god_held = god_pr
 	was_kill_held = kill
 	
 	# Handle camera scaling based on movement/jumping state if it were enabled 
@@ -469,7 +480,7 @@ func _integrate_forces(s):
 		var floor_h_velocity = s.get_contact_collider_velocity_at_pos(floor_index).x
 		lv.x += floor_h_velocity
 		#lv.y += initial_y
-		lv.y += 15.0
+		#lv.y += 15.0
 		
 
 #	lv += s.get_total_gravity()*step
@@ -511,8 +522,26 @@ func drop_torch():
 		torch_item.set_pos(pos)
 		get_parent().add_child(torch_item)
 
+func pickup_heart():
+	if is_alive:
+		if num_hearts < 3:
+			num_hearts += 1
+			update_hearts()
+	
+	else:
+		call_deferred("_pickup_heart")
+		
+func update_hearts():
+	get_node("/root/world/").update_hearts(num_hearts)
+		
+func _pickup_heart():
+	if not is_alive:
+		respawn()
+		
+
 func kill():
-	call_deferred("_kill")
+	if not is_god:
+		call_deferred("_kill")
 	
 func _kill():
 	
@@ -551,6 +580,9 @@ func _ready():
 	
 	#get_node("player_cam").make_current()
 	get_node("player_cam").set_scale(Vector2(cam_scale, cam_scale))
+	
+	# set ui hearts to current amount
+	update_hearts()
 
 func init_jump(jump_timer_length):
 	is_jumping = true
@@ -573,7 +605,11 @@ func _fixed_process(delta):
 	if jump_timer > max_fall_length:
 		kill()
 	
-	if not is_alive:
+	if is_alive:
+		get_node("blood_effect").set_emitting(false)
+		get_node("body").show()
+		get_node("arms").show()
+	else:
 		kill_timer -= delta
 		kill_flash -= delta
 		var rot = get_rot()
@@ -586,6 +622,12 @@ func _fixed_process(delta):
 			get_node("blood_effect").set_emitting(false)
 		
 		if kill_timer < 4.5:
+			
+			if kill_timer < 3.5 and num_hearts > 0:
+				num_hearts -= 1
+				update_hearts()
+				respawn()
+				return
 		
 			if kill_flash < 0.0:
 				kill_flash = 0.15

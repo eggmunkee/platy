@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://base.gd" type="Script" id=1]
 [ext_resource path="res://blue-cloudy-plx-bg.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui.tscn" type="PackedScene" id=3]
+[ext_resource path="res://media/heart.png" type="Texture" id=4]
 
 [node name="world" type="Node2D"]
 
@@ -14,7 +15,7 @@ current_level = 1
 
 process/pause_mode = 1
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+[node name="bg" parent="." instance=ExtResource( 2 )]
 
 [node name="ui" type="CanvasLayer" parent="."]
 
@@ -47,9 +48,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 74.0
+margin/left = 184.0
 margin/top = 26.0
-margin/right = 108.0
+margin/right = 218.0
 margin/bottom = 40.0
 text = "LVL"
 align = 1
@@ -82,14 +83,35 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 144.0
+margin/left = 254.0
 margin/top = 26.0
-margin/right = 162.0
+margin/right = 272.0
 margin/bottom = 40.0
 text = "99"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="hearts" type="Node2D" parent="ui/top_panel"]
+
+transform/pos = Vector2( 88, 40 )
+
+[node name="heart_1" type="Sprite" parent="ui/top_panel/hearts"]
+
+visibility/visible = false
+texture = ExtResource( 4 )
+
+[node name="heart_2" type="Sprite" parent="ui/top_panel/hearts"]
+
+visibility/visible = false
+transform/pos = Vector2( 36, 0 )
+texture = ExtResource( 4 )
+
+[node name="heart_3" type="Sprite" parent="ui/top_panel/hearts"]
+
+visibility/visible = false
+transform/pos = Vector2( 72, 0 )
+texture = ExtResource( 4 )
 
 
