@@ -159,7 +159,7 @@ func _integrate_forces(s):
 	if not is_alive:
 		if kill_timer < 3.1:
 			jump = false
-		if kill_timer < 2.3:
+		if kill_timer < 1.8:
 			walk_left = false
 			walk_right = false
 		walk_up = false
@@ -315,6 +315,20 @@ func _integrate_forces(s):
 	# Handle left/right movement and frame management
 	if walk_left or walk_right:
 		run_timer += step
+
+		# Adjust rotation walk wiggle and dying (crawl + flipping while crawling)
+		var curr_rot = get_rot()
+		if not is_jumping and not is_falling:
+			var wiggle_amount = 0.08
+			if not is_alive:
+				wiggle_amount = 0.15
+			curr_rot += sin(run_timer * 22.0) * wiggle_amount
+		if not is_alive and found_floor:
+			if curr_rot < -0.7 and curr_rot > -2.2 and walk_left:
+				curr_rot += PI
+			elif curr_rot > 0.7 and curr_rot < 2.2 and walk_right:
+				curr_rot -= PI
+		set_rot(curr_rot)
 		
 		if run_timer < 0.5:
 			var speed_diff = eff_move_speed - eff_slow_walk_speed
@@ -552,7 +566,7 @@ func _kill():
 		
 		#apply_impulse(Vector2(0.0,0.0), Vector2(rand_range(-15000.0,15000.0),rand_range(-500.0,500.0)))
 		
-		drop_torch()
+		#drop_torch() # keep the torch for fun
 		drop_rocks()
 		drop_bottle()
 		
