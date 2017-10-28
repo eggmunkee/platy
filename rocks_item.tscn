@@ -19,6 +19,8 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+x_velocity = 0.0
+y_velocity = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -52,7 +54,5 @@ texture = ExtResource( 2 )
 transform/pos = Vector2( 4.69904, 6.05833 )
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
-
-[connection signal="body_enter" from="." to="." method="_on_base_body_enter"]
 
 

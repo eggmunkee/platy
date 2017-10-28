@@ -12,7 +12,9 @@ var need_next_level = false
 
 export var current_level = 1
 
-var level_list = ["level-1","level-2","level-beta-1", "level-beta-2", "SillyTestLevel", "level-bg-test"]
+var level_list = ["level-0","level-1","level-2","level-beta-1", "level-beta-2", "SillyTestLevel", "level-bg-test"]
+
+var test_timer = 0.0
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -35,6 +37,19 @@ func update_ui_level():
 func update_paused(is_paused):
 	get_tree().set_pause(is_paused)
 	get_node("ui/top_panel/paused").set_hidden(not is_paused)
+	if is_paused:
+		get_node("ui/bw_filter").show()
+		get_node("ui/bw_filter").set_opacity(0.5)
+	else:
+		get_node("ui/bw_filter").hide()
+		
+func update_dying(is_dying, bw_amt):
+	if is_dying:
+		get_node("ui/bw_filter").show()
+		get_node("ui/bw_filter").set_opacity(bw_amt)
+	else:
+		get_node("ui/bw_filter").hide()
+		get_node("ui/bw_filter").set_opacity(1.0)
 	
 func update_hearts(num):
 	
@@ -68,6 +83,16 @@ func _restart_level():
 			
 # check for global input - change levels
 func _fixed_process(delta):
+	test_timer += delta
+	if test_timer < 1.5:
+		pass
+		#get_node("ui/screen_filter").show()
+	else:
+		pass
+		#get_node("ui/screen_filter").hide()
+		if test_timer >= 3.0:
+			test_timer -= 3.0
+	
 	
 	if need_next_level or need_restart:
 		
@@ -151,13 +176,16 @@ func _real_load():
 	
 		# add level/player
 		var player = preload("res://player.tscn").instance()
+		#var player2 = preload("res://player.tscn").instance()
 	
 		get_node("stage").add_child(level)
 		get_node("stage").add_child(player)
+		#get_node("stage").add_child(player2)
 		
 		player.get_node("player_cam").make_current()
 			
 		player.set_pos(level.get_node("player_start").get_pos())
+		#player2.set_pos(level.get_node("player_start").get_pos()-Vector2(-10.0,0.0))
 		#player.respawn()
 		#level.get_node("player_start").hide()
 	

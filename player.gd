@@ -76,6 +76,7 @@ func respawn():
 	set_angular_velocity(0.0)
 	set_linear_velocity(Vector2(0.0,0.0))
 	was_respawn = true
+	get_node("/root/world").update_dying(false, 0.0)
 	
 
 func _integrate_forces(s):
@@ -133,7 +134,7 @@ func _integrate_forces(s):
 	var walk_right = Input.is_action_pressed("ui_right")
 	var walk_up = Input.is_action_pressed("ui_up")
 	var walk_down = Input.is_action_pressed("ui_down")
-	var jump = Input.is_action_pressed("jump")
+	var jump = walk_up or Input.is_action_pressed("jump")
 	var shoot = Input.is_action_pressed("attack")
 	var throw = Input.is_action_pressed("throw")
 	var increase_grav = Input.is_action_pressed("up_grav")
@@ -211,8 +212,9 @@ func _integrate_forces(s):
 	if not is_alive:
 		eff_jump_timer_default *= 0.5
 	
-	if has_rocks and arms_frame_timer <= 0.0:
+	if has_rocks:
 		eff_jump_timer_default *= 0.75
+	if has_rocks and arms_frame_timer <= 0.0:
 		#eff_move_speed *= 0.85
 		get_node("arms/rocks").show()
 	else:
@@ -223,8 +225,9 @@ func _integrate_forces(s):
 	else:
 		get_node("arms/torch").hide()
 
-	if has_bottle and arms_frame_timer <= 0.0:
+	if has_bottle:
 		eff_jump_timer_default *= 0.75
+	if has_bottle and arms_frame_timer <= 0.0:
 		get_node("arms/bottle").show()
 	else:
 		get_node("arms/bottle").hide()
@@ -322,7 +325,10 @@ func _integrate_forces(s):
 			var wiggle_amount = 0.08
 			if not is_alive:
 				wiggle_amount = 0.15
-			curr_rot += sin(run_timer * 22.0) * wiggle_amount
+			var wiggle_tilt = sin(run_timer * 22.0) * wiggle_amount
+			if not is_facing_right:
+				wiggle_tilt *= -1.0
+			curr_rot += wiggle_tilt
 		if not is_alive and found_floor:
 			if curr_rot < -0.7 and curr_rot > -2.2 and walk_left:
 				curr_rot += PI
@@ -394,8 +400,8 @@ func _integrate_forces(s):
 			frame_name = 'jump'
 		
 	# Check for start jump
-	if (not is_jumping and not is_falling) or (is_god and not was_jump_held and (walk_up or jump)):
-		if not was_jump_held and (walk_up or jump):
+	if (not is_jumping and not is_falling) or (is_god and not was_jump_held and jump):
+		if not was_jump_held and jump:
 			jump_count = 0
 			init_jump(eff_jump_timer_default)
 			get_node("foot_dust").set_emitting(true)
@@ -420,20 +426,20 @@ func _integrate_forces(s):
 		elif jump_timer <= 0.0:
 			init_fall()
 		
-		if jump_timer < eff_jump_timer_default * 0.7 and not (walk_up or jump):
+		if jump_timer < eff_jump_timer_default * 0.7 and not jump:
 			init_fall()
 #	
 	# Handle falling state
 	elif is_falling:
 		jump_timer += 0.1
 		
-		if floor_timer > 0.0 and not was_jump_held and (walk_up or jump):
+		if floor_timer > 0.0 and not was_jump_held and jump:
 			jump_count = 0
 			floor_timer = 0.0
 			init_jump(eff_jump_timer_default)
 			get_node("foot_dust").set_emitting(true)
 		
-		elif jump_count < max_jump_count and jump_timer > eff_jump_timer_default * 0.25 and jump_timer < 3.0 and not was_jump_held and (walk_up or jump):
+		elif jump_count < max_jump_count and jump_timer > eff_jump_timer_default * 0.25 and jump_timer < 3.0 and not was_jump_held and jump:
 			init_jump(eff_jump_timer_default * 1.25)
 		else:
 			if jump_timer > eff_jump_timer_default * 0.3:
@@ -447,7 +453,7 @@ func _integrate_forces(s):
 			lv.y = initial_y
 	
 	# Save previously holding jump state
-	was_jump_held = (walk_up or jump)
+	was_jump_held = jump
 	was_up_grav_down = increase_grav
 	was_shoot_held = shoot
 	was_throw_held = throw
@@ -504,8 +510,8 @@ func drop_rocks():
 	if has_rocks:
 		has_rocks = false
 		var rocks_item = preload("res://rocks_item.tscn").instance()
-		
-		var pos = get_node("drop_position").get_pos()
+		rocks_item.toss(is_facing_right)
+		var pos = get_node("throw_origin").get_pos()
 		if not is_facing_right:
 			pos.x = -1.0 * pos.x
 		pos = pos + get_pos()
@@ -516,8 +522,8 @@ func drop_bottle():
 	if has_bottle:
 		has_bottle = false
 		var bottle_item = preload("res://bottle_item.tscn").instance()
-		
-		var pos = get_node("drop_position").get_pos()
+		bottle_item.toss(is_facing_right)
+		var pos = get_node("throw_origin").get_pos()
 		if not is_facing_right:
 			pos.x = -1.0 * pos.x
 		pos = pos + get_pos()
@@ -595,6 +601,8 @@ func _ready():
 	#get_node("player_cam").make_current()
 	get_node("player_cam").set_scale(Vector2(cam_scale, cam_scale))
 	
+	get_node("/root/world").update_dying(false, 0.0)
+	
 	# set ui hearts to current amount
 	update_hearts()
 
@@ -634,6 +642,10 @@ func _fixed_process(delta):
 			get_node("blood_effect").set_emitting(true)
 		else:
 			get_node("blood_effect").set_emitting(false)
+			
+		# update global bw filter
+		var filter_opacity = 0.75 - (0.5 * min(5.0, kill_timer) / 5.0)
+		get_node("/root/world").update_dying(true, filter_opacity)
 		
 		if kill_timer < 4.5:
 			

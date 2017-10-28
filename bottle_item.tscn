@@ -19,6 +19,8 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+x_velocity = 0.0
+y_velocity = 0.0
 
 [node name="sprite" type="Sprite" parent="."]
 
@@ -49,7 +51,5 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
-
-[connection signal="body_enter" from="." to="." method="_on_bottle_item_body_enter"]
 
 

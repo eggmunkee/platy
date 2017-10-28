@@ -1,9 +1,41 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://base.gd" type="Script" id=1]
 [ext_resource path="res://blue-cloudy-plx-bg.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui.tscn" type="PackedScene" id=3]
 [ext_resource path="res://media/heart.png" type="Texture" id=4]
+
+[sub_resource type="CanvasItemShaderGraph" id=1]
+
+_code = {
+"fragment": "vec3 nd1sl3=vec3(SCREEN_UV,0);
+float nd1sl1=SRC_COLOR.a;
+vec3 nd8sl0=texscreen(nd1sl3.xy);
+float nd2sl0=nd8sl0.x;
+float nd2sl1=nd8sl0.y;
+float nd2sl2=nd8sl0.z;
+float nd3sl0=nd2sl0+nd2sl1;
+float nd4sl0=nd3sl0+nd2sl2;
+float nd5sl1def=0.6;
+float nd5sl0=nd4sl0*nd5sl1def;
+vec3 nd6sl0=vec3(nd5sl0,nd5sl0,nd5sl0);
+COLOR.rgb=nd6sl0;
+COLOR.a=nd1sl1;
+",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+_data = {
+"shaders": [ [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ], [ 0, 33, Vector2( 732, -6 ), null, null, [ 0, 6, 0, 1, 1, 1 ], 1, 0, Vector2( 48, 39 ), null, null, [  ], 2, 18, Vector2( 202.736, 94 ), null, null, [ 0, 8, 0, 2147483647, 0, null ], 3, 7, Vector2( 327, -46 ), 0, null, [ 0, 2, 0, 1, 2, 1, 2147483647, 0, null, 2147483647, 1, null ], 4, 7, Vector2( 332.736, 103 ), 0, null, [ 0, 3, 0, 1, 2, 2, 2147483647, 0, 0.0, 2147483647, 1, null ], 5, 7, Vector2( 447.736, -10 ), 2, null, [ 0, 4, 0, 2147483647, 0, null, 2147483647, 1, 0.6 ], 6, 19, Vector2( 584.736, 10 ), null, null, [ 0, 5, 0, 1, 5, 0, 2, 5, 0, 2147483647, 0, null, 2147483647, 1, null, 2147483647, 2, null ], 8, 6, Vector2( 175.736, -80 ), null, [ 0, 0 ], [ 0, 1, 3, 2147483647, 0, null ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ] ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
 
 [node name="world" type="Node2D"]
 
@@ -41,7 +73,7 @@ margin/bottom = 87.0
 
 transform/pos = Vector2( 32.9538, 41.8979 )
 
-[node name="Label" type="Label" parent="ui/top_panel"]
+[node name="lvl" type="Label" parent="ui/top_panel"]
 
 rect/scale = Vector2( 2, 2 )
 focus/ignore_mouse = true
@@ -52,6 +84,7 @@ margin/left = 184.0
 margin/top = 26.0
 margin/right = 218.0
 margin/bottom = 40.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "LVL"
 align = 1
 percent_visible = 1.0
@@ -70,6 +103,7 @@ margin/left = 224.0
 margin/top = 26.0
 margin/right = 275.0
 margin/bottom = 40.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "PAUSED"
 align = 1
 percent_visible = 1.0
@@ -87,6 +121,7 @@ margin/left = 254.0
 margin/top = 26.0
 margin/right = 272.0
 margin/bottom = 40.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "99"
 align = 2
 percent_visible = 1.0
@@ -113,5 +148,21 @@ texture = ExtResource( 4 )
 visibility/visible = false
 transform/pos = Vector2( 72, 0 )
 texture = ExtResource( 4 )
+
+[node name="bw_filter" type="Polygon2D" parent="ui"]
+
+visibility/visible = false
+material/material = SubResource( 2 )
+polygon = Vector2Array( -2000, -2000, 10000, -2000, 10000, 9000, -2000, 9000 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
 
 
