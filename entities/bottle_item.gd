@@ -1,8 +1,19 @@
 extends "item_base.gd"
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+func _ready():
+	
+	set_fixed_process(true)
+	
+func _fixed_process(delta):
+	
+	var anim = get_node("anim")
+	if time_since_fall < 0.5:
+		if not anim.is_playing():
+			anim.set_autoplay("moving")
+			anim.play("moving")
+	else:
+		if anim.is_playing():
+			anim.stop(true)
 
 func on_player_overlap( body ):
 	

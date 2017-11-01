@@ -81,6 +81,13 @@ func _integrate_forces(s):
 	
 func _fixed_process(delta):
 	
+	if is_thrown and not freeze:
+		if not get_node("anim").is_playing():
+			get_node("anim").play("moving")
+	elif get_node("anim").is_playing():
+		get_node("anim").stop(true)
+		
+	
 	if is_thrown and not unbreakable:
 		if not freeze:
 			life -= delta

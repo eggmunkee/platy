@@ -7,17 +7,23 @@ export var x_velocity = 0.0
 export var y_velocity = 0.0
 export var is_falling = true
 var no_pickup_timer = 0.0
+var time_since_fall = 0.0
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	set_fixed_process(true)
 	
+func stop():
+	is_falling = false
+	time_since_fall = 0.0
+	
 func toss(right):
 	is_falling = true
 	no_pickup_timer = 0.6
 	x_velocity = 100.0
 	y_velocity = 15.0
+	time_since_fall = 0.0
 	if not right:
 		x_velocity = -x_velocity
 	
@@ -32,7 +38,10 @@ func _fixed_process(delta):
 		set_pos(pos)
 		
 		if y_velocity < 500.0:
-			y_velocity += 150.0 * delta
+			y_velocity += 200.0 * delta
+	# Keep track of time since landing up to 10 seconds
+	elif time_since_fall < 10.0:
+		time_since_fall += delta
 			
 	for o_body in get_overlapping_bodies():
 		if o_body extends preload("res://player.gd"):

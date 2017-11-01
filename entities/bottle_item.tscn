@@ -1,14 +1,29 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://entities/bottle_item.gd" type="Script" id=1]
-[ext_resource path="res://media/bottle.png" type="Texture" id=2]
-
-
+[ext_resource path="res://media/oil-bottle.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 13.0
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "moving"
+length = 0.3
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.15 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [node name="bottle_item" type="Area2D"]
 
@@ -23,35 +38,31 @@ angular_damp = 1.0
 script/script = ExtResource( 1 )
 x_velocity = 0.0
 y_velocity = 0.0
+is_falling = true
 
 [node name="sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( 2.98281, -5.50459 )
-transform/scale = Vector2( 0.8, 0.8 )
+transform/pos = Vector2( -0.01719, -0.50459 )
+transform/scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
-
-[node name="sprite1" type="Sprite" parent="."]
-
-transform/pos = Vector2( -6.64516, -5.69059 )
-transform/scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 2 )
-
-[node name="sprite2" type="Sprite" parent="."]
-
-transform/pos = Vector2( 7.14732, 2.07873 )
-transform/scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 2 )
-
-[node name="sprite3" type="Sprite" parent="."]
-
-transform/pos = Vector2( -3.52932, 2.85432 )
-transform/scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 2 )
+hframes = 2
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/moving = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "moving"
 
 
