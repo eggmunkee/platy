@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://entities/switch_area.gd" type="Script" id=1]
+[ext_resource path="res://media/switch-2.png" type="Texture" id=2]
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.6707, 17.3701 )
+
+[node name="switch_area" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+is_on = false
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+[connection signal="area_enter" from="." to="." method="_on_switch_area_area_enter"]
+
+[connection signal="body_enter" from="." to="." method="_on_switch_area_body_enter"]
+
+

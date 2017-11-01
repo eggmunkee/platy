@@ -1,13 +1,16 @@
 [gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://player_start.tscn" type="PackedScene" id=1]
-[ext_resource path="res://platform_wooden.tscn" type="PackedScene" id=2]
-[ext_resource path="res://crate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://bottle_item.tscn" type="PackedScene" id=4]
-[ext_resource path="res://level_exit.tscn" type="PackedScene" id=5]
-[ext_resource path="res://rocks_item.tscn" type="PackedScene" id=6]
-[ext_resource path="res://spikes.tscn" type="PackedScene" id=7]
-[ext_resource path="res://torch_item.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/player_start.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/platform_wooden.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/crate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/bottle_item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/level_exit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/rocks_item.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/spikes.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/torch_item.tscn" type="PackedScene" id=8]
+
+
+
 
 [node name="level" type="Node2D"]
 
@@ -284,6 +287,7 @@ transform/pos = Vector2( 335, -263 )
 [node name="bottle_item" parent="entities" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 430, -540 )
+is_falling = true
 
 [node name="level_exit" parent="entities" instance=ExtResource( 5 )]
 
@@ -293,6 +297,7 @@ z/z = -1
 [node name="base" parent="entities" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 415.751, 261.694 )
+is_falling = true
 
 [node name="spikes" parent="entities" instance=ExtResource( 7 )]
 
@@ -331,11 +336,15 @@ transform/rot = 40.5964
 [node name="base 2" parent="entities" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 835.673, 258.378 )
-is_on = true
+x_velocity = 0.0
+y_velocity = 0.0
+is_falling = true
 
 [node name="base3" parent="entities" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 585.454, -540.515 )
-is_on = true
+x_velocity = 0.0
+y_velocity = 0.0
+is_falling = true
 
 

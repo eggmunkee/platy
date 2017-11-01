@@ -87,7 +87,7 @@ func _integrate_forces(s):
 	var phys_rotation = s.get_transform().get_rotation()
 	var is_tilted = abs(phys_rotation) > 0.7
 	
-	if was_respawn:
+	if is_alive and abs(get_rot()) > 0.1:
 		var curr_loc = s.get_transform().get_origin()
 		s.set_transform(Matrix32(0.0, curr_loc))
 		s.set_angular_velocity(0.0)
@@ -246,7 +246,7 @@ func _integrate_forces(s):
 	else:
 		# Start attack?
 		if has_rocks and shoot: # and not was_shoot_held:
-			var rock = preload("res://rock.tscn").instance()
+			var rock = preload("res://entities/rock.tscn").instance()
 	
 			# Get position to create rock instance
 			var pos = get_node("throw_origin").get_pos()
@@ -271,7 +271,7 @@ func _integrate_forces(s):
 			arms_frame_timer = throw_anim_length
 			
 		elif has_bottle and shoot:
-			var bottle = preload("res://bottle_proj.tscn").instance()
+			var bottle = preload("res://entities/bottle_proj.tscn").instance()
 	
 			# Get position to create rock instance
 			var pos = get_node("throw_origin").get_pos()
@@ -509,7 +509,7 @@ func _integrate_forces(s):
 func drop_rocks():
 	if has_rocks:
 		has_rocks = false
-		var rocks_item = preload("res://rocks_item.tscn").instance()
+		var rocks_item = preload("res://entities/rocks_item.tscn").instance()
 		rocks_item.toss(is_facing_right)
 		var pos = get_node("throw_origin").get_pos()
 		if not is_facing_right:
@@ -521,7 +521,7 @@ func drop_rocks():
 func drop_bottle():
 	if has_bottle:
 		has_bottle = false
-		var bottle_item = preload("res://bottle_item.tscn").instance()
+		var bottle_item = preload("res://entities/bottle_item.tscn").instance()
 		bottle_item.toss(is_facing_right)
 		var pos = get_node("throw_origin").get_pos()
 		if not is_facing_right:
@@ -533,9 +533,14 @@ func drop_bottle():
 func drop_torch():
 	if has_torch:
 		has_torch = false
-		var torch_item = preload("res://torch_item.tscn").instance()
+		var torch_item = preload("res://entities/torch_item.tscn").instance()
 		
-		var pos = get_node("drop_position").get_pos()
+		var pos = null
+		if has_bottle:
+			pos = get_node("drop_position").get_pos()
+		else:
+			pos = get_node("throw_origin").get_pos()
+			torch_item.toss(is_facing_right)
 		if not is_facing_right:
 			pos.x = -1.0 * pos.x
 		pos = pos + get_pos()
@@ -644,7 +649,7 @@ func _fixed_process(delta):
 			get_node("blood_effect").set_emitting(false)
 			
 		# update global bw filter
-		var filter_opacity = 0.75 - (0.5 * min(5.0, kill_timer) / 5.0)
+		var filter_opacity = 1.0 - (0.8 * min(5.0, kill_timer) / 5.0)
 		get_node("/root/world").update_dying(true, filter_opacity)
 		
 		if kill_timer < 4.5:
@@ -669,12 +674,13 @@ func _fixed_process(delta):
 	
 func can_pickup_item(new_item):
 	
-	if not is_alive:
-		return false
-	
 	# special case with torch + bottle
 	if new_item == "torch" and has_bottle and not has_torch:
 		return true
+		
+	if not is_alive:
+		return false
+	
 	if new_item == "bottle" and has_torch and not has_bottle:
 		return true
 	
@@ -684,10 +690,10 @@ func can_pickup_item(new_item):
 
 func _on_Area2D_body_enter( body ):
 	
-	if has_torch and body extends preload("res://crate.gd"):
+	if has_torch and body extends preload("res://entities/crate.gd"):
 		body.burn()
 		
-	if has_torch and body extends preload("res://oil_proj.gd"):
+	if has_torch and body extends preload("res://entities/oil_proj.gd"):
 		body.burn()
 		
 	

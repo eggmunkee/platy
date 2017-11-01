@@ -1,7 +1,10 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://char_base.png" type="Texture" id=1]
-[ext_resource path="res://char_arms_base.png" type="Texture" id=2]
+[ext_resource path="res://media/chars/officeman/char_base.png" type="Texture" id=1]
+[ext_resource path="res://media/chars/officeman/char_arms_base.png" type="Texture" id=2]
+
+
+
 
 [node name="ui" type="Node2D"]
 

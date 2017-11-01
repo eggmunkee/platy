@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://media/large-sunset-sky.png" type="Texture" id=1]
-[ext_resource path="res://jungle-vegetation.png" type="Texture" id=2]
-[ext_resource path="res://cloud-layer-1.png" type="Texture" id=3]
+[ext_resource path="res://media/jungle-vegetation.png" type="Texture" id=2]
+[ext_resource path="res://media/cloud-layer-1.png" type="Texture" id=3]
+
+
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 

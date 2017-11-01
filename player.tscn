@@ -2,17 +2,27 @@
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://player_cam.tscn" type="PackedScene" id=2]
-[ext_resource path="res://char_base.png" type="Texture" id=3]
-[ext_resource path="res://char_walk.png" type="Texture" id=4]
-[ext_resource path="res://char_jump.png" type="Texture" id=5]
-[ext_resource path="res://char_fall.png" type="Texture" id=6]
-[ext_resource path="res://dust-cloud-1.png" type="Texture" id=7]
-[ext_resource path="res://char_arms_base.png" type="Texture" id=8]
-[ext_resource path="res://char_arms_attack.png" type="Texture" id=9]
-[ext_resource path="res://rock.png" type="Texture" id=10]
+[ext_resource path="res://media/chars/officeman/char_base.png" type="Texture" id=3]
+[ext_resource path="res://media/chars/officeman/char_walk.png" type="Texture" id=4]
+[ext_resource path="res://media/chars/officeman/char_jump.png" type="Texture" id=5]
+[ext_resource path="res://media/chars/officeman/char_fall.png" type="Texture" id=6]
+[ext_resource path="res://media/dust-cloud-1.png" type="Texture" id=7]
+[ext_resource path="res://media/chars/officeman/char_arms_base.png" type="Texture" id=8]
+[ext_resource path="res://media/chars/officeman/char_arms_attack.png" type="Texture" id=9]
+[ext_resource path="res://media/rock.png" type="Texture" id=10]
 [ext_resource path="res://media/torch-handle.png" type="Texture" id=11]
-[ext_resource path="res://torch.tscn" type="PackedScene" id=12]
-[ext_resource path="res://bottle.tscn" type="PackedScene" id=13]
+[ext_resource path="res://entities/torch.tscn" type="PackedScene" id=12]
+[ext_resource path="res://entities/bottle.tscn" type="PackedScene" id=13]
+
+
+
+
+
+
+
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
