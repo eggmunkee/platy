@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://entities/rocks_item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/torch_item.tscn" type="PackedScene" id=2]
@@ -6,12 +6,8 @@
 [ext_resource path="res://entities/player_start.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/bottle_item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/oil_leak.tscn" type="PackedScene" id=6]
-[ext_resource path="res://entities/switch_area.tscn" type="PackedScene" id=7]
-[ext_resource path="res://entities/level_exit.tscn" type="PackedScene" id=8]
-[ext_resource path="res://entities/platform.tscn" type="PackedScene" id=9]
-
-
-
+[ext_resource path="res://entities/level_exit.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/platform.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -23,7 +19,7 @@ extents = Vector2( 10, 10 )
 [node name="StaticBody2D7" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 2918.99, 2743.37 )
+transform/pos = Vector2( 2916.99, 2419.37 )
 transform/rot = -89.9764
 transform/scale = Vector2( 10.1203, 1 )
 input/pickable = false
@@ -62,96 +58,12 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="StaticBody2D32" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 2918.9, 1371.12 )
-transform/rot = -89.9764
-transform/scale = Vector2( 10.1203, 1 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D32"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D32"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 0.462745, 0.247059, 0.247059, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
-[node name="StaticBody2D33" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 1830.21, 1938.57 )
-transform/rot = -89.9764
-transform/scale = Vector2( 10.1203, 1 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D33"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D33"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 0.462745, 0.247059, 0.247059, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 1831.37, 3438.3 )
+transform/pos = Vector2( 1832.46, 2926.99 )
 transform/rot = -89.9764
-transform/scale = Vector2( 10.1203, 1 )
+transform/scale = Vector2( 2.83805, 1 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -191,8 +103,8 @@ invert/border = 100.0
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 2424.69, 3095.45 )
-transform/scale = Vector2( 10.1203, 1 )
+transform/pos = Vector2( 2350.22, 3095.45 )
+transform/scale = Vector2( 7.66798, 1 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -232,7 +144,7 @@ invert/border = 100.0
 [node name="StaticBody2D10" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 2945.42, 2576.68 )
+transform/pos = Vector2( 2938.42, 2576.68 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -472,7 +384,7 @@ invert/border = 100.0
 [node name="StaticBody2D19" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 2179.83, 2451.38 )
+transform/pos = Vector2( 2186.37, 2452.12 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -499,7 +411,7 @@ _update_shape_index = 0
 transform/scale = Vector2( 1.89526, 0.200614 )
 polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
 uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.219608, 0.164706, 0.282353, 1 )
 vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
@@ -509,10 +421,10 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="StaticBody2D20" type="StaticBody2D" parent="."]
+[node name="StaticBody2D26" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 2156.56, 2330.61 )
+transform/pos = Vector2( 1766.37, 2452.12 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -527,19 +439,19 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D20"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D26"]
 
 transform/scale = Vector2( 13.264, 0.661306 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D20"]
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D26"]
 
 transform/scale = Vector2( 1.89526, 0.200614 )
 polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
 uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.219608, 0.164706, 0.282353, 1 )
 vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
@@ -549,10 +461,10 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="StaticBody2D21" type="StaticBody2D" parent="."]
+[node name="StaticBody2D31" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 2403.66, 2350.55 )
+transform/pos = Vector2( 1766.37, 2351.12 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
@@ -567,19 +479,61 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D21"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D31"]
 
 transform/scale = Vector2( 13.264, 0.661306 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D21"]
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D31"]
 
 transform/scale = Vector2( 1.89526, 0.200614 )
 polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
 uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.219608, 0.164706, 0.282353, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="StaticBody2D32" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1628.48, 2401.38 )
+transform/rot = -90.0
+transform/scale = Vector2( 0.43, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D32"]
+
+transform/scale = Vector2( 13.264, 0.661306 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D32"]
+
+transform/scale = Vector2( 1.89526, 0.200614 )
+polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
+uv = Vector2Array(  )
+color = Color( 0.219608, 0.164706, 0.282353, 1 )
 vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
@@ -695,6 +649,46 @@ trigger = false
 _update_shape_index = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D24"]
+
+transform/scale = Vector2( 1.89526, 0.200614 )
+polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
+uv = Vector2Array(  )
+color = Color( 0.219608, 0.164706, 0.282353, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="StaticBody2D30" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 2398.14, 2332.19 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 13.264, 0, 0, 0.661306, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D30"]
+
+transform/scale = Vector2( 13.264, 0.661306 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D30"]
 
 transform/scale = Vector2( 1.89526, 0.200614 )
 polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
@@ -952,8 +946,8 @@ invert/border = 100.0
 [node name="StaticBody2D15" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 2181.14, 2822.69 )
-transform/scale = Vector2( 0.117624, 0.194355 )
+transform/pos = Vector2( 2183.4, 2822.69 )
+transform/scale = Vector2( 0.188196, 0.194355 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -990,52 +984,11 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="StaticBody2D14" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 2259.79, 2882.97 )
-transform/scale = Vector2( 0.117624, 0.194355 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D14"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D14"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
 [node name="StaticBody2D13" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 2181.14, 2922.66 )
-transform/scale = Vector2( 0.117624, 0.194355 )
+transform/pos = Vector2( 2179.66, 2922.66 )
+transform/scale = Vector2( 0.217683, 0.194355 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
@@ -1059,88 +1012,6 @@ trigger = false
 _update_shape_index = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D13"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
-[node name="StaticBody2D12" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 2089.99, 2891.79 )
-transform/scale = Vector2( 0.117624, 0.194355 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D12"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D12"]
-
-polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
-uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
-
-[node name="StaticBody2D11" type="StaticBody2D" parent="."]
-
-editor/display_folded = true
-transform/pos = Vector2( 2026.77, 2974.12 )
-transform/scale = Vector2( 0.117624, 0.194355 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 6.90668, 0, 0, 3.05466, 0.554794, 0.843609 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 0.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D11"]
-
-transform/pos = Vector2( 0.554794, 0.843609 )
-transform/scale = Vector2( 6.90668, 3.05466 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D11"]
 
 polygon = Vector2Array( -70, -31, 70, -31, 70, 31, -70, 31 )
 uv = Vector2Array(  )
@@ -1196,12 +1067,12 @@ invert/border = 100.0
 
 [node name="base" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 2116.16, 2687.32 )
+transform/pos = Vector2( 1896.16, 2873.32 )
+is_falling = true
 
 [node name="base 2" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 2645.19, 1719.81 )
-is_on = true
 
 [node name="crate" parent="." instance=ExtResource( 3 )]
 
@@ -1307,13 +1178,41 @@ transform/pos = Vector2( 2022.29, 2551.38 )
 
 transform/pos = Vector2( 1945.41, 2623.31 )
 
+[node name="crate26" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1735.41, 2423.31 )
+
+[node name="crate27" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1795.41, 2423.31 )
+
+[node name="crate28" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1765.41, 2380.31 )
+
+[node name="crate29" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1808.41, 2380.31 )
+
+[node name="crate30" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1838.41, 2423.31 )
+
+[node name="crate31" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1693.41, 2423.31 )
+
+[node name="crate32" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1721.41, 2380.31 )
+
 [node name="player_start" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 2107.22, 2501.56 )
+transform/pos = Vector2( 1831.22, 2709.56 )
 
 [node name="bottle_item" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 2385.83, 2680.41 )
+transform/pos = Vector2( 1765.14, 2425.69 )
 
 [node name="oil_leak" parent="." instance=ExtResource( 6 )]
 
@@ -1325,31 +1224,18 @@ is_on = true
 [node name="base 3" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 2461.94, 2606.66 )
-is_on = true
 
-[node name="switch_area" parent="." instance=ExtResource( 7 )]
-
-transform/pos = Vector2( 2493.65, 2820.96 )
-
-[node name="switch_area1" parent="." instance=ExtResource( 7 )]
-
-transform/pos = Vector2( 2325.65, 2851.96 )
-
-[node name="level_exit" parent="." instance=ExtResource( 8 )]
+[node name="level_exit" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 2537.8, 1714.03 )
 z/z = -1
 
-[node name="platform" parent="." instance=ExtResource( 9 )]
+[node name="platform" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 2538.13, 1743.79 )
 
-[node name="platform1" parent="." instance=ExtResource( 9 )]
+[node name="platform1" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 2787.8, 2963.93 )
-
-[connection signal="switch_input" from="switch_area" to="switch_area1" method="input_signal"]
-
-[connection signal="switch_input" from="switch_area1" to="switch_area" method="input_signal"]
 
 
