@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://entities/platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/crate.tscn" type="PackedScene" id=2]
@@ -11,10 +11,8 @@
 [ext_resource path="res://entities/oil_leak.tscn" type="PackedScene" id=9]
 [ext_resource path="res://entities/bottle_proj.tscn" type="PackedScene" id=10]
 [ext_resource path="res://entities/spikes.tscn" type="PackedScene" id=11]
-[ext_resource path="res://entities/player_start.tscn" type="PackedScene" id=12]
-
-
-
+[ext_resource path="res://media/sign-right-arrow.png" type="Texture" id=12]
+[ext_resource path="res://entities/player_start.tscn" type="PackedScene" id=13]
 
 [node name="level" type="Node2D"]
 
@@ -119,15 +117,15 @@ transform/pos = Vector2( -350.005, -674.955 )
 
 [node name="platform17" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( -160.005, -684.955 )
+transform/pos = Vector2( -160.005, -674.955 )
 
 [node name="platform18" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 29.995, -694.955 )
+transform/pos = Vector2( 29.995, -674.955 )
 
 [node name="platform19" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 129.995, -704.955 )
+transform/pos = Vector2( 129.995, -674.955 )
 
 [node name="platform113" parent="solid" instance=ExtResource( 1 )]
 
@@ -141,7 +139,7 @@ transform/rot = 90.0
 
 [node name="platform115" parent="solid" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 229.988, -609.697 )
+transform/pos = Vector2( 229.988, -579.697 )
 transform/rot = 90.0
 
 [node name="platform9" parent="solid" instance=ExtResource( 1 )]
@@ -248,14 +246,10 @@ transform/pos = Vector2( 104.662, -248.306 )
 [node name="bottle_item" parent="entities" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -412, -513.813 )
-is_falling = true
 
 [node name="base" parent="entities" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 103.932, -289.914 )
-x_velocity = 0.0
-y_velocity = 0.0
-is_falling = true
 
 [node name="platform" parent="entities" instance=ExtResource( 5 )]
 
@@ -295,7 +289,7 @@ z/z = -1
 
 [node name="switch_area" parent="entities" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 259.849, 96.3704 )
+transform/pos = Vector2( 246.849, 81.3704 )
 
 [node name="switch_area 2" parent="entities" instance=ExtResource( 8 )]
 
@@ -316,8 +310,6 @@ is_on = false
 [node name="base 2" parent="entities" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 421.962, -74.9746 )
-x_velocity = 0.0
-y_velocity = 0.0
 is_falling = false
 is_on = false
 
@@ -349,15 +341,78 @@ transform/rot = 90.0
 
 [node name="spikes2" parent="entities" instance=ExtResource( 11 )]
 
-transform/pos = Vector2( 254.191, 111.946 )
+transform/pos = Vector2( 254.191, 112.946 )
 
 [node name="spikes3" parent="entities" instance=ExtResource( 11 )]
 
-transform/pos = Vector2( 206.191, 111.946 )
+transform/pos = Vector2( 206.191, 112.946 )
 
-[node name="player_start" parent="." instance=ExtResource( 12 )]
+[node name="torch_label" type="Label" parent="entities"]
 
-transform/pos = Vector2( 1167.38, 331.565 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -562.0
+margin/top = -58.0
+margin/right = -514.0
+margin/bottom = -27.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Turn on
+torch?"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="oil_leak_label" type="Label" parent="entities"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 220.0
+margin/top = 27.0
+margin/right = 275.0
+margin/bottom = 58.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Open oil
+valve?"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="exit_switch_label" type="Label" parent="entities"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 296.0
+margin/top = 133.0
+margin/right = 351.0
+margin/bottom = 164.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Open exit
+chamber?"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="left_arrow_sign" type="Sprite" parent="entities"]
+
+transform/pos = Vector2( -80.1664, -345.947 )
+texture = ExtResource( 12 )
+flip_h = true
+
+[node name="player_start" parent="." instance=ExtResource( 13 )]
+
+transform/pos = Vector2( 1167.38, 361.565 )
 
 [connection signal="switch_input" from="entities/switch_area" to="entities/oil_leak" method="input_value"]
 
