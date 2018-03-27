@@ -232,12 +232,17 @@ func _integrate_forces(s):
 	else:
 		get_node("arms/bottle").hide()
 		
+	var punch_forward = false
+	var pull_back = false
+		
 	# Handle attacks
 	# Did just attack?
 	if arms_frame_timer > 0.0:
 		if arms_frame_timer > throw_anim_length / 2.0:
 			arms_frame_name = 'attack'
-		else:
+		elif arms_frame_name != 'base':
+			if not is_holding_item():
+				pull_back = true
 			arms_frame_name = 'base'
 	
 		arms_frame_timer -= step
@@ -300,8 +305,12 @@ func _integrate_forces(s):
 			arms_frame_timer = throw_anim_length * 2.0
 		#elif has_torch and shoot:
 		#	arms_frame_name = 'attack'
-		elif not (has_torch or has_bottle or has_rocks) and shoot:
+		elif not is_holding_item() and shoot:
 			arms_frame_name = 'attack'
+			punch_forward = true
+			
+			do_punch()
+			
 		else:
 			arms_frame_name = 'base'
 		
@@ -506,6 +515,24 @@ func _integrate_forces(s):
 #	lv += s.get_total_gravity()*step
 	s.set_linear_velocity(lv)
 
+func is_holding_item():
+	return has_torch or has_bottle or has_rocks
+
+func do_punch():
+	var punch_origin_node = get_node('throw_origin')
+	var punch_pos = get_pos() + punch_origin_node.get_pos()
+	var punch_dir = Vector2(1.0, 0.0)
+	
+	if not is_facing_right:
+		punch_dir.x = -punch_dir.x
+	
+	var physics2d_state = get_viewport().get_world_2d().get_direct_space_state()
+	var res = physics2d_state.intersect_ray(punch_pos, punch_dir, [self])
+	
+	print(res)
+	
+	
+
 func drop_rocks():
 	if has_rocks:
 		has_rocks = false
@@ -685,7 +712,7 @@ func can_pickup_item(new_item):
 		return true
 	
 	# otherwise, if have no items
-	return not (has_rocks or has_torch or has_bottle)
+	return not is_holding_item()
 
 
 func _on_Area2D_body_enter( body ):
@@ -697,3 +724,4 @@ func _on_Area2D_body_enter( body ):
 		body.burn()
 		
 	
+
