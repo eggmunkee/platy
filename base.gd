@@ -5,7 +5,6 @@ var was_pause_pr = false
 
 var the_level = null
 var level_loader = null
-var is_loading = false
 
 var need_restart = false
 var need_next_level = false
@@ -76,7 +75,6 @@ func _next_level():
 func _restart_level():
 	
 	level_loader = null
-	is_loading = false
 	the_level = null
 	load_level_num(current_level)
 
@@ -114,31 +112,31 @@ func _fixed_process(delta):
 	if quit_pr:
 		get_tree().quit()
 		
-	if is_loading and level_loader != null:
-		var resp = level_loader.poll()
-		
-		if resp == OK:
-			print("loading... (", level_loader.get_stage())
-		elif resp == ERR_FILE_EOF:
-			var try_level = level_loader.get_resource()
-			
-		
-			if try_level:
-				the_level = try_level.instance()
-				call_deferred("_real_load")
-			else:
-				print("Failure..")
-		
-			is_loading = false
-			level_loader = null
-	else:
+#	if is_loading and level_loader != null:
+#		var resp = level_loader.poll()
+#		
+#		if resp == OK:
+#			print("loading... (", level_loader.get_stage())
+#		elif resp == ERR_FILE_EOF:
+#			var try_level = level_loader.get_resource()
+#			
+#		
+#			if try_level:
+#				the_level = try_level.instance()
+#				call_deferred("_real_load")
+#			else:
+#				print("Failure..")
+#		
+#			is_loading = false
+#			level_loader = null
+#	else:
 	
 		# Pause handling
 		if pause_pr and not was_pause_pr:
 			var is_paused = not get_tree().is_paused()
 			update_paused(is_paused)
 		
-		if not is_loading and not was_next_level_pr and next_level_pr:
+		if not was_next_level_pr and next_level_pr:
 			call_deferred("next_level")
 		
 		was_next_level_pr = next_level_pr
@@ -155,11 +153,21 @@ func load_level_num(num):
 # clear stage and load level
 func load_level(name):
 	
-	if name == "":
+	if name == "" and level_list.size() > 0:
 		name = level_list[0]
 	
 	_load_level_name(name)
-		
+	
+	
+# Level loading method to get level scene instance and load it in
+func _load_level_name(name):
+	var res_path = "res://levels/" + name + ".tscn"
+	the_level = null
+	the_level = ResourceLoader.load(res_path).instance()
+	_real_load()
+	
+	
+# Perform actual update of level elements during load
 func _real_load():
 	
 	# clear stage
@@ -188,17 +196,6 @@ func _real_load():
 		#player2.set_pos(level.get_node("player_start").get_pos()-Vector2(-10.0,0.0))
 		#player.respawn()
 		#level.get_node("player_start").hide()
-	
-# Level loading method
-func _load_level_name(name):
-	var res_path = "res://levels/" + name + ".tscn"
-	#is_loading = true
-	the_level = null
-	the_level = ResourceLoader.load(res_path).instance()
-	_real_load()
-	
-	
-
 
 func _on_screen_resized():
 	var vp_rect = get_viewport_rect()
