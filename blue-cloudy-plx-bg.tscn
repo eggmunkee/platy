@@ -4,8 +4,6 @@
 [ext_resource path="res://media/jungle-vegetation.png" type="Texture" id=2]
 [ext_resource path="res://media/cloud-layer-1.png" type="Texture" id=3]
 
-
-
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
 layer = -1
@@ -30,6 +28,7 @@ motion/mirroring = Vector2( 0, 0 )
 transform/scale = Vector2( 1.4, 1.7 )
 texture = ExtResource( 1 )
 centered = false
+offset = Vector2( 0, -443 )
 
 [node name="weird jungle" type="ParallaxLayer" parent="."]
 
